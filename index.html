@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zaq — seu financeiro, no WhatsApp</title>
+<meta name="description" content="Pare de usar mil apps pro seu dinheiro. O Zaq organiza gastos, compras e as contas da sua empresa — tudo num assistente só, no WhatsApp.">
+<meta property="og:title" content="Zaq — pare de usar mil apps pro seu dinheiro">
+<meta property="og:description" content="Gastos, compras, contas da empresa e relatório pro contador — tudo num assistente só, no WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zaq-ia.com">
+<link rel="canonical" href="https://zaq-ia.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0F0C;--bg-2:#0E1512;--surface:#121A16;--line:#1E2A23;
+    --wa-bg:#0B141A;--bubble-in:#1F2C25;--bubble-out:#0A5C49;
+    --neon:#25D366;--neon-bright:#46F58A;
+    --text:#EAF2ED;--text-dim:#8FA197;--text-faint:#5E6F66;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 22px}
+  .glow{position:fixed;top:-30%;left:50%;transform:translateX(-50%);width:140%;height:70vh;pointer-events:none;z-index:0;background:radial-gradient(ellipse at center,rgba(37,211,102,.16),transparent 60%);filter:blur(20px)}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(10,15,12,.72);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em}
+  .logo .mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(145deg,var(--neon),#0FA85A);color:#04150C;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:19px;box-shadow:0 0 18px rgba(37,211,102,.45)}
+  .nav-cta{font-size:14px;font-weight:600;padding:9px 16px;border-radius:999px;border:1px solid var(--neon);color:var(--neon);transition:.2s}
+  .nav-cta:hover{background:var(--neon);color:#04150C}
+  header{position:relative;z-index:1;padding:54px 0 30px}
+  .hero{display:grid;gap:38px}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--neon);display:inline-flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(2.5rem,9.5vw,4.2rem);line-height:.98;letter-spacing:-.035em;margin:18px 0 0}
+  h1 .accent{color:var(--neon)}
+  .sub{font-size:clamp(1.05rem,4.5vw,1.2rem);color:var(--text-dim);max-width:34ch;margin-top:20px}
+  .sub b{color:var(--text);font-weight:600}
+  .cta-row{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+  .btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:11px;background:var(--neon);color:#04150C;font-family:var(--display);font-weight:700;font-size:1.12rem;padding:17px 26px;border-radius:15px;box-shadow:0 8px 30px rgba(37,211,102,.32);transition:.2s}
+  .btn-wa:hover{background:var(--neon-bright);transform:translateY(-2px);box-shadow:0 12px 38px rgba(37,211,102,.45)}
+  .btn-wa svg{width:23px;height:23px}
+  .micro{font-size:13.5px;color:var(--text-faint);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .micro .dot{width:3px;height:3px;border-radius:50%;background:var(--text-faint)}
+  .phone{justify-self:center;width:100%;max-width:330px;background:#000;border-radius:42px;padding:11px;border:1px solid #20302a;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(37,211,102,.08),0 0 60px rgba(37,211,102,.12)}
+  .screen{background:var(--wa-bg);border-radius:32px;overflow:hidden;position:relative}
+  .wa-head{display:flex;align-items:center;gap:11px;padding:13px 15px;background:#1F2C25;border-bottom:1px solid #0c1a14}
+  .wa-head .back{color:var(--text-dim);font-size:20px;line-height:1}
+  .wa-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(145deg,var(--neon),#0FA85A);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#04150C;font-size:18px}
+  .wa-name{font-weight:600;font-size:15.5px;line-height:1.15}
+  .wa-status{font-size:12px;color:var(--neon)}
+  .chat{padding:18px 14px 16px;min-height:420px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end;background-image:radial-gradient(rgba(255,255,255,.018) 1px,transparent 0);background-size:22px 22px}
+  .msg{max-width:82%;padding:9px 12px;border-radius:13px;font-size:14px;line-height:1.4;opacity:0;transform:translateY(10px);transition:.45s ease}
+  .msg.show{opacity:1;transform:none}
+  .msg .t{display:block;font-size:10.5px;color:rgba(255,255,255,.4);text-align:right;margin-top:3px}
+  .in{align-self:flex-start;background:var(--bubble-in);border-top-left-radius:4px}
+  .out{align-self:flex-end;background:var(--bubble-out);border-top-right-radius:4px}
+  .out .t{color:rgba(200,255,230,.55)}
+  .receipt{width:130px;background:#f6f4ee;border-radius:7px;padding:11px 10px 16px;color:#2a2a2a;position:relative;font-family:var(--mono)}
+  .receipt b{font-size:10px;display:block;text-align:center;letter-spacing:.02em;color:#111}
+  .receipt .ln{height:4px;background:#d9d5c8;border-radius:2px;margin-top:6px}
+  .receipt .ln.s{width:60%}.receipt .ln.m{width:85%}
+  .receipt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:7px;background:linear-gradient(135deg,transparent 50%,#f6f4ee 50%) 0 100%/8px 8px repeat-x,linear-gradient(-135deg,transparent 50%,#f6f4ee 50%) 0 100%/8px 8px repeat-x;transform:translateY(6px)}
+  .receipt-wrap{align-self:flex-end;background:var(--bubble-out);padding:7px;border-radius:13px;border-top-right-radius:4px;opacity:0;transform:translateY(10px);transition:.45s}
+  .receipt-wrap.show{opacity:1;transform:none}
+  .receipt-wrap .t{display:block;font-size:10.5px;color:rgba(200,255,230,.55);text-align:right;margin-top:5px}
+  .typing{align-self:flex-start;background:var(--bubble-in);border-top-left-radius:4px;padding:12px 14px;border-radius:13px;display:none;gap:4px}
+  .typing.show{display:flex}
+  .typing span{width:7px;height:7px;border-radius:50%;background:var(--text-dim);animation:bounce 1.3s infinite}
+  .typing span:nth-child(2){animation-delay:.18s}.typing span:nth-child(3){animation-delay:.36s}
+  @keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+  .summary{background:#16241d;border:1px solid #2b3d33;border-radius:10px;padding:11px 12px;margin-top:7px;font-size:13px}
+  .summary .row{display:flex;justify-content:space-between;padding:3px 0;color:var(--text-dim)}
+  .summary .row b{color:var(--text);font-weight:600}
+  .summary .ok{color:var(--neon);font-weight:600;margin-top:6px;display:flex;align-items:center;gap:6px;font-size:12.5px}
+  section{position:relative;z-index:1;padding:62px 0}
+  .sec-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--neon);margin-bottom:14px}
+  h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,7vw,2.7rem);letter-spacing:-.03em;line-height:1.04}
+  .lead{color:var(--text-dim);max-width:48ch;margin-top:14px;font-size:1.05rem}
+  .steps{display:grid;gap:18px;margin-top:34px}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px 22px}
+  .step .n{font-family:var(--mono);font-size:13px;color:var(--neon);letter-spacing:.1em}
+  .step h3{font-family:var(--display);font-weight:700;font-size:1.32rem;margin:10px 0 8px;letter-spacing:-.02em}
+  .step p{color:var(--text-dim);font-size:.98rem}
+  .modules{display:grid;gap:16px;margin-top:36px}
+  .mod{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 22px;overflow:hidden}
+  .mod.live{border-color:rgba(37,211,102,.4);box-shadow:0 0 40px rgba(37,211,102,.07)}
+  .mod .mhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .mod .mic{width:50px;height:50px;border-radius:14px;background:rgba(37,211,102,.1);display:grid;place-items:center;font-size:25px}
+  .mod.live .mic{background:rgba(37,211,102,.16)}
+  .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;font-weight:500;white-space:nowrap}
+  .badge.b-live{background:rgba(37,211,102,.16);color:var(--neon);border:1px solid rgba(37,211,102,.35)}
+  .badge.b-soon{background:rgba(143,161,151,.1);color:var(--text-dim);border:1px solid var(--line)}
+  .badge.b-live::before{content:"\25CF";font-size:8px;margin-right:5px;vertical-align:middle}
+  .mod h3{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:-.02em;margin-bottom:7px}
+  .mod p{color:var(--text-dim);font-size:.97rem}
+  .mod.soon{opacity:.72}
+  .mod.soon h3{color:var(--text-dim)}
+  .pj{background:linear-gradient(150deg,#0E2018,#0b1612);border:1px solid #20342a;border-radius:24px;padding:40px 26px;margin-top:18px}
+  .pj .badge{display:inline-block;margin-bottom:16px}
+  .pj h2{font-size:clamp(1.7rem,6.5vw,2.3rem)}
+  .pj p{color:var(--text-dim);max-width:50ch;margin-top:14px;font-size:1.05rem}
+  .pj p b{color:var(--text);font-weight:600}
+  .pj .stat{display:flex;gap:10px;align-items:baseline;margin-top:22px;flex-wrap:wrap}
+  .pj .stat .big{font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--neon);line-height:1}
+  .pj .stat .lbl{color:var(--text-dim);font-size:.95rem;max-width:30ch}
+  .feats{display:grid;gap:14px;margin-top:34px}
+  .feat{display:flex;gap:15px;align-items:flex-start;background:var(--bg-2);border:1px solid var(--line);border-radius:15px;padding:19px 18px}
+  .feat .ic{flex-shrink:0;width:42px;height:42px;border-radius:11px;background:rgba(37,211,102,.12);display:grid;place-items:center;font-size:20px}
+  .feat h4{font-family:var(--display);font-weight:700;font-size:1.08rem;margin-bottom:5px;letter-spacing:-.01em}
+  .feat p{color:var(--text-dim);font-size:.94rem}
+  .close{text-align:center}
+  .close-card{background:linear-gradient(160deg,#10271d,#0b1612);border:1px solid #234034;border-radius:26px;padding:48px 26px;box-shadow:0 0 60px rgba(37,211,102,.1)}
+  .close h2{margin-bottom:10px}
+  .close p{color:var(--text-dim);max-width:34ch;margin:0 auto 26px}
+  .close .btn-wa{display:inline-flex}
+  footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:34px 0;text-align:center}
+  .foot-logo{font-family:var(--display);font-weight:800;font-size:18px}
+  footer p{color:var(--text-faint);font-size:13px;margin-top:8px}
+  @media(min-width:860px){
+    .hero{grid-template-columns:1.05fr .95fr;align-items:center}
+    .cta-row{flex-direction:row;align-items:center;flex-wrap:wrap}
+    .steps{grid-template-columns:repeat(3,1fr)}
+    .modules{grid-template-columns:repeat(3,1fr)}
+    .feats{grid-template-columns:repeat(2,1fr)}
+    header{padding:70px 0 40px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.msg,.receipt-wrap{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<nav><div class="wrap nav-in"><div class="logo"><span class="mark">Z</span>Zaq</div><a class="nav-cta" href="#comecar">Começar</a></div></nav>
+
+<header>
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow">Seu financeiro no WhatsApp</span>
+      <h1>Pare de usar mil apps<br>pro seu <span class="accent">dinheiro</span>.</h1>
+      <p class="sub">Começa com uma foto de cupom. Vira o controle financeiro completo <b>seu e da sua empresa</b> — tudo no WhatsApp. O Zaq cresce até você não precisar de mais nada.</p>
+      <div class="cta-row" id="comecar">
+        <a class="btn-wa" href="https://wa.me/13192453800?text=Oi!%20Quero%20testar%20o%20Zaq" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.18c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.15-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.04.89 2.19.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.46.2.53.32.07.11.07.66-.17 1.34z"/></svg>
+          Começar no WhatsApp
+        </a>
+        <span class="micro">Grátis pra testar <span class="dot"></span> o Zaq responde na hora</span>
+      </div>
+    </div>
+    <div class="phone" id="phone">
+      <div class="screen">
+        <div class="wa-head"><span class="back">&lsaquo;</span><div class="wa-av">Z</div><div><div class="wa-name">Zaq</div><div class="wa-status">online</div></div></div>
+        <div class="chat" id="chat">
+          <div class="msg in" data-step="1">Oi! Pode mandar a foto do cupom 📸<span class="t">9:41</span></div>
+          <div class="receipt-wrap" data-step="2"><div class="receipt"><b>PÃO DE AÇÚCAR</b><div class="ln m"></div><div class="ln s"></div><div class="ln m"></div><div class="ln"></div><div class="ln s"></div><div class="ln m"></div></div><span class="t">9:41</span></div>
+          <div class="typing" id="typing"><span></span><span></span><span></span></div>
+          <div class="msg in" data-step="3" style="max-width:90%">Prontinho! Li seu cupom 👇
+            <div class="summary"><div class="row"><span>🏪 Loja</span><b>Pão de Açúcar</b></div><div class="row"><span>🛒 Categoria</span><b>Mercado</b></div><div class="row"><span>💰 Total</span><b>R$ 87,40</b></div><div class="ok">✓ 11 itens salvos no seu controle</div></div>
+            <span class="t">9:41</span>
+          </div>
+          <div class="msg out" data-step="4">perfeito, nem digitei nada 🙌<span class="t">9:42</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow">Como funciona</div>
+    <h2>Três passos. Zero planilha.</h2>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Manda pro Zaq</h3><p>A foto do cupom, o PDF do comprovante, ou só escreve: "gastei 50 no mercado". Como você preferir.</p></div>
+      <div class="step"><div class="n">02</div><h3>Ele entende sozinho</h3><p>O Zaq lê os itens, a loja e a data, e já separa por categoria. Você não digita nada.</p></div>
+      <div class="step"><div class="n">03</div><h3>Você enxerga tudo</h3><p>Quanto gastou, com o quê e onde — direto no chat. Seu dinheiro deixa de ser um mistério.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow">Um assistente, vários módulos</div>
+    <h2>O Zaq cresce com você.</h2>
+    <p class="lead">Ele não é só um leitor de cupom. É um orquestrador: cada módulo cuida de uma parte da sua vida financeira — pessoal e da empresa — e todos moram na mesma conversa.</p>
+    <div class="modules">
+      <div class="mod live"><div class="mhead"><div class="mic">🧾</div><span class="badge b-live">No ar</span></div><h3>Gastos</h3><p>Foto, PDF ou texto vira lançamento organizado por categoria, na hora. O coração do Zaq, já funcionando.</p></div>
+      <div class="mod soon"><div class="mhead"><div class="mic">🛒</div><span class="badge b-soon">Em breve</span></div><h3>Compras</h3><p>Sua lista de compras inteligente: o Zaq sugere o que comprar, organiza por loja e te ajuda a planejar antes de sair de casa.</p></div>
+      <div class="mod soon"><div class="mhead"><div class="mic">📉</div><span class="badge b-soon">Em breve</span></div><h3>Economia</h3><p>Conforme você registra, o Zaq aprende os preços da sua região — e te mostra onde dá pra gastar menos.</p></div>
+      <div class="mod soon"><div class="mhead"><div class="mic">🏢</div><span class="badge b-soon">Em breve</span></div><h3>Empresa (PJ)</h3><p>Separa o dinheiro pessoal do da empresa, controla a parte tributária e te mostra quanto o negócio realmente lucrou no mês.</p></div>
+      <div class="mod soon"><div class="mhead"><div class="mic">📊</div><span class="badge b-soon">Em breve</span></div><h3>Contador</h3><p>Receitas e despesas organizadas e prontas pra mandar pro seu contador — ou, em breve, a contabilidade feita dentro do próprio Zaq.</p></div>
+      <div class="mod soon"><div class="mhead"><div class="mic">📅</div><span class="badge b-soon">Em breve</span></div><h3>Agenda</h3><p>Conecte sua agenda do Google e o Zaq cuida dos seus compromissos: marca reuniões, te lembra na hora e avisa o que vem pela frente no dia.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="pj">
+      <span class="badge b-soon">Em breve · pra quem tem CNPJ</span>
+      <h2>Pare de misturar o dinheiro da empresa com o seu.</h2>
+      <p>O erro que mais quebra pequeno negócio no Brasil é misturar as contas. O Zaq vai separar os dois caixas pra você: <b>quanto entrou e saiu da empresa, quanto é seu, e quanto o negócio realmente lucrou no mês</b> — sem planilha, direto no WhatsApp. E ainda te avisa do que importa antes de virar problema.</p>
+      <div class="stat">
+        <span class="big">6 em 10</span>
+        <span class="lbl">empreendedores brasileiros misturam as finanças pessoais com as da empresa. O Zaq resolve isso na origem.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow">O que o Zaq já faz</div>
+    <h2>Pronto pra usar hoje.</h2>
+    <div class="feats">
+      <div class="feat"><div class="ic">📸</div><div><h4>Lê foto e PDF</h4><p>Cupom amassado, nota fiscal, comprovante do banco. Se você consegue ler, o Zaq também.</p></div></div>
+      <div class="feat"><div class="ic">💬</div><div><h4>WhatsApp e Telegram</h4><p>Use no canal que você já tem aberto. Mesmo assistente, mesma conversa, nos dois.</p></div></div>
+      <div class="feat"><div class="ic">🗂️</div><div><h4>Organiza por categoria</h4><p>Mercado, saúde, restaurante… o Zaq separa cada gasto no lugar certo, automático.</p></div></div>
+      <div class="feat"><div class="ic">🔒</div><div><h4>Seus dados são seus</h4><p>Cada pessoa tem o seu espaço, privado e separado. O Zaq nunca mistura a sua conta com a de ninguém.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <div class="close-card">
+      <h2>Comece pelo primeiro cupom.</h2>
+      <p>Manda uma foto agora e veja o Zaq trabalhar. O resto do seu financeiro vem junto.</p>
+      <a class="btn-wa" href="https://wa.me/13192453800?text=Oi!%20Quero%20testar%20o%20Zaq" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.18c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.15-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.04.89 2.19.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.46.2.53.32.07.11.07.66-.17 1.34z"/></svg>
+        Começar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><div class="foot-logo">Zaq</div><p>Seu financeiro, no WhatsApp · feito no Brasil 🇧🇷 · 2026</p></div></footer>
+
+<script>
+(function(){
+  var chat=document.getElementById('chat'),typing=document.getElementById('typing'),steps=chat.querySelectorAll('[data-step]'),played=false;
+  function reveal(el){el.classList.add('show')}
+  function play(){if(played)return;played=true;var t=400;reveal(steps[0]);setTimeout(function(){reveal(steps[1])},t+700);setTimeout(function(){typing.classList.add('show')},t+1500);setTimeout(function(){typing.classList.remove('show');reveal(steps[2])},t+3000);setTimeout(function(){reveal(steps[3])},t+3900);}
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){steps.forEach(reveal);return;}
+  if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)play()})},{threshold:.4});obs.observe(document.getElementById('phone'));}else{play();}
+})();
+</script>
+</body>
+</html>
