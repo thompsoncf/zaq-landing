@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cesta de hortifruti em casa — me ajuda?</title>
+<style>
+  :root{
+    --verde:#1d9e75; --verde-claro:#5dcaa5; --verde-bg:#15241d;
+    --bg:#0f0f10; --card:#1a1a1c; --txt:#ececec; --mut:#8a8a86; --borda:#2a2a2b;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--txt); line-height:1.6; padding:0 0 3rem;
+  }
+  .wrap{max-width:540px; margin:0 auto; padding:0 1rem;}
+  .progress{position:sticky; top:0; height:4px; background:var(--borda); z-index:10;}
+  .progress .fill{height:100%; background:var(--verde); width:0%; transition:width .3s;}
+  header{
+    background:linear-gradient(160deg, #15241d, #0f0f10);
+    padding:2rem 1rem 1.6rem; text-align:center; border-bottom:1px solid var(--borda);
+  }
+  .logo{font-size:1.7rem; font-weight:700; color:var(--verde-claro); letter-spacing:-.5px;}
+  header h1{font-size:1.3rem; margin:.6rem 0 .4rem; font-weight:600;}
+  header p{color:var(--mut); font-size:.92rem; max-width:420px; margin:0 auto;}
+  .anon{
+    display:inline-block; margin-top:.7rem; font-size:.78rem; color:var(--verde-claro);
+    background:#1d9e7522; border:1px solid #1d9e7544; border-radius:20px; padding:.25rem .8rem;
+  }
+
+  .sec{
+    background:var(--card); border:1px solid var(--borda); border-radius:14px;
+    padding:1.2rem; margin:1.1rem 0;
+  }
+  .q{font-size:1.02rem; font-weight:600; margin-bottom:.2rem;}
+  .qsub{font-size:.82rem; color:var(--mut); margin-bottom:.9rem;}
+  .opcoes{display:flex; flex-direction:column; gap:.5rem;}
+  .op{
+    display:flex; align-items:center; gap:.6rem; background:#111; border:1px solid var(--borda);
+    border-radius:9px; padding:.7rem .8rem; cursor:pointer; font-size:.95rem; transition:.15s;
+  }
+  .op:hover{border-color:#444;}
+  .op input{width:18px; height:18px; accent-color:var(--verde); flex-shrink:0;}
+  .op.sel{border-color:var(--verde); background:var(--verde-bg);}
+  textarea{
+    width:100%; background:#111; border:1px solid var(--borda); border-radius:9px;
+    padding:.7rem .8rem; color:var(--txt); font-size:1rem; font-family:inherit; resize:vertical; min-height:60px;
+  }
+  textarea:focus{outline:none; border-color:var(--verde);}
+
+  button.enviar{
+    width:100%; background:var(--verde); color:#fff; border:none; border-radius:11px;
+    padding:.95rem; font-size:1.05rem; font-weight:600; cursor:pointer; margin-top:.3rem;
+  }
+  button.enviar:active{transform:scale(.99);}
+  button.enviar:disabled{opacity:.6;}
+  .ok{display:none; text-align:center; padding:2.5rem 1rem; background:var(--verde-bg); border-radius:14px; margin-top:1rem;}
+  .ok.show{display:block;}
+  .ok .big{font-size:2.5rem; margin-bottom:.5rem;}
+  .ok h2{color:var(--verde-claro); margin-bottom:.5rem;}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="fill" id="pfill"></div></div>
+
+<header>
+  <div class="logo">Zaq</div>
+  <h1>Hortifruti fresquinho na sua porta 🥬</h1>
+  <p>Tô pensando num jeito de você receber frutas, verduras e legumes em casa, sem ter
+  que ir à feira. Responde rapidinho (1 min) e me ajuda a montar do jeito que VOCÊ quer.</p>
+  <span class="anon">🔒 Anônimo — pode ser 100% sincero</span>
+</header>
+
+<div class="wrap">
+  <form id="form">
+
+    <div class="sec">
+      <div class="q">1. Hoje, como você compra frutas e verduras?</div>
+      <div class="opcoes">
+        <label class="op"><input type="radio" name="hoje" value="feira"> Vou à feira</label>
+        <label class="op"><input type="radio" name="hoje" value="mercado"> Compro no mercado/sacolão</label>
+        <label class="op"><input type="radio" name="hoje" value="delivery"> Já peço por delivery/app</label>
+        <label class="op"><input type="radio" name="hoje" value="varia"> Varia / não tem rotina</label>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="q">2. Comprar hortifruti toda semana te dá trabalho?</div>
+      <div class="qsub">Sincero — é o que eu quero resolver.</div>
+      <div class="opcoes">
+        <label class="op"><input type="radio" name="dor" value="muito"> Sim, é um saco / toma tempo</label>
+        <label class="op"><input type="radio" name="dor" value="mais_ou_menos"> Mais ou menos</label>
+        <label class="op"><input type="radio" name="dor" value="nao"> Não, até gosto de ir</label>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="q">3. Você assinaria pra receber uma cesta em casa toda semana?</div>
+      <div class="qsub">Recebe automático, sem precisar pedir toda vez.</div>
+      <div class="opcoes">
+        <label class="op"><input type="radio" name="assinaria" value="sim"> Sim, adoraria</label>
+        <label class="op"><input type="radio" name="assinaria" value="talvez"> Talvez, depende do preço/qualidade</label>
+        <label class="op"><input type="radio" name="assinaria" value="nao"> Não tenho interesse</label>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="q">4. Quanto você pagaria por uma cesta semanal boa?</div>
+      <div class="qsub">Pra família média (~13 itens: frutas, verduras e legumes da semana).</div>
+      <div class="opcoes">
+        <label class="op"><input type="radio" name="preco" value="ate_40"> Até R$ 40</label>
+        <label class="op"><input type="radio" name="preco" value="40_70"> R$ 40 a 70</label>
+        <label class="op"><input type="radio" name="preco" value="70_100"> R$ 70 a 100</label>
+        <label class="op"><input type="radio" name="preco" value="100_150"> R$ 100 a 150</label>
+        <label class="op"><input type="radio" name="preco" value="depende"> Depende do que vem na cesta</label>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="q">5. Você preferiria uma cesta...</div>
+      <div class="opcoes">
+        <label class="op"><input type="radio" name="tipo_cesta" value="pronta"> Já pronta (a gente escolhe o melhor da semana)</label>
+        <label class="op"><input type="radio" name="tipo_cesta" value="ajusta"> Sugerida, mas eu ajusto o que quero</label>
+        <label class="op"><input type="radio" name="tipo_cesta" value="monto"> Eu monto tudo do zero</label>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="q">6. Com que frequência você gostaria de receber?</div>
+      <div class="opcoes">
+        <label class="op"><input type="radio" name="frequencia" value="semanal"> Toda semana</label>
+        <label class="op"><input type="radio" name="frequencia" value="quinzenal"> A cada 15 dias</label>
+        <label class="op"><input type="radio" name="frequencia" value="mensal"> Uma vez por mês</label>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="q">7. O que mais importa pra você numa cesta dessas?</div>
+      <div class="qsub">Pode marcar até 2.</div>
+      <div class="opcoes" data-multi data-campo="valoriza" data-max="2">
+        <label class="op"><input type="checkbox" value="preco"> Preço baixo</label>
+        <label class="op"><input type="checkbox" value="qualidade"> Qualidade / frescor</label>
+        <label class="op"><input type="checkbox" value="comodidade"> Não precisar sair de casa</label>
+        <label class="op"><input type="checkbox" value="nao_pensar"> Não ter que pensar nisso</label>
+        <label class="op"><input type="checkbox" value="variedade"> Variedade de produtos</label>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="q">8. O que te faria NÃO assinar (ou cancelar)?</div>
+      <div class="qsub">Opcional — mas me ajuda muito.</div>
+      <textarea name="objecao" placeholder="Ex: medo de vir produto ruim, preço alto, vir coisa que não uso..."></textarea>
+    </div>
+
+    <button type="submit" class="enviar" id="btn">Enviar resposta 📤</button>
+  </form>
+
+  <div class="ok" id="ok">
+    <div class="big">🎉</div>
+    <h2>Valeu demais!</h2>
+    <p>Sua resposta vai me ajudar a montar isso do jeito certo. Logo logo você vê o resultado. 🥬</p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.op input').forEach(function(inp){
+    inp.addEventListener('change', function(){
+      if(inp.type==='radio'){
+        document.querySelectorAll('input[name="'+inp.name+'"]').forEach(function(r){
+          r.closest('.op').classList.toggle('sel', r.checked);
+        });
+      } else {
+        var grupo=inp.closest('[data-multi]');
+        var max=parseInt(grupo.getAttribute('data-max')||'99');
+        var marcados=grupo.querySelectorAll('input:checked');
+        if(marcados.length>max){ inp.checked=false; return; }
+        inp.closest('.op').classList.toggle('sel', inp.checked);
+      }
+      atualizaProgresso();
+    });
+  });
+  document.querySelectorAll('textarea').forEach(function(el){ el.addEventListener('input', atualizaProgresso); });
+
+  function atualizaProgresso(){
+    var grupos={};
+    document.querySelectorAll('#form input:checked').forEach(function(el){ grupos[el.name||el.closest('[data-multi]').getAttribute('data-campo')]=true; });
+    var p=Math.min(100, Math.round((Object.keys(grupos).length/7)*100));
+    document.getElementById('pfill').style.width=p+'%';
+  }
+
+  document.getElementById('form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn=document.getElementById('btn');
+    btn.disabled=true; btn.textContent='Enviando...';
+
+    var fd=new FormData(e.target);
+    var resp={};
+    for(var par of fd.entries()){ resp[par[0]]=par[1]; }
+    document.querySelectorAll('[data-multi]').forEach(function(grupo){
+      var campo=grupo.getAttribute('data-campo');
+      var marcados=[];
+      grupo.querySelectorAll('input:checked').forEach(function(c){marcados.push(c.value);});
+      resp[campo]=marcados;
+    });
+
+    // POST pra openclaw
+    fetch('https://openclaw.thompsoncf.repl.co/api/pesquisa-fornecedor', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({segmento:'consumidor_hortifruti', respostas: resp})
+    }).then(function(r){return r.json();}).then(function(d){
+      document.getElementById('form').style.display='none';
+      document.getElementById('ok').classList.add('show');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }).catch(function(err){
+      btn.disabled=false; btn.textContent='Tentar de novo';
+      alert('Ops, deu erro. Tenta de novo, por favor.');
+      console.error(err);
+    });
+  });
+</script>
+</body>
+</html>
