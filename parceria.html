@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parceria Zaq — vamos vender mais juntos</title>
+<style>
+  :root{
+    --verde:#1d9e75; --verde-claro:#5dcaa5; --verde-bg:#15241d;
+    --bg:#0f0f10; --card:#1a1a1c; --txt:#ececec; --mut:#8a8a86; --borda:#2a2a2b;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--txt); line-height:1.6;
+    padding:0 0 3rem;
+  }
+  .wrap{max-width:600px; margin:0 auto; padding:0 1rem;}
+  header{
+    background:linear-gradient(160deg, #15241d, #0f0f10);
+    padding:2.2rem 1rem 1.8rem; text-align:center; border-bottom:1px solid var(--borda);
+  }
+  .logo{font-size:1.8rem; font-weight:700; color:var(--verde-claro); letter-spacing:-.5px;}
+  .logo span{color:var(--txt);}
+  header h1{font-size:1.35rem; margin:.7rem 0 .4rem; font-weight:600;}
+  header p{color:var(--mut); font-size:.95rem; max-width:440px; margin:0 auto;}
+
+  .ganhos{
+    background:var(--verde-bg); border:1px solid #1d9e7544; border-radius:14px;
+    padding:1.2rem; margin:1.5rem 0;
+  }
+  .ganhos h2{font-size:1rem; color:var(--verde-claro); margin-bottom:.8rem;}
+  .ganho{display:flex; gap:.7rem; align-items:flex-start; margin-bottom:.7rem; font-size:.92rem;}
+  .ganho:last-child{margin-bottom:0;}
+  .ganho .ic{color:var(--verde-claro); flex-shrink:0; font-size:1.1rem; line-height:1.4;}
+
+  .sec{
+    background:var(--card); border:1px solid var(--borda); border-radius:14px;
+    padding:1.3rem; margin-bottom:1.1rem;
+  }
+  .sec-tit{font-size:1.05rem; font-weight:600; margin-bottom:.3rem; color:var(--txt);}
+  .sec-sub{font-size:.85rem; color:var(--mut); margin-bottom:1rem;}
+  .campo{margin-bottom:1.1rem;}
+  .campo:last-child{margin-bottom:0;}
+  label{display:block; font-size:.9rem; margin-bottom:.4rem; color:var(--txt);}
+  .hint{font-size:.78rem; color:var(--mut); margin-top:.25rem;}
+  input[type=text], input[type=number], textarea, select{
+    width:100%; background:#111; border:1px solid var(--borda); border-radius:9px;
+    padding:.7rem .8rem; color:var(--txt); font-size:1rem; font-family:inherit;
+  }
+  input:focus, textarea:focus, select:focus{outline:none; border-color:var(--verde);}
+  textarea{resize:vertical; min-height:70px;}
+  .opcoes{display:flex; flex-direction:column; gap:.5rem;}
+  .op{
+    display:flex; align-items:center; gap:.6rem; background:#111; border:1px solid var(--borda);
+    border-radius:9px; padding:.65rem .8rem; cursor:pointer; font-size:.95rem; transition:.15s;
+  }
+  .op:hover{border-color:#444;}
+  .op input{width:18px; height:18px; accent-color:var(--verde); flex-shrink:0;}
+  .op.sel{border-color:var(--verde); background:var(--verde-bg);}
+  .moeda{position:relative;}
+  .moeda::before{content:"R$"; position:absolute; left:.8rem; top:50%; transform:translateY(-50%); color:var(--mut); font-size:.95rem;}
+  .moeda input{padding-left:2.4rem;}
+
+  .priv{
+    font-size:.8rem; color:var(--mut); background:#111; border-radius:9px;
+    padding:.7rem .8rem; margin-top:.5rem; border:1px solid var(--borda);
+  }
+  button.enviar{
+    width:100%; background:var(--verde); color:#fff; border:none; border-radius:11px;
+    padding:.95rem; font-size:1.05rem; font-weight:600; cursor:pointer; margin-top:.5rem;
+  }
+  button.enviar:active{transform:scale(.99);}
+  button.enviar:disabled{opacity:.6;}
+  .ok{
+    display:none; text-align:center; padding:2.5rem 1rem; background:var(--verde-bg);
+    border-radius:14px; margin-top:1rem;
+  }
+  .ok.show{display:block;}
+  .ok .big{font-size:2.5rem; margin-bottom:.5rem;}
+  .ok h2{color:var(--verde-claro); margin-bottom:.5rem;}
+  .progress{
+    position:sticky; top:0; height:4px; background:var(--borda); z-index:10;
+  }
+  .progress .fill{height:100%; background:var(--verde); width:0%; transition:width .3s;}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="fill" id="pfill"></div></div>
+
+<header>
+  <div class="logo">Zaq<span> Parceria</span></div>
+  <h1>Vamos vender mais, juntos 🤝</h1>
+  <p>Quero te ajudar a vender mais e organizar tuas entregas. Pra montar isso do teu
+  jeito, preciso entender como você trabalha. Leva 3 minutinhos.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="ganhos">
+    <h2>O que você ganha com o Zaq</h2>
+    <div class="ganho"><span class="ic">🛒</span><div><b>Clientes pedindo sozinhos</b> — eles montam o pedido no celular, você só separa e entrega.</div></div>
+    <div class="ganho"><span class="ic">🗺️</span><div><b>Rota organizada</b> — os pedidos chegam agrupados por bairro, prontos pra você fazer a entrega na ordem certa.</div></div>
+    <div class="ganho"><span class="ic">💰</span><div><b>Recebimento na hora</b> — o cliente paga pelo Pix e o dinheiro cai direto pra você, sem calote.</div></div>
+    <div class="ganho"><span class="ic">📦</span><div><b>Assinatura = caixa garantido</b> — clientes que assinam a cesta semanal te dão venda previsível toda semana.</div></div>
+  </div>
+
+  <form id="form">
+
+    <div class="sec">
+      <div class="sec-tit">1. Sobre você</div>
+      <div class="sec-sub">Pra eu saber com quem tô montando isso.</div>
+      <div class="campo">
+        <label>Seu nome / nome do negócio</label>
+        <input type="text" name="nome" placeholder="Ex: Hortifruti do Zé">
+      </div>
+      <div class="campo">
+        <label>WhatsApp</label>
+        <input type="text" name="whatsapp" placeholder="(86) 9....">
+      </div>
+      <div class="campo">
+        <label>Bairro / cidade onde você fica</label>
+        <input type="text" name="local" placeholder="Ex: Teresina, bairro tal">
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-tit">2. Como você entrega</div>
+      <div class="sec-sub">Pra montar a rota e mostrar pros clientes certos.</div>
+      <div class="campo">
+        <label>Quais bairros você atende?</label>
+        <textarea name="bairros" placeholder="Ex: Centro, Jóquei, Ininga, Fátima..."></textarea>
+      </div>
+      <div class="campo">
+        <label>Quais dias você entrega?</label>
+        <div class="opcoes" data-multi data-campo="dias_entrega">
+          <label class="op"><input type="checkbox" value="Segunda"> Segunda</label>
+          <label class="op"><input type="checkbox" value="Terça"> Terça</label>
+          <label class="op"><input type="checkbox" value="Quarta"> Quarta</label>
+          <label class="op"><input type="checkbox" value="Quinta"> Quinta</label>
+          <label class="op"><input type="checkbox" value="Sexta"> Sexta</label>
+          <label class="op"><input type="checkbox" value="Sábado"> Sábado</label>
+        </div>
+      </div>
+      <div class="campo">
+        <label>Quantas entregas por dia você dá conta?</label>
+        <input type="number" name="capacidade" placeholder="Ex: 15">
+        <div class="hint">Pra eu não deixar você afogado de pedido.</div>
+      </div>
+      <div class="campo">
+        <label>Como os clientes fazem pedido pra você <b>hoje</b>?</label>
+        <div class="opcoes" data-multi data-campo="como_pedem_hoje">
+          <label class="op"><input type="checkbox" value="WhatsApp"> WhatsApp</label>
+          <label class="op"><input type="checkbox" value="Telefone / ligação"> Telefone / ligação</label>
+          <label class="op"><input type="checkbox" value="Balcão / presencial"> Balcão / presencial</label>
+          <label class="op"><input type="checkbox" value="Outro"> Outro jeito</label>
+        </div>
+        <div class="hint">Pra eu entender o que o Zaq vai facilitar pra você.</div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-tit">3. Seus produtos</div>
+      <div class="sec-sub">O catálogo que os clientes vão ver.</div>
+      <div class="campo">
+        <label>Mais ou menos quantos produtos diferentes você vende?</label>
+        <div class="opcoes">
+          <label class="op"><input type="radio" name="qtd_produtos" value="ate_50"> Até 50</label>
+          <label class="op"><input type="radio" name="qtd_produtos" value="50_150"> Entre 50 e 150</label>
+          <label class="op"><input type="radio" name="qtd_produtos" value="150_300"> Entre 150 e 300</label>
+          <label class="op"><input type="radio" name="qtd_produtos" value="mais_300"> Mais de 300</label>
+        </div>
+      </div>
+      <div class="campo">
+        <label>Como você prefere mandar a lista de produtos e preços?</label>
+        <div class="opcoes">
+          <label class="op"><input type="radio" name="formato" value="planilha"> Tenho uma planilha (Excel/Google)</label>
+          <label class="op"><input type="radio" name="formato" value="cadastrar"> Prefiro cadastrar um por um no sistema</label>
+          <label class="op"><input type="radio" name="formato" value="ajuda"> Preciso de ajuda pra montar isso</label>
+        </div>
+      </div>
+      <div class="campo">
+        <label>Com que frequência seus preços mudam?</label>
+        <div class="opcoes">
+          <label class="op"><input type="radio" name="freq_preco" value="dia"> Todo dia</label>
+          <label class="op"><input type="radio" name="freq_preco" value="semana"> Toda semana</label>
+          <label class="op"><input type="radio" name="freq_preco" value="mes"> De vez em quando (mês)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-tit">4. As cestas (a assinatura)</div>
+      <div class="sec-sub">A ideia é o cliente assinar e receber toda semana. Me ajuda a pensar o preço.</div>
+      <div class="campo">
+        <label>Se você montasse uma <b>cesta pequena</b> (1-2 pessoas, ~8 itens), por quanto venderia?</label>
+        <div class="moeda"><input type="number" name="preco_p" placeholder="0,00"></div>
+      </div>
+      <div class="campo">
+        <label>E uma <b>cesta média</b> (família, ~13 itens), qual seria o preço de venda?</label>
+        <div class="moeda"><input type="number" name="preco_m" placeholder="0,00"></div>
+      </div>
+      <div class="campo">
+        <label>E uma <b>cesta grande</b> (família grande, ~20 itens)?</label>
+        <div class="moeda"><input type="number" name="preco_g" placeholder="0,00"></div>
+      </div>
+      <div class="campo">
+        <label>Desses preços, mais ou menos quanto é o seu <b>lucro</b> (depois de pagar o CEASA)?</label>
+        <div class="opcoes">
+          <label class="op"><input type="radio" name="margem" value="ate_15"> Até 15%</label>
+          <label class="op"><input type="radio" name="margem" value="15_25"> Entre 15% e 25%</label>
+          <label class="op"><input type="radio" name="margem" value="25_40"> Entre 25% e 40%</label>
+          <label class="op"><input type="radio" name="margem" value="mais_40"> Mais de 40%</label>
+          <label class="op"><input type="radio" name="margem" value="prefiro_falar"> Prefiro conversar isso pessoalmente</label>
+        </div>
+        <div class="priv">🔒 Esse número fica só entre a gente. Preciso dele pra calcular um preço justo pra você e pro cliente — e pra deixar tua margem protegida. Se preferir, marca a última opção e a gente conversa.</div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-tit">5. O acordo</div>
+      <div class="sec-sub">Como o Zaq se sustenta — com transparência.</div>
+      <div class="campo">
+        <label>O Zaq ganha uma pequena % sobre cada venda feita pela plataforma (é assim que o sistema se paga e fica de pé pra você). Como você vê isso?</label>
+        <div class="opcoes">
+          <label class="op"><input type="radio" name="comissao" value="ok_pequena"> Tranquilo, se for uma % pequena e justa</label>
+          <label class="op"><input type="radio" name="comissao" value="depende"> Depende de quanto — vamos conversar</label>
+          <label class="op"><input type="radio" name="comissao" value="prefiro_fixo"> Prefiro pagar um valor fixo mensal</label>
+        </div>
+      </div>
+      <div class="campo">
+        <label>O cliente paga pelo Zaq (Pix) e o dinheiro cai direto na sua conta, já descontada a %. Topa receber assim?</label>
+        <div class="opcoes">
+          <label class="op"><input type="radio" name="split" value="sim"> Topo, acho prático</label>
+          <label class="op"><input type="radio" name="split" value="duvida"> Tenho dúvidas, me explica melhor</label>
+          <label class="op"><input type="radio" name="split" value="prefiro_meu"> Prefiro receber do meu jeito atual</label>
+        </div>
+      </div>
+      <div class="campo">
+        <label>Quer deixar algum recado, dúvida ou ideia pra mim?</label>
+        <textarea name="recado" placeholder="Manda ver..."></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="enviar" id="btn">Enviar pro Thompson 📤</button>
+  </form>
+
+  <div class="ok" id="ok">
+    <div class="big">🎉</div>
+    <h2>Recebido! Valeu demais.</h2>
+    <p>Vou montar tudo com base no que você passou e te chamo pra gente fechar os detalhes. Bora vender mais juntos!</p>
+  </div>
+
+</div>
+
+<script>
+  // marca visual das opções selecionadas
+  document.querySelectorAll('.op input').forEach(function(inp){
+    inp.addEventListener('change', function(){
+      if(inp.type==='radio'){
+        var name=inp.name;
+        document.querySelectorAll('input[name="'+name+'"]').forEach(function(r){
+          r.closest('.op').classList.toggle('sel', r.checked);
+        });
+      } else {
+        inp.closest('.op').classList.toggle('sel', inp.checked);
+      }
+      atualizaProgresso();
+    });
+  });
+  document.querySelectorAll('input[type=text],input[type=number],textarea').forEach(function(el){
+    el.addEventListener('input', atualizaProgresso);
+  });
+
+  function atualizaProgresso(){
+    var campos=document.querySelectorAll('#form input,#form textarea');
+    var preenchidos=0, grupos={};
+    campos.forEach(function(el){
+      if(el.type==='radio'||el.type==='checkbox'){
+        if(el.checked) grupos[el.name]=true;
+      } else if(el.value.trim()){ preenchidos++; }
+    });
+    var total=12;
+    var p=Math.min(100, Math.round(((preenchidos+Object.keys(grupos).length)/total)*100));
+    document.getElementById('pfill').style.width=p+'%';
+  }
+
+  document.getElementById('form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn=document.getElementById('btn');
+    btn.disabled=true; btn.textContent='Enviando...';
+
+    var fd=new FormData(e.target);
+    var resp={};
+    for(var par of fd.entries()){ resp[par[0]]=par[1]; }
+    // grupos multi (dias de entrega e como pedem hoje) — captura cada um pelo data-campo
+    document.querySelectorAll('[data-multi]').forEach(function(grupo){
+      var campo=grupo.getAttribute('data-campo');
+      var marcados=[];
+      grupo.querySelectorAll('input:checked').forEach(function(c){marcados.push(c.value);});
+      resp[campo]=marcados;
+    });
+
+    // POST pra openclaw (mudar URL se necessário)
+    fetch('https://openclaw.thompsoncf.repl.co/api/pesquisa-fornecedor', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({segmento:'parceria_hortifruti', respostas: resp})
+    }).then(function(r){return r.json();}).then(function(d){
+      document.getElementById('form').style.display='none';
+      document.querySelector('.ganhos').style.display='none';
+      document.getElementById('ok').classList.add('show');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }).catch(function(err){
+      btn.disabled=false; btn.textContent='Tentar de novo';
+      alert('Ops, deu um erro. Tenta de novo ou me chama no WhatsApp.');
+      console.error(err);
+    });
+  });
+</script>
+</body>
+</html>
