@@ -285,8 +285,30 @@
     document.getElementById('pfill').style.width=p+'%';
   }
 
+  function validarTodos(){
+    var inputs_texto=['nome','whatsapp','local','bairros','preco_p','preco_m','preco_g'];
+    var inputs_radio=['qtd_produtos','formato','freq_preco','margem','comissao','split'];
+    var campos_multi=['dias_entrega','como_pedem_hoje'];
+    var textarea=['recado'];
+
+    for(var i=0;i<inputs_texto.length;i++){
+      if(!document.querySelector('input[name="'+inputs_texto[i]+'"]').value.trim()){ return false; }
+    }
+    for(var i=0;i<inputs_radio.length;i++){
+      if(!document.querySelector('input[name="'+inputs_radio[i]+'"]:checked')){ return false; }
+    }
+    for(var i=0;i<campos_multi.length;i++){
+      if(document.querySelectorAll('[data-campo="'+campos_multi[i]+'"] input:checked').length===0){ return false; }
+    }
+    for(var i=0;i<textarea.length;i++){
+      if(!document.querySelector('textarea[name="'+textarea[i]+'"]').value.trim()){ return false; }
+    }
+    return true;
+  }
+
   document.getElementById('form').addEventListener('submit', function(e){
     e.preventDefault();
+    if(!validarTodos()){ alert('Por favor, preencha todos os campos antes de enviar.'); return; }
     var btn=document.getElementById('btn');
     btn.disabled=true; btn.textContent='Enviando...';
 
