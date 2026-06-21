@@ -255,7 +255,6 @@
 </div>
 
 <script>
-  // marca visual das opções selecionadas
   document.querySelectorAll('.op input').forEach(function(inp){
     inp.addEventListener('change', function(){
       if(inp.type==='radio'){
@@ -294,7 +293,6 @@
     var fd=new FormData(e.target);
     var resp={};
     for(var par of fd.entries()){ resp[par[0]]=par[1]; }
-    // grupos multi (dias de entrega e como pedem hoje) — captura cada um pelo data-campo
     document.querySelectorAll('[data-multi]').forEach(function(grupo){
       var campo=grupo.getAttribute('data-campo');
       var marcados=[];
@@ -302,8 +300,7 @@
       resp[campo]=marcados;
     });
 
-    // POST pra openclaw (mudar URL se necessário)
-    fetch('https://openclaw.thompsoncf.repl.co/api/pesquisa-fornecedor', {
+    fetch('https://app.zaq-ia.com/api/pesquisa-fornecedor', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({segmento:'parceria_hortifruti', respostas: resp})

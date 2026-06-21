@@ -205,8 +205,7 @@
       resp[campo]=marcados;
     });
 
-    // POST pra openclaw
-    fetch('https://openclaw.thompsoncf.repl.co/api/pesquisa-fornecedor', {
+    fetch('https://app.zaq-ia.com/api/pesquisa-fornecedor', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({segmento:'consumidor_hortifruti', respostas: resp})
