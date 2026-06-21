@@ -191,22 +191,18 @@
   }
 
   function validarTodos(){
-    var campos_obrigatorios=['hoje','dor','assinaria','preco','tipo_cesta','frequencia','valoriza','objecao'];
-    var completo=true;
-    for(var i=0;i<campos_obrigatorios.length;i++){
-      var campo=campos_obrigatorios[i];
-      if(campo==='valoriza' || campo==='objecao'){
-        var grupo=document.querySelector('[data-campo="'+campo+'"]');
-        if(campo==='valoriza'){
-          if(grupo.querySelectorAll('input:checked').length===0){ completo=false; break; }
-        } else if(campo==='objecao'){
-          if(!document.querySelector('textarea[name="'+campo+'"]').value.trim()){ completo=false; break; }
-        }
-      } else {
-        if(!document.querySelector('input[name="'+campo+'"]:checked')){ completo=false; break; }
-      }
-    }
-    return completo;
+    // Valida cada campo obrigatorio
+    if(!document.querySelector('input[name="hoje"]:checked')) return false;
+    if(!document.querySelector('input[name="dor"]:checked')) return false;
+    if(!document.querySelector('input[name="assinaria"]:checked')) return false;
+    if(!document.querySelector('input[name="preco"]:checked')) return false;
+    if(!document.querySelector('input[name="tipo_cesta"]:checked')) return false;
+    if(!document.querySelector('input[name="frequencia"]:checked')) return false;
+    // Valoriza - multipla (pode marcar ate 2)
+    if(document.querySelectorAll('[data-campo="valoriza"] input:checked').length === 0) return false;
+    // Objecao - texto livre
+    if(!document.querySelector('textarea[name="objecao"]').value.trim()) return false;
+    return true;
   }
 
   document.getElementById('form').addEventListener('submit', function(e){

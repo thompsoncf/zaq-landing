@@ -286,23 +286,27 @@
   }
 
   function validarTodos(){
-    var inputs_texto=['nome','whatsapp','local','bairros','preco_p','preco_m','preco_g'];
-    var inputs_radio=['qtd_produtos','formato','freq_preco','margem','comissao','split'];
-    var campos_multi=['dias_entrega','como_pedem_hoje'];
-    var textarea=['recado'];
-
-    for(var i=0;i<inputs_texto.length;i++){
-      if(!document.querySelector('input[name="'+inputs_texto[i]+'"]').value.trim()){ return false; }
-    }
-    for(var i=0;i<inputs_radio.length;i++){
-      if(!document.querySelector('input[name="'+inputs_radio[i]+'"]:checked')){ return false; }
-    }
-    for(var i=0;i<campos_multi.length;i++){
-      if(document.querySelectorAll('[data-campo="'+campos_multi[i]+'"] input:checked').length===0){ return false; }
-    }
-    for(var i=0;i<textarea.length;i++){
-      if(!document.querySelector('textarea[name="'+textarea[i]+'"]').value.trim()){ return false; }
-    }
+    // Campos de texto (todos obrigatorios)
+    if(!document.querySelector('input[name="nome"]').value.trim()) return false;
+    if(!document.querySelector('input[name="whatsapp"]').value.trim()) return false;
+    if(!document.querySelector('input[name="local"]').value.trim()) return false;
+    if(!document.querySelector('textarea[name="bairros"]').value.trim()) return false;
+    if(!document.querySelector('input[name="capacidade"]').value.trim()) return false;
+    if(!document.querySelector('input[name="preco_p"]').value.trim()) return false;
+    if(!document.querySelector('input[name="preco_m"]').value.trim()) return false;
+    if(!document.querySelector('input[name="preco_g"]').value.trim()) return false;
+    // Campos radio (um deve estar selecionado)
+    if(!document.querySelector('input[name="qtd_produtos"]:checked')) return false;
+    if(!document.querySelector('input[name="formato"]:checked')) return false;
+    if(!document.querySelector('input[name="freq_preco"]:checked')) return false;
+    if(!document.querySelector('input[name="margem"]:checked')) return false;
+    if(!document.querySelector('input[name="comissao"]:checked')) return false;
+    if(!document.querySelector('input[name="split"]:checked')) return false;
+    // Campos multiplos
+    if(document.querySelectorAll('[data-campo="dias_entrega"] input:checked').length === 0) return false;
+    if(document.querySelectorAll('[data-campo="como_pedem_hoje"] input:checked').length === 0) return false;
+    // Recado (pode ser vazio, mas se preenchido deve ter conteudo)
+    // Recado eh opcional, entao nao validamos aqui
     return true;
   }
 
