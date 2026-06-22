@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zaq — sua feira na porta, sem complicação</title>
+<style>
+  :root{
+    --verde:#1d9e75; --verde-claro:#5dcaa5; --verde-bg:#15241d; --verde-suave:#1a3329;
+    --bg:#0f0f10; --card:#1a1a1c; --txt:#f0f0ee; --mut:#9a9a96; --borda:#2a2a2b;
+    --ambar:#e0a23c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--txt); line-height:1.6; padding-bottom:3rem;
+  }
+  .wrap{max-width:560px; margin:0 auto; padding:0 1.1rem;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(165deg, #1d3a2c 0%, #0f0f10 90%);
+    padding:3rem 1.1rem 2.5rem; text-align:center; position:relative; overflow:hidden;
+  }
+  .hero .logo{font-size:2rem; font-weight:800; color:var(--verde-claro); letter-spacing:-1px;}
+  .hero h1{font-size:2rem; line-height:1.15; margin:1rem auto .8rem; max-width:440px; font-weight:800;}
+  .hero h1 .hl{color:var(--verde-claro);}
+  .hero p{color:#cfe3d9; font-size:1.05rem; max-width:420px; margin:0 auto;}
+  .emoji-row{font-size:2rem; margin:1.2rem 0 .3rem; letter-spacing:.3rem;}
+
+  .sec{padding:2.2rem 0 .5rem;}
+  .sec h2{font-size:1.4rem; margin-bottom:1.1rem; text-align:center; font-weight:700;}
+  .sec h2 .hl{color:var(--verde-claro);}
+
+  /* COMO FUNCIONA cards */
+  .step{
+    display:flex; gap:1rem; align-items:flex-start; background:var(--card);
+    border:1px solid var(--borda); border-radius:14px; padding:1.1rem 1.2rem; margin-bottom:.8rem;
+  }
+  .step .n{
+    flex-shrink:0; width:38px; height:38px; border-radius:50%; background:var(--verde);
+    color:#fff; font-weight:700; font-size:1.1rem; display:flex; align-items:center; justify-content:center;
+  }
+  .step .t{font-weight:700; font-size:1.05rem; margin-bottom:.15rem;}
+  .step .d{color:var(--mut); font-size:.92rem;}
+
+  /* DIFERENCIAIS */
+  .why{
+    background:var(--verde-suave); border:1px solid #1d9e7533; border-radius:16px;
+    padding:1.4rem; margin:1.5rem 0;
+  }
+  .why h3{color:var(--verde-claro); font-size:1.15rem; margin-bottom:1rem; text-align:center;}
+  .perk{display:flex; gap:.8rem; align-items:flex-start; margin-bottom:.9rem; font-size:.98rem;}
+  .perk:last-child{margin-bottom:0;}
+  .perk .ic{font-size:1.3rem; flex-shrink:0; line-height:1.3;}
+  .perk b{color:var(--txt);}
+  .perk span{color:#c5d8ce;}
+
+  /* exemplo de conversa */
+  .chat{
+    background:var(--card); border:1px solid var(--borda); border-radius:16px; padding:1.2rem;
+    margin:1.3rem 0;
+  }
+  .chat .lbl{font-size:.8rem; color:var(--mut); text-align:center; margin-bottom:.9rem; text-transform:uppercase; letter-spacing:.05rem;}
+  .bubble{max-width:80%; padding:.6rem .9rem; border-radius:14px; margin-bottom:.6rem; font-size:.95rem;}
+  .bubble.user{background:var(--verde); color:#fff; margin-left:auto; border-bottom-right-radius:4px;}
+  .bubble.zaq{background:#262628; color:var(--txt); margin-right:auto; border-bottom-left-radius:4px;}
+  .bubble .who{font-size:.72rem; opacity:.7; display:block; margin-bottom:.1rem;}
+
+  /* cesta híbrida */
+  .hibrida{
+    background:linear-gradient(160deg,#1a2b24,#15241d); border:1px solid #1d9e7544;
+    border-radius:18px; padding:1.5rem 1.3rem; margin:1.5rem 0;
+  }
+  .hib-tag{
+    display:inline-block; background:var(--verde); color:#fff; font-size:.72rem; font-weight:700;
+    padding:.25rem .8rem; border-radius:20px; text-transform:uppercase; letter-spacing:.05rem; margin-bottom:.7rem;
+  }
+  .hibrida h3{font-size:1.3rem; font-weight:800; margin-bottom:.3rem;}
+  .hib-sub{color:#a8c0b5; font-size:.92rem; margin-bottom:1.2rem;}
+  .hflow{margin-bottom:1.1rem;}
+  .hstep{display:flex; gap:.9rem; align-items:flex-start; background:#11211a; border-radius:12px; padding:.9rem 1rem;}
+  .hstep .hic{font-size:1.6rem; flex-shrink:0; line-height:1.1;}
+  .hstep .ht b{color:var(--verde-claro); font-size:1rem;}
+  .hstep .ht span{color:#c5d8ce; font-size:.87rem;}
+  .harrow{text-align:center; color:var(--verde); font-size:1.3rem; margin:.25rem 0; font-weight:700;}
+  .hfreq{
+    background:#11211a; border:1px dashed #1d9e7555; border-radius:12px; padding:.9rem 1rem;
+    font-size:.9rem; color:#c5d8ce; line-height:1.5;
+  }
+  .hfreq b{color:var(--txt);}
+
+  /* exemplos magic */
+  .magic{
+    background:linear-gradient(160deg,#1c1c1f,#15241d); border:1px solid #1d9e7533;
+    border-radius:16px; padding:1.4rem 1.2rem; margin:1.3rem 0;
+  }
+  .magic-tit{font-size:1.15rem; font-weight:700; color:var(--verde-claro); text-align:center; margin-bottom:1.1rem;}
+  .mitem{display:flex; gap:.8rem; align-items:flex-start; margin-bottom:.95rem; font-size:.93rem;}
+  .mitem:last-child{margin-bottom:0;}
+  .mitem .me{font-size:1.4rem; flex-shrink:0; line-height:1.2;}
+  .mitem b{color:var(--txt);}
+  .mitem span{color:#a8c0b5; font-size:.88rem;}
+
+  /* preço/destaque */
+  .badge-eco{
+    text-align:center; background:linear-gradient(135deg,#1d9e75,#15735a); border-radius:16px;
+    padding:1.3rem; margin:1.3rem 0; color:#fff;
+  }
+  .badge-eco .big{font-size:1.5rem; font-weight:800; margin-bottom:.2rem;}
+  .badge-eco .sm{font-size:.92rem; opacity:.92;}
+
+  /* REAÇÃO */
+  .react{
+    background:var(--card); border:1px solid var(--borda); border-radius:18px;
+    padding:1.6rem 1.3rem; margin-top:2rem; text-align:center;
+  }
+  .react h3{font-size:1.3rem; margin-bottom:.4rem;}
+  .react .sub{color:var(--mut); font-size:.92rem; margin-bottom:1.3rem;}
+  .react-btns{display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.2rem;}
+  .rbtn{
+    flex:1; min-width:100px; background:#141416; border:2px solid var(--borda); border-radius:13px;
+    padding:.9rem .5rem; cursor:pointer; transition:.15s; color:var(--txt); font-size:.92rem; font-weight:600;
+  }
+  .rbtn .e{font-size:1.6rem; display:block; margin-bottom:.3rem;}
+  .rbtn:hover{border-color:#555;}
+  .rbtn.sel{border-color:var(--verde); background:var(--verde-bg); transform:translateY(-2px);}
+  textarea{
+    width:100%; background:#141416; border:1px solid var(--borda); border-radius:11px;
+    padding:.8rem; color:var(--txt); font-size:1rem; font-family:inherit; resize:vertical; min-height:70px;
+    margin-bottom:1rem;
+  }
+  textarea:focus{outline:none; border-color:var(--verde);}
+  .enviar{
+    width:100%; background:var(--verde); color:#fff; border:none; border-radius:12px;
+    padding:.95rem; font-size:1.05rem; font-weight:700; cursor:pointer;
+  }
+  .enviar:active{transform:scale(.99);}
+  .enviar:disabled{opacity:.6;}
+
+  .ok{display:none; text-align:center; padding:2.5rem 1rem;}
+  .ok.show{display:block;}
+  .ok .big{font-size:3rem; margin-bottom:.5rem;}
+  .ok h3{color:var(--verde-claro); font-size:1.4rem; margin-bottom:.5rem;}
+  .ok p{color:var(--mut);}
+
+  .foot{text-align:center; color:#555; font-size:.78rem; margin-top:2rem;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo">Zaq</div>
+  <div class="emoji-row">🥕 🥬 🍎 🥒</div>
+  <h1>Sua feira <span class="hl">na porta</span>, sem complicação</h1>
+  <p>Frutas, verduras e legumes fresquinhos do CEASA, escolhidos pra você e entregues em casa toda semana. Sem fila, sem peso, sem perder tempo.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="sec">
+    <h2>Como <span class="hl">funciona</span></h2>
+    <div class="step">
+      <div class="n">1</div>
+      <div><div class="t">Você assina</div><div class="d">Escolhe o tamanho da cesta e a frequência. Pronto.</div></div>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <div><div class="t">A gente monta sua cesta</div><div class="d">Com o melhor da semana — e você ajusta o que quiser pelo WhatsApp.</div></div>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <div><div class="t">Chega na sua porta</div><div class="d">Fresquinho, direto do CEASA, no dia que você escolher.</div></div>
+    </div>
+  </div>
+
+  <div class="hibrida">
+    <div class="hib-tag">A cesta inteligente</div>
+    <h3>Você no controle, sem o trabalho 🎯</h3>
+    <p class="hib-sub">Não é uma caixa fechada que chega sem você saber. Funciona assim:</p>
+    <div class="hflow">
+      <div class="hstep"><div class="hic">🤖</div><div class="ht"><b>A gente sugere</b><br><span>monto a melhor cesta da semana pra você, com o que tá bom e barato</span></div></div>
+      <div class="harrow">↓</div>
+      <div class="hstep"><div class="hic">✏️</div><div class="ht"><b>Você ajusta</b><br><span>tira o que não quer, põe o que quiser, muda a quantidade — pelo WhatsApp, em segundos</span></div></div>
+      <div class="harrow">↓</div>
+      <div class="hstep"><div class="hic">📦</div><div class="ht"><b>Não quer mexer? Relaxa</b><br><span>se você não fizer nada, vem a cesta que montei. Sem esquecimento, sem trabalho</span></div></div>
+    </div>
+    <div class="hfreq">
+      📅 <b>Você escolhe a frequência:</b> toda semana, a cada 15 dias, ou quando quiser. Pode pausar pra viajar e voltar quando quiser. <b>Sem fidelidade, sem multa.</b>
+    </div>
+  </div>
+
+  <div class="why">
+    <h3>Por que o Zaq é diferente</h3>
+    <div class="perk"><span class="ic">💰</span><span><b>Mais barato que o mercado.</b> A gente compra no CEASA e te mostra quanto você economizou.</span></div>
+    <div class="perk"><span class="ic">✨</span><span><b>Qualidade de verdade.</b> O melhor produto, não a sobra. Veio ruim? Resolve na hora pelo zap.</span></div>
+    <div class="perk"><span class="ic">💬</span><span><b>Conversa no WhatsApp.</b> "Tô de dieta", "vou viajar essa semana" — a cesta se adapta a você.</span></div>
+    <div class="perk"><span class="ic">🧠</span><span><b>Aprende seu gosto.</b> Quanto mais você usa, mais a cesta fica com a sua cara.</span></div>
+  </div>
+
+  <div class="chat">
+    <div class="lbl">É assim, no seu WhatsApp 📱</div>
+    <div class="bubble user"><span class="who">Você</span>vou fazer uma feijoada pra 10 pessoas sábado, me ajuda?</div>
+    <div class="bubble zaq"><span class="who">Zaq</span>Boa! 🍲 Pra feijoada de 10 pessoas você vai precisar de: feijão preto (2kg), couve (3 maços), laranja (12un), alho, cebola, tomate, pimenta e cheiro-verde. Quer que eu já coloque tudo isso na sua cesta dessa semana?</div>
+    <div class="bubble user"><span class="who">Você</span>coloca sim! e tira a couve que já tenho</div>
+    <div class="bubble zaq"><span class="who">Zaq</span>Pronto — Adicionei tudo (sem a couve) e mantive o resto da sua cesta normal. Reparei que você gosta de laranja-pera, então é essa que vai 🍊</div>
+    <div class="bubble zaq"><span class="who">Zaq</span>Sua cesta ficou <b>R$ 89</b>. Pra você ter ideia: esses mesmos itens no mercado dariam <b>R$ 117</b>. <b>Você economizou R$ 28</b> 💚</div>
+    <div class="bubble user"><span class="who">Você</span>caramba, perfeito 🤯</div>
+  </div>
+
+  <div class="magic">
+    <div class="magic-tit">E ele faz muito mais 🪄</div>
+    <div class="mitem"><span class="me">🥗</span><div><b>"Quero comer mais salada essa semana"</b><br><span>— ele reforça as folhas e legumes da cesta</span></div></div>
+    <div class="mitem"><span class="me">🍶</span><div><b>"Meu filho só come fruta doce"</b><br><span>— ele evita as azedas e manda manga, banana, melão</span></div></div>
+    <div class="mitem"><span class="me">✈️</span><div><b>"Vou viajar, pula essa semana"</b><br><span>— pausa sua cesta e volta sozinho quando você voltar</span></div></div>
+    <div class="mitem"><span class="me">💸</span><div><b>"Tá apertado esse mês"</b><br><span>— ele monta uma cesta menor, sem você perder o essencial</span></div></div>
+  </div>
+
+  <div class="badge-eco">
+    <div class="big">Qualidade de feira, preço de CEASA</div>
+    <div class="sm">na sua porta, sem você sair de casa</div>
+  </div>
+
+  <!-- REAÇÃO -->
+  <form id="form">
+    <div class="react">
+      <h3>E aí, o que você achou? 🤔</h3>
+      <div class="sub">Tô construindo isso de verdade. Sua opinião sincera me ajuda demais.</div>
+      <div class="react-btns" id="btns">
+        <div class="rbtn" data-r="amei"><span class="e">😍</span>Amei!</div>
+        <div class="rbtn" data-r="interessante"><span class="e">🤔</span>Interessante</div>
+        <div class="rbtn" data-r="nao_curti"><span class="e">😕</span>Não curti</div>
+      </div>
+      <textarea id="comentario" placeholder="Conta o que achou, o que mudaria, se assinaria... (opcional)"></textarea>
+      <button type="submit" class="enviar" id="btn">Enviar minha opinião 📤</button>
+    </div>
+  </form>
+
+  <div class="ok" id="ok">
+    <div class="big">🎉</div>
+    <h3>Valeu demais!</h3>
+    <p>Sua opinião vai me ajudar a deixar o Zaq do jeito certo. 🥒</p>
+  </div>
+
+  <div class="foot">Zaq · um projeto feito em Teresina 💚</div>
+
+</div>
+
+<script>
+  var reacao = null;
+  document.querySelectorAll('.rbtn').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.rbtn').forEach(function(x){x.classList.remove('sel');});
+      b.classList.add('sel');
+      reacao = b.getAttribute('data-r');
+    });
+  });
+
+  document.getElementById('form').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!reacao){
+      alert('Toca numa das reações primeiro 👇');
+      return;
+    }
+    var btn = document.getElementById('btn');
+    btn.disabled = true; btn.textContent = 'Enviando...';
+
+    var resp = {
+      reacao: reacao,
+      comentario: document.getElementById('comentario').value
+    };
+
+    fetch('https://app.zaq-ia.com/api/pesquisa-fornecedor', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({segmento:'apresentacao_cliente', respostas: resp})
+    }).then(function(r){return r.json();}).then(function(d){
+      document.getElementById('form').style.display='none';
+      document.getElementById('ok').classList.add('show');
+      window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'});
+    }).catch(function(){
+      btn.disabled=false; btn.textContent='Tentar de novo';
+      alert('Ops, deu erro. Tenta de novo, por favor.');
+    });
+  });
+</script>
+</body>
+</html>
