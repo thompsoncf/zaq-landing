@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zaq — seu financeiro, no WhatsApp</title>
-<meta name="description" content="Pare de usar mil apps pro seu dinheiro. O Zaq organiza gastos, compras e as contas da sua empresa — tudo num assistente só, no WhatsApp.">
+<title>Zaq — seu financeiro, no WhatsApp e no Telegram</title>
+<meta name="description" content="Pare de usar mil apps pro seu dinheiro. O Zaq organiza gastos, compras e as contas da sua empresa — tudo num assistente só, no WhatsApp e no Telegram.">
 <meta property="og:title" content="Zaq — pare de usar mil apps pro seu dinheiro">
-<meta property="og:description" content="Gastos, compras, contas da empresa e relatório pro contador — tudo num assistente só, no WhatsApp.">
+<meta property="og:description" content="Gastos, compras, contas da empresa e relatório pro contador — tudo num assistente só, no WhatsApp e no Telegram.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zaq-ia.com">
 <link rel="canonical" href="https://zaq-ia.com">
@@ -47,6 +47,9 @@
   .btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:11px;background:var(--neon);color:#04150C;font-family:var(--display);font-weight:700;font-size:1.12rem;padding:17px 26px;border-radius:15px;box-shadow:0 8px 30px rgba(37,211,102,.32);transition:.2s}
   .btn-wa:hover{background:var(--neon-bright);transform:translateY(-2px);box-shadow:0 12px 38px rgba(37,211,102,.45)}
   .btn-wa svg{width:23px;height:23px}
+  .btn-tg{display:inline-flex;align-items:center;justify-content:center;gap:11px;background:#229ED9;color:#fff;font-family:var(--display);font-weight:700;font-size:1.12rem;padding:17px 26px;border-radius:15px;box-shadow:0 8px 30px rgba(34,158,217,.3);transition:.2s}
+  .btn-tg:hover{background:#2AABE4;transform:translateY(-2px);box-shadow:0 12px 38px rgba(34,158,217,.44)}
+  .btn-tg svg{width:23px;height:23px}
   .micro{font-size:13.5px;color:var(--text-faint);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .micro .dot{width:3px;height:3px;border-radius:50%;background:var(--text-faint)}
   .phone{justify-self:center;width:100%;max-width:330px;background:#000;border-radius:42px;padding:11px;border:1px solid #20302a;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(37,211,102,.08),0 0 60px rgba(37,211,102,.12)}
@@ -142,16 +145,20 @@
 <header>
   <div class="wrap hero">
     <div>
-      <span class="eyebrow">Seu financeiro no WhatsApp</span>
+      <span class="eyebrow">Seu financeiro no WhatsApp e no Telegram</span>
       <h1>Pare de usar mil apps<br>pro seu <span class="accent">dinheiro</span>.</h1>
-      <p class="sub">Começa com uma foto de cupom. Vira o controle financeiro completo <b>seu e da sua empresa</b> — tudo no WhatsApp. O Zaq cresce até você não precisar de mais nada.</p>
-      <div class="cta-row" id="comecar">
+      <p class="sub">Começa com uma foto de cupom. Vira o controle financeiro completo <b>seu e da sua empresa</b> — do gasto do dia à <b>folha dos funcionários</b>. No WhatsApp e no Telegram.</p>
+      <div class="cta-row">
         <a class="btn-wa" href="https://wa.me/13192453800?text=Oi!%20Quero%20testar%20o%20Zaq" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.18c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.15-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.04.89 2.19.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.46.2.53.32.07.11.07.66-.17 1.34z"/></svg>
           Começar no WhatsApp
         </a>
-        <span class="micro">Grátis pra testar <span class="dot"></span> o Zaq responde na hora</span>
+        <a class="btn-tg" href="https://t.me/clawaladdin_bot?start=site" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          Começar no Telegram
+        </a>
       </div>
+      <p class="micro" style="margin-top:14px">Grátis pra testar <span class="dot"></span> o Zaq responde na hora</p>
     </div>
     <div class="phone" id="phone">
       <div class="screen">
@@ -192,8 +199,8 @@
       <div class="mod live"><div class="mhead"><div class="mic">🧾</div><span class="badge b-live">No ar</span></div><h3>Gastos</h3><p>Foto, PDF ou texto vira lançamento organizado por categoria, na hora. O coração do Zaq, já funcionando.</p></div>
       <div class="mod soon"><div class="mhead"><div class="mic">🛒</div><span class="badge b-soon">Em breve</span></div><h3>Compras</h3><p>Sua lista de compras inteligente: o Zaq sugere o que comprar, organiza por loja e te ajuda a planejar antes de sair de casa.</p></div>
       <div class="mod soon"><div class="mhead"><div class="mic">📉</div><span class="badge b-soon">Em breve</span></div><h3>Economia</h3><p>Conforme você registra, o Zaq aprende os preços da sua região — e te mostra onde dá pra gastar menos.</p></div>
-      <div class="mod soon"><div class="mhead"><div class="mic">🏢</div><span class="badge b-soon">Em breve</span></div><h3>Empresa (PJ)</h3><p>Separa o dinheiro pessoal do da empresa, controla a parte tributária e te mostra quanto o negócio realmente lucrou no mês.</p></div>
-      <div class="mod soon"><div class="mhead"><div class="mic">📊</div><span class="badge b-soon">Em breve</span></div><h3>Contador</h3><p>Receitas e despesas organizadas e prontas pra mandar pro seu contador — ou, em breve, a contabilidade feita dentro do próprio Zaq.</p></div>
+      <div class="mod live"><div class="mhead"><div class="mic">🏢</div><span class="badge b-live">No ar</span></div><h3>Empresa (PJ)</h3><p>Separa o dinheiro pessoal do da empresa, controla títulos a pagar e a receber, cuida da folha dos funcionários (holerite, INSS, vale-transporte) e mostra quanto o negócio lucrou no mês.</p></div>
+      <div class="mod live"><div class="mhead"><div class="mic">📊</div><span class="badge b-live">No ar</span></div><h3>Contador</h3><p>Receitas e despesas separadas (pessoal e empresa) e o resultado do mês organizados, prontos pra passar pro seu contador. A contabilidade completa dentro do Zaq vem em seguida.</p></div>
       <div class="mod soon"><div class="mhead"><div class="mic">📅</div><span class="badge b-soon">Em breve</span></div><h3>Agenda</h3><p>Conecte sua agenda do Google e o Zaq cuida dos seus compromissos: marca reuniões, te lembra na hora e avisa o que vem pela frente no dia.</p></div>
     </div>
   </div>
@@ -202,9 +209,10 @@
 <section>
   <div class="wrap">
     <div class="pj">
-      <span class="badge b-soon">Em breve · pra quem tem CNPJ</span>
+      <span class="badge b-live">No ar · pra quem tem CNPJ</span>
       <h2>Pare de misturar o dinheiro da empresa com o seu.</h2>
-      <p>O erro que mais quebra pequeno negócio no Brasil é misturar as contas. O Zaq vai separar os dois caixas pra você: <b>quanto entrou e saiu da empresa, quanto é seu, e quanto o negócio realmente lucrou no mês</b> — sem planilha, direto no WhatsApp. E ainda te avisa do que importa antes de virar problema.</p>
+      <p>O erro que mais quebra pequeno negócio no Brasil é misturar as contas. O Zaq separa os dois caixas pra você — <b>quanto entrou e saiu da empresa, quanto é seu, e quanto o negócio lucrou no mês</b> — controla os <b>títulos a pagar e a receber</b> e ainda cuida da <b>folha dos seus funcionários</b>: holerite, descontos de INSS e vale-transporte, e quanto pagar no mês. Tudo sem planilha, no WhatsApp e no Telegram.</p>
+      <p style="color:var(--text-faint);font-size:.9rem;margin-top:10px">Controle gerencial da folha — a papelada oficial (eSocial/guias) segue com o seu contador.</p>
       <div class="stat">
         <span class="big">6 em 10</span>
         <span class="lbl">empreendedores brasileiros misturam as finanças pessoais com as da empresa. O Zaq resolve isso na origem.</span>
@@ -221,25 +229,33 @@
       <div class="feat"><div class="ic">📸</div><div><h4>Lê foto e PDF</h4><p>Cupom amassado, nota fiscal, comprovante do banco. Se você consegue ler, o Zaq também.</p></div></div>
       <div class="feat"><div class="ic">💬</div><div><h4>WhatsApp e Telegram</h4><p>Use no canal que você já tem aberto. Mesmo assistente, mesma conversa, nos dois.</p></div></div>
       <div class="feat"><div class="ic">🗂️</div><div><h4>Organiza por categoria</h4><p>Mercado, saúde, restaurante… o Zaq separa cada gasto no lugar certo, automático.</p></div></div>
+      <div class="feat"><div class="ic">👥</div><div><h4>Folha dos funcionários</h4><p>Cadastra a equipe, monta o holerite com INSS e vale-transporte e te diz quanto pagar no mês. Controle gerencial, sem planilha.</p></div></div>
+      <div class="feat"><div class="ic">🏦</div><div><h4>Pessoal e empresa, separados</h4><p>Um espaço só, dois caixas. O Zaq separa o que é seu do que é da empresa e mostra o resultado do mês de cada um.</p></div></div>
       <div class="feat"><div class="ic">🔒</div><div><h4>Seus dados são seus</h4><p>Cada pessoa tem o seu espaço, privado e separado. O Zaq nunca mistura a sua conta com a de ninguém.</p></div></div>
     </div>
   </div>
 </section>
 
-<section class="close">
+<section class="close" id="comecar">
   <div class="wrap">
     <div class="close-card">
       <h2>Comece pelo primeiro cupom.</h2>
-      <p>Manda uma foto agora e veja o Zaq trabalhar. O resto do seu financeiro vem junto.</p>
-      <a class="btn-wa" href="https://wa.me/13192453800?text=Oi!%20Quero%20testar%20o%20Zaq" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.18c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.15-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.04.89 2.19.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.46.2.53.32.07.11.07.66-.17 1.34z"/></svg>
-        Começar no WhatsApp
-      </a>
+      <p>Manda uma foto agora e veja o Zaq trabalhar. Escolha o seu canal — funciona igual nos dois.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn-wa" href="https://wa.me/13192453800?text=Oi!%20Quero%20testar%20o%20Zaq" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.18c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.15-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.04.89 2.19.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.46.2.53.32.07.11.07.66-.17 1.34z"/></svg>
+          Começar no WhatsApp
+        </a>
+        <a class="btn-tg" href="https://t.me/clawaladdin_bot?start=site" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          Começar no Telegram
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<footer><div class="wrap"><div class="foot-logo">Zaq</div><p>Seu financeiro, no WhatsApp · feito no Brasil 🇧🇷 · 2026</p></div></footer>
+<footer><div class="wrap"><div class="foot-logo">Zaq</div><p>Seu financeiro, no WhatsApp e no Telegram · feito no Brasil 🇧🇷 · 2026</p></div></footer>
 
 <script>
 (function(){
