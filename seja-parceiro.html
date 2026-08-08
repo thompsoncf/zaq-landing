@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seja parceiro Zaq</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --tinta:#0A0F0C; --papel:#121A16; --papel2:#0E1512; --borda:#1E2A23;
+  --txt:#EAF2ED; --mut:#8FA197; --verde:#25D366; --verde-fraco:#25D3661F;
+  --ambar:#E0A32E;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--tinta);color:var(--txt);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;margin:0;letter-spacing:-.025em}
+a{color:inherit}
+
+/* nav */
+.nav{border-bottom:1px solid var(--borda)}
+.nav .in{max-width:980px;margin:0 auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}
+.marca{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px}
+.marca span{color:var(--verde)}
+.navcta{font-size:13.5px;color:var(--mut);text-decoration:none}
+.navcta:hover{color:var(--verde)}
+
+/* hero */
+.hero{padding:74px 0 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;top:-160px;left:50%;transform:translateX(-50%);
+  width:680px;height:420px;background:radial-gradient(ellipse,#25D36622,transparent 68%);pointer-events:none;
+}
+.hero > *{position:relative}
+.olho{
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--verde);border:1px solid #25D36644;background:var(--verde-fraco);
+  border-radius:999px;padding:6px 15px;margin-bottom:26px;
+}
+.hero h1{font-size:clamp(36px,6.4vw,64px);font-weight:800;line-height:1.05;max-width:20ch;margin:0 auto}
+.hero h1 em{font-style:normal;color:var(--verde)}
+.hero .lede{color:var(--mut);font-size:18px;max-width:54ch;margin:22px auto 0}
+.provas{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;margin-top:38px}
+.prova{text-align:center}
+.prova b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;color:var(--txt);line-height:1.1}
+.prova span{font-size:12.5px;color:var(--mut)}
+
+/* simulador */
+.sim{padding:20px 0 64px}
+.simbox{background:var(--papel);border:1px solid var(--borda);border-radius:22px;overflow:hidden}
+.simtopo{padding:26px 28px 4px;text-align:center;border-bottom:1px solid var(--borda)}
+.simtopo h2{font-size:23px;font-weight:700}
+.simtopo p{color:var(--mut);font-size:14.5px;margin:8px auto 22px;max-width:48ch}
+.simgrid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.simctrl{padding:28px;border-right:1px solid var(--borda);display:flex;flex-direction:column;gap:26px;justify-content:center}
+.ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--mut);margin-bottom:11px}
+.ctrl .val{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--txt);font-weight:600}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:5px;background:var(--papel2);border-radius:99px}
+input[type=range]::-moz-range-track{height:5px;background:var(--papel2);border-radius:99px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:19px;height:19px;border-radius:50%;background:var(--verde);margin-top:-7px;border:3px solid var(--papel);box-shadow:0 0 0 1px var(--verde)}
+input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;background:var(--verde);border:3px solid var(--papel)}
+input[type=range]:focus-visible{outline:2px solid var(--verde);outline-offset:6px;border-radius:4px}
+.escalas{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--mut);margin-top:7px}
+
+.seletor{display:flex;background:var(--papel2);border:1px solid var(--borda);border-radius:999px;padding:5px;gap:4px;max-width:340px;margin:0 auto 22px}
+.seletor button{
+  flex:1;border:none;background:transparent;color:var(--mut);cursor:pointer;
+  font-family:'Inter',system-ui,sans-serif;font-size:14px;padding:9px 6px;border-radius:999px;transition:.16s;
+}
+.seletor button.on{background:var(--verde);color:#07110B;font-weight:700}
+.seletor button:focus-visible{outline:2px solid var(--verde);outline-offset:2px}
+
+.escadinha{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:20px}
+.fx{
+  background:var(--papel2);border:1px solid var(--borda);border-radius:12px;
+  padding:13px 11px;text-align:center;transition:.2s;position:relative;
+}
+.fx .fp{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;color:var(--mut);display:block}
+.fx .fn{font-size:11px;color:var(--mut);display:block;margin-top:2px;line-height:1.25}
+.fx .fq{font-size:11.5px;display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--borda);color:var(--mut)}
+.fx.batida{border-color:#25D36655;background:var(--verde-fraco)}
+.fx.batida .fp{color:var(--verde)}
+.fx.batida .fq{color:var(--txt);font-weight:600}
+.fx.agora{border-color:var(--verde);box-shadow:0 0 0 1px var(--verde)}
+.fx.agora::after{
+  content:"você aqui";position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--verde);color:#07110B;padding:2px 8px;border-radius:99px;white-space:nowrap;font-weight:700;
+}
+.escadinha[hidden]{display:none}
+
+.carga{margin-top:12px;font-size:12.5px;color:var(--mut);font-family:'JetBrains Mono',monospace}
+.carga b{color:var(--txt);font-weight:600}
+.carga.pesada b{color:var(--ambar)}
+
+.meta{
+  margin-top:16px;padding:15px 17px;border-radius:12px;text-align:center;
+  background:linear-gradient(135deg,#E0A32E1F,#25D3661A);border:1px solid #E0A32E66;
+}
+.meta[hidden]{display:none}
+.meta .t{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:var(--ambar);display:block}
+.meta .s{font-size:12.5px;color:var(--mut);display:block;margin-top:4px}
+
+/* ---------- formulário ---------- */
+.form{background:var(--papel);border:1px solid var(--borda);border-radius:22px;padding:30px;text-align:left;max-width:620px;margin:0 auto}
+.form .campo{margin-bottom:24px}
+.form .campo:last-of-type{margin-bottom:14px}
+.form label{display:block;font-size:15px;font-weight:600;margin-bottom:5px}
+.form .aj{font-size:13px;color:var(--mut);margin:0 0 11px}
+.form input[type=text],.form textarea{
+  width:100%;background:var(--papel2);border:1px solid var(--borda);border-radius:10px;
+  padding:12px 14px;color:var(--txt);font-size:15.5px;font-family:'Inter',system-ui,sans-serif;
+}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--verde)}
+.form textarea{resize:vertical;min-height:76px}
+.ops{display:grid;gap:8px}
+.ops.duplo{grid-template-columns:1fr 1fr}
+.op{
+  display:flex;align-items:center;gap:10px;background:var(--papel2);border:1px solid var(--borda);
+  border-radius:10px;padding:12px 14px;cursor:pointer;font-size:14.5px;transition:.14s;
+}
+.op:hover{border-color:#3A4D43}
+.op input{width:17px;height:17px;accent-color:var(--verde);flex-shrink:0;margin:0}
+.op.sel{border-color:var(--verde);background:#25D3661A}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.enviar{
+  width:100%;background:var(--verde);color:#07110B;border:none;border-radius:999px;
+  padding:16px;font-size:16.5px;font-weight:700;font-family:'Inter',system-ui,sans-serif;cursor:pointer;
+}
+.enviar:hover{background:#46F58A}
+.enviar:disabled{opacity:.55;cursor:default}
+.enviar:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+.form .selo-fim{font-size:12.5px;color:var(--mut);text-align:center;margin:14px 0 0}
+.ok{display:none;text-align:center;padding:44px 30px;background:var(--papel);border:1px solid #25D36655;border-radius:22px;max-width:620px;margin:0 auto}
+.ok.show{display:block}
+.ok h3{font-size:24px;color:var(--verde);margin-bottom:12px}
+.ok p{color:var(--mut);margin:0 auto;max-width:44ch}
+@media (max-width:620px){.ops.duplo,.dupla{grid-template-columns:1fr}.form{padding:22px}}
+
+.compara{
+  margin-top:18px;padding:14px 16px;border-radius:12px;
+  background:var(--papel2);border:1px dashed var(--borda);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.compara .txt{font-size:13px;color:var(--mut);line-height:1.4}
+.compara .txt b{color:var(--txt);font-weight:600}
+.compara .dif{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:600;color:var(--verde);white-space:nowrap}
+.compara .dif.menos{color:var(--ambar)}
+
+.simsaida{padding:28px;background:linear-gradient(165deg,#25D36612,transparent 70%);display:flex;flex-direction:column;justify-content:center}
+.grandao{text-align:center;margin-bottom:22px}
+.grandao .rot{font-size:13px;color:var(--mut);display:block;margin-bottom:6px}
+.grandao .n{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,7vw,54px);font-weight:800;color:var(--verde);line-height:1;letter-spacing:-.04em;display:block}
+.grandao .pe{font-size:13px;color:var(--mut);display:block;margin-top:8px}
+.miudos{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.miudo{background:var(--papel2);border:1px solid var(--borda);border-radius:12px;padding:14px 15px;text-align:center}
+.miudo .r{font-size:11.5px;color:var(--mut);display:block;margin-bottom:5px;line-height:1.3}
+.miudo .v{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:600}
+.faixanow{margin-top:16px;text-align:center;font-size:13px;color:var(--mut)}
+.faixanow b{color:var(--verde);font-weight:600}
+.simrodape{padding:14px 28px;border-top:1px solid var(--borda);font-size:12.5px;color:var(--mut);text-align:center}
+
+/* seções */
+section{padding:58px 0;border-top:1px solid var(--borda)}
+.rot-sec{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:block;margin-bottom:13px}
+section h2{font-size:clamp(24px,3.4vw,33px);font-weight:700;margin-bottom:12px}
+.intro{color:var(--mut);max-width:64ch;margin:0 0 30px;font-size:16.5px}
+
+.grade3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+
+.chamada{
+  margin:0;padding:56px 34px;border-radius:24px;text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#25D3661F,var(--papel) 62%);border:1px solid #25D36644;
+}
+.chamada::before{
+  content:"";position:absolute;top:-140px;left:50%;transform:translateX(-50%);
+  width:520px;height:340px;background:radial-gradient(ellipse,#25D36622,transparent 70%);pointer-events:none;
+}
+.chamada > *{position:relative}
+.chamada h2{font-size:clamp(27px,4.6vw,44px);font-weight:800;line-height:1.06;max-width:19ch;margin:0 auto 18px}
+.chamada h2 em{font-style:normal;color:var(--verde)}
+.chamada p{color:var(--mut);font-size:16.5px;max-width:56ch;margin:0 auto}
+.chamada p b{color:var(--txt);font-weight:600}
+.linhadotempo{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:34px;text-align:left}
+.lt{background:#0A0F0CAA;border:1px solid var(--borda);border-radius:13px;padding:16px 17px}
+.lt b{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--verde);margin-bottom:6px}
+.lt span{font-size:13.5px;color:var(--mut);line-height:1.45}
+
+.nichos{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px}
+.n{
+  font-size:14px;background:var(--papel);border:1px solid var(--borda);
+  border-radius:999px;padding:9px 16px;color:var(--txt);
+}
+.n.vem{color:var(--mut);border-style:dashed}
+.contagem{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--verde);margin-top:18px;display:block}
+.card{background:var(--papel);border:1px solid var(--borda);border-radius:16px;padding:24px}
+.card h3{font-size:17px;margin-bottom:8px}
+.card p{margin:0;color:var(--mut);font-size:14.5px}
+.card .ic{width:36px;height:36px;border-radius:10px;background:var(--verde-fraco);color:var(--verde);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;margin-bottom:14px;border:1px solid #25D36633}
+
+/* escada */
+.deg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.d{background:var(--papel);border:1px solid var(--borda);border-radius:16px;padding:24px;position:relative;overflow:hidden}
+.d::after{content:"";position:absolute;left:0;bottom:0;height:4px;background:var(--verde)}
+.d:nth-child(1)::after{width:33%} .d:nth-child(2)::after{width:66%} .d:nth-child(3)::after{width:100%}
+.d .p{font-family:'Bricolage Grotesque',sans-serif;font-size:44px;font-weight:800;color:var(--verde);line-height:1}
+.d h3{font-size:16px;margin:9px 0 4px}
+.d .f{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mut);display:block;margin-bottom:11px}
+.d p{margin:0;font-size:14px;color:var(--mut)}
+
+/* filtro honesto */
+.filtro{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fbox{border-radius:16px;padding:26px;border:1px solid var(--borda);background:var(--papel)}
+.fbox.sim2{border-color:#25D36655;background:linear-gradient(170deg,#25D36612,var(--papel) 60%)}
+.fbox h3{font-size:17px;margin-bottom:14px}
+.fbox ul{margin:0;padding-left:19px;color:var(--mut);font-size:14.5px}
+.fbox li{margin-bottom:9px}
+.fbox li::marker{color:var(--verde)}
+.fbox.nao li::marker{color:var(--ambar)}
+
+/* trilhas */
+.trilhas{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.trilha{background:var(--papel);border:1px solid var(--borda);border-radius:16px;padding:26px}
+.trilha.forte{border-color:#25D36655}
+.trilha .tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);background:var(--papel2);border:1px solid var(--borda);padding:4px 10px;border-radius:6px;display:inline-block;margin-bottom:13px}
+.trilha.forte .tag{color:var(--verde);background:var(--verde-fraco);border-color:#25D36644}
+.trilha h3{font-size:20px;margin-bottom:8px}
+.trilha .quem{font-size:14px;color:var(--mut);margin:0 0 16px}
+.trilha dl{margin:0;font-size:14.5px}
+.trilha dt{font-size:12px;color:var(--mut);margin-top:12px}
+.trilha dd{margin:2px 0 0;font-weight:600}
+
+/* passos */
+.passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;counter-reset:p}
+.passo{background:var(--papel);border:1px solid var(--borda);border-radius:16px;padding:24px;counter-increment:p}
+.passo::before{content:counter(p,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--verde);display:block;margin-bottom:12px}
+.passo h3{font-size:16px;margin-bottom:7px}
+.passo p{margin:0;font-size:14px;color:var(--mut)}
+
+/* cta */
+.cta{text-align:center;padding:68px 0 26px;border-top:1px solid var(--borda)}
+.cta h2{font-size:clamp(26px,4vw,38px);margin-bottom:14px}
+.cta p{color:var(--mut);max-width:50ch;margin:0 auto 30px}
+.botao{
+  display:inline-block;background:var(--verde);color:#07110B;text-decoration:none;font-weight:700;font-size:16.5px;
+  padding:16px 38px;border-radius:999px;border:none;cursor:pointer;font-family:'Inter',system-ui,sans-serif;
+}
+.botao:hover{background:#1FBA58}
+.botao:focus-visible{outline:2px solid var(--verde);outline-offset:4px}
+.ctasub{display:block;margin-top:16px;font-size:13px;color:var(--mut)}
+
+footer{padding:34px 0 64px;color:var(--mut);font-size:12.5px;text-align:center}
+footer p{max-width:70ch;margin:0 auto 9px}
+
+@media (max-width:800px){
+  .simgrid,.filtro,.trilhas{grid-template-columns:1fr}
+  .simctrl{border-right:none;border-bottom:1px solid var(--borda)}
+  section{padding:46px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="in">
+    <div class="marca">Zaq<span>·</span></div>
+    <a class="navcta" href="#comecar">Quero conversar →</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <span class="olho">Programa de parceiros · 2026</span>
+    <h1><em>Viva de IA</em><br>vendendo para quem você já conhece.</h1>
+    <p class="lede">Toda clínica, salão e pet shop da sua cidade perde dinheiro com cadeira vazia, orçamento parado e WhatsApp sem resposta. O Zaq resolve isso — e precisa de alguém local para chegar até eles. Produto, implantação e suporte são nossos. Você entra com o relacionamento e recebe todo mês, enquanto o cliente ficar.</p>
+    <div class="provas">
+      <div class="prova"><b>20% a 40%</b><span>da mensalidade, todo mês</span></div>
+      <div class="prova"><b>R$ 2.000</b><span>por implantação vendida</span></div>
+      <div class="prova"><b>Vitalícia</b><span>sem corte em 12 meses</span></div>
+    </div>
+  </div>
+
+  <div class="sim">
+    <div class="simbox">
+      <div class="simtopo">
+        <h2>Faça a conta com os seus números</h2>
+        <p>Escolha como você quer entrar, mexa nos controles e veja o que a carteira paga daqui a um e dois anos.</p>
+        <div class="seletor" id="trilha" role="group" aria-label="Forma de participação">
+          <button type="button" data-tr="ind">Indicador</button>
+          <button type="button" data-tr="par" class="on">Parceiro</button>
+        </div>
+      </div>
+      <div class="simgrid">
+        <div class="simctrl">
+          <div class="ctrl">
+            <label for="v"><span id="rotv">Empresas que você fecha por mês</span> <span class="val" id="lv">2</span></label>
+            <input type="range" id="v" min="1" max="20" step="1" value="2">
+            <div class="escalas"><span>1</span><span>equipe própria →</span><span>20</span></div>
+            <p class="carga" id="carga">—</p>
+          </div>
+          <div class="ctrl">
+            <label for="t">Mensalidade média do cliente <span class="val" id="lt">R$ 600</span></label>
+            <input type="range" id="t" min="200" max="1700" step="50" value="600">
+            <div class="escalas"><span>R$ 200</span><span>R$ 1.700</span></div>
+          </div>
+          <p style="font-size:13px;color:var(--mut);margin:0;border-top:1px solid var(--borda);padding-top:18px">
+            A simulação já desconta cancelamentos de 3% ao mês — carteira real, não carteira de folder.
+          </p>
+        </div>
+
+        <div class="simsaida">
+          <div class="grandao">
+            <span class="rot">Sua renda recorrente no mês 12</span>
+            <span class="n" id="o12">R$ 0</span>
+            <span class="pe" id="oclientes">— empresas ativas na carteira</span>
+          </div>
+          <div class="miudos">
+            <div class="miudo"><span class="r">Recorrente no mês 24</span><span class="v" id="o24">—</span></div>
+            <div class="miudo"><span class="r">Implantações no 1º ano</span><span class="v" id="oset">—</span></div>
+            <div class="miudo"><span class="r">Total recebido em 12 meses</span><span class="v" id="otot">—</span></div>
+            <div class="miudo"><span class="r">Total recebido em 24 meses</span><span class="v" id="otot24">—</span></div>
+          </div>
+          <p class="faixanow" id="ofaixa">—</p>
+          <div class="escadinha" id="escadinha">
+            <div class="fx" id="fx20">
+              <span class="fp">20%</span>
+              <span class="fn">Parceiro</span>
+              <span class="fq" id="q20">—</span>
+            </div>
+            <div class="fx" id="fx30">
+              <span class="fp">30%</span>
+              <span class="fn">Sênior</span>
+              <span class="fq" id="q30">—</span>
+            </div>
+            <div class="fx" id="fx40">
+              <span class="fp">40%</span>
+              <span class="fn">Território</span>
+              <span class="fq" id="q40">—</span>
+            </div>
+          </div>
+          <div class="meta" id="meta" hidden>
+            <span class="t">Meta do milhão alcançada</span>
+            <span class="s" id="metas">—</span>
+          </div>
+          <div class="compara">
+            <span class="txt" id="ctxt">—</span>
+            <span class="dif" id="cdif">—</span>
+          </div>
+        </div>
+      </div>
+      <div class="simrodape">Simulação com premissas visíveis, não promessa de ganho. O resultado depende da sua prospecção.</div>
+    </div>
+  </div>
+
+  <div class="chamada">
+    <h2>A virada é <em>mais rápida</em> do que você imagina.</h2>
+    <p>Não porque a primeira venda é fácil — ela leva uns dois meses. Mas porque <b>a recorrência não volta atrás.</b> Cada empresa que entra soma para sempre, e a carteira passa a pagar até o mês em que você não vendeu nada.</p>
+    <div class="linhadotempo">
+      <div class="lt"><b>Mês 1</b><span>Primeira empresa fechada. Entra a implantação e a comissão começa a correr.</span></div>
+      <div class="lt"><b>Mês 3</b><span>Carteira em pé. Você já sabe qual nicho responde melhor na sua cidade.</span></div>
+      <div class="lt"><b>Mês 6</b><span>O recorrente cobre o mês parado. Vender vira crescimento, não sobrevivência.</span></div>
+      <div class="lt"><b>Mês 12</b><span>Faixa maior e carteira madura — ela sobe sozinha a cada cliente novo.</span></div>
+    </div>
+  </div>
+
+  <section>
+    <span class="rot-sec">Como o dinheiro funciona</span>
+    <h2>Você vende uma vez. Recebe todo mês.</h2>
+    <p class="intro">Cada cliente paga uma implantação e uma mensalidade. Você fica com metade da implantação e com uma fatia da mensalidade que <b>cresce conforme sua carteira cresce</b> — e sobe inclusive para os clientes que você já tinha.</p>
+    <div class="deg">
+      <div class="d">
+        <span class="p">20%</span>
+        <h3>Parceiro</h3>
+        <span class="f">carteira até R$ 3.000/mês</span>
+        <p>Desde o primeiro cliente ativo. Sem exclusividade e sem meta obrigatória.</p>
+      </div>
+      <div class="d">
+        <span class="p">30%</span>
+        <h3>Parceiro Sênior</h3>
+        <span class="f">R$ 3.000 a R$ 10.000/mês</span>
+        <p>A carteira inteira sobe de faixa, inclusive os clientes antigos. Prioridade na fila de implantação.</p>
+      </div>
+      <div class="d">
+        <span class="p">40%</span>
+        <h3>Parceiro Território</h3>
+        <span class="f">acima de R$ 10.000/mês</span>
+        <p>Preferência na sua região e voz no que construímos por nicho.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="rot-sec">O que você recebe</span>
+    <h2>Você não sai vendendo sistema. Sai entregando diagnóstico.</h2>
+    <p class="intro">O método já existe e está testado. Você chega na clínica falando da cadeira vazia, no salão falando do cliente que não volta — não de tecnologia.</p>
+    <div class="grade3">
+      <div class="card">
+        <span class="ic">01</span>
+        <h3>Kit por nicho</h3>
+        <p>Propostas prontas para catorze segmentos — com as dores e os números de cada um. Você personaliza e envia.</p>
+      </div>
+      <div class="card">
+        <span class="ic">02</span>
+        <h3>Roteiro de diagnóstico</h3>
+        <p>As perguntas do encontro de 30 minutos, como montar a conta da perda e como propor o piloto. A demonstração técnica é nossa.</p>
+      </div>
+      <div class="card">
+        <span class="ic">03</span>
+        <h3>Implantação e suporte</h3>
+        <p>Fechou, entrega para o nosso time. Configuração, integração e atendimento são por nossa conta — seu nome fica ligado a algo que funciona.</p>
+      </div>
+      <div class="card">
+        <span class="ic">04</span>
+        <h3>Painel da sua carteira</h3>
+        <p>Quanto cada cliente paga, quanto você recebe no mês, quem está em atraso ou esfriando — para agir antes de perder a recorrência.</p>
+      </div>
+      <div class="card">
+        <span class="ic">05</span>
+        <h3>Reserva de leads</h3>
+        <p>Registrou o CNPJ no painel, o cliente é seu por 45 dias. Ninguém passa por cima do seu trabalho de rua.</p>
+      </div>
+      <div class="card">
+        <span class="ic">06</span>
+        <h3>Primeira venda acompanhada</h3>
+        <p>Do primeiro contato ao contrato, nós ao seu lado. A comissão é sua desde essa primeira.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="rot-sec">Até onde você quer levar</span>
+    <h2>De renda extra a operação própria</h2>
+    <p class="intro">O mesmo programa serve quem quer um complemento e quem quer montar uma operação de vendas na região. Muda o ritmo — e o ritmo você escolhe.</p>
+    <div class="grade3">
+      <div class="card">
+        <span class="ic">1×</span>
+        <h3>Complementar</h3>
+        <p>Uma empresa por mês, no tempo que sobra. <b style="color:var(--txt)">R$ 33 mil</b> no primeiro ano e R$ 1.531 por mês entrando sozinho no segundo.</p>
+      </div>
+      <div class="card">
+        <span class="ic">3×</span>
+        <h3>Renda principal</h3>
+        <p>Três por mês, menos de uma reunião por dia. <b style="color:var(--txt)">R$ 127 mil</b> no primeiro ano e R$ 8.572 por mês recorrentes no mês 12.</p>
+      </div>
+      <div class="card">
+        <span class="ic">8×</span>
+        <h3>Operação</h3>
+        <p>Oito por mês, com apoio de um ou dois vendedores. <b style="color:var(--txt)">R$ 415 mil</b> no primeiro ano e 82 empresas na carteira.</p>
+      </div>
+      <div class="card" style="border-color:#E0A32E55;background:linear-gradient(165deg,#E0A32E12,var(--papel) 62%)">
+        <span class="ic" style="background:#E0A32E1F;color:var(--ambar);border-color:#E0A32E44">20×</span>
+        <h3>A meta do milhão</h3>
+        <p>Vinte por mês, com equipe própria: <b style="color:var(--ambar)">R$ 1,04 milhão</b> no primeiro ano e 204 empresas. É a meta mais alta do programa — e a única que não se faz sozinho.</p>
+      </div>
+    </div>
+    <span class="contagem">Todos os valores saem do simulador acima, com cancelamento de 3% ao mês já descontado.</span>
+  </section>
+
+  <section>
+    <span class="rot-sec">Nichos</span>
+    <h2>Catorze segmentos com material pronto</h2>
+    <p class="intro">Cada um com as dores levantadas em pesquisa, os números do setor e a proposta montada. Você escolhe por onde começar — normalmente pelo nicho onde já tem gente conhecida.</p>
+    <div class="nichos">
+      <span class="n">Odontologia</span>
+      <span class="n">Salão e barbearia</span>
+      <span class="n">Estética e clínica de beleza</span>
+      <span class="n">Pet shop</span>
+      <span class="n">Clínica veterinária</span>
+      <span class="n">Consultório médico</span>
+      <span class="n">Fisioterapia</span>
+      <span class="n">Psicologia e terapia</span>
+      <span class="n">Nutrição e personal</span>
+      <span class="n">Academia e estúdio</span>
+      <span class="n">Oficina e auto center</span>
+      <span class="n">Mercadinho e hortifruti</span>
+      <span class="n">Restaurante e delivery</span>
+      <span class="n">Escritório de contabilidade</span>
+      <span class="n vem">Advocacia · em breve</span>
+      <span class="n vem">Assistência técnica · em breve</span>
+      <span class="n vem">Corretagem e seguros · em breve</span>
+    </div>
+    <span class="contagem">Nichos novos entram no kit todo mês, sem custo para você.</span>
+  </section>
+
+  <section>
+    <span class="rot-sec">Duas formas de entrar</span>
+    <h2>Escolha o tamanho do seu envolvimento</h2>
+    <p class="intro">Nem todo mundo quer prospectar. Quem tem audiência e prefere só apresentar tem um caminho próprio — menor, mas sem obrigação nenhuma.</p>
+    <div class="trilhas">
+      <div class="trilha">
+        <span class="tag">Menor envolvimento</span>
+        <h3>Indicador</h3>
+        <p class="quem">Para quem tem audiência ou rede de contatos e quer apresentar o Zaq sem entrar na venda.</p>
+        <dl>
+          <dt>Você faz</dt><dd>Apresenta e passa o contato</dd>
+          <dt>Nós fazemos</dt><dd>Diagnóstico, venda, implantação e suporte</dd>
+          <dt>Comissão</dt><dd>10% da mensalidade por 12 meses</dd>
+          <dt>Implantação</dt><dd>R$ 400 por cliente fechado</dd>
+        </dl>
+      </div>
+      <div class="trilha forte">
+        <span class="tag">Recomendado</span>
+        <h3>Parceiro</h3>
+        <p class="quem">Para quem já circula entre donos de negócio — corretor, contador, consultor, dono de agência — e quer carteira própria.</p>
+        <dl>
+          <dt>Você faz</dt><dd>Prospecção, diagnóstico e relacionamento</dd>
+          <dt>Nós fazemos</dt><dd>Demonstração técnica, implantação e suporte</dd>
+          <dt>Comissão</dt><dd>20% a 40% da mensalidade, vitalícia</dd>
+          <dt>Implantação</dt><dd>R$ 2.000 por cliente fechado</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="rot-sec">Antes de você aplicar</span>
+    <h2>Prefiro te contar agora do que você descobrir no mês três</h2>
+    <div class="filtro">
+      <div class="fbox sim2">
+        <h3>Faz sentido se você</h3>
+        <ul>
+          <li>Já conversa com donos de negócio e é conhecido na sua cidade</li>
+          <li>Está disposto a fazer rua, indicação e follow-up nos primeiros meses</li>
+          <li>Prefere construir carteira a ganhar de uma vez</li>
+          <li>Tem CNPJ ou pode abrir um — a comissão é paga contra nota</li>
+        </ul>
+      </div>
+      <div class="fbox nao">
+        <h3>Não faz sentido se você</h3>
+        <ul>
+          <li>Procura renda passiva sem prospectar</li>
+          <li>Espera resultado no primeiro mês — a média é a primeira venda em 60 dias</li>
+          <li>Quer vender qualquer coisa para qualquer um: cliente que cancela cedo devolve a implantação</li>
+          <li>Não quer aparecer para o cliente depois da assinatura</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="rot-sec">Como começa</span>
+    <h2>Sem taxa de entrada. A primeira venda é acompanhada.</h2>
+    <p class="intro">Você entra, recebe o kit e o treinamento, e fazemos a primeira venda juntos. Se o modelo não fizer sentido depois dela, você sai sem dever nada.</p>
+    <div class="passos">
+      <div class="passo">
+        <h3>Conversa de 30 minutos</h3>
+        <p>Sobre a sua cidade, seus contatos e por qual nicho começar.</p>
+      </div>
+      <div class="passo">
+        <h3>Kit e treinamento</h3>
+        <p>O roteiro de diagnóstico, o material por nicho e a lista dos 20 primeiros alvos.</p>
+      </div>
+      <div class="passo">
+        <h3>Primeira venda junto</h3>
+        <p>Nós ao seu lado na prospecção e na demonstração. A comissão é sua desde a primeira.</p>
+      </div>
+      <div class="passo">
+        <h3>Carteira andando</h3>
+        <p>Painel liberado, leads reservados no seu nome e comissão caindo todo dia 10.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta" id="comecar">
+    <h2>Comece com uma venda.</h2>
+    <p>Responda em um minuto. Se fizer sentido para os dois lados, marcamos os 30 minutos de conversa.</p>
+
+    <form class="form" id="form">
+      <div class="dupla">
+        <div class="campo">
+          <label for="f-nome">Seu nome</label>
+          <input type="text" id="f-nome" name="nome" autocomplete="name">
+        </div>
+        <div class="campo">
+          <label for="f-zap">WhatsApp</label>
+          <input type="text" id="f-zap" name="whatsapp" inputmode="tel" placeholder="(86) 90000-0000">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="f-cidade">Cidade e estado onde você atua</label>
+        <input type="text" id="f-cidade" name="cidade" placeholder="Teresina, PI">
+      </div>
+
+      <div class="campo">
+        <label>O que você faz hoje?</label>
+        <div class="ops duplo">
+          <label class="op"><input type="radio" name="ocupacao" value="corretor_consultor"> Corretor ou consultor</label>
+          <label class="op"><input type="radio" name="ocupacao" value="contador"> Contador</label>
+          <label class="op"><input type="radio" name="ocupacao" value="agencia"> Agência ou marketing</label>
+          <label class="op"><input type="radio" name="ocupacao" value="representante"> Representante comercial</label>
+          <label class="op"><input type="radio" name="ocupacao" value="dono_negocio"> Dono de negócio</label>
+          <label class="op"><input type="radio" name="ocupacao" value="criador"> Criador de conteúdo</label>
+          <label class="op"><input type="radio" name="ocupacao" value="vendas"> Trabalho com vendas</label>
+          <label class="op"><input type="radio" name="ocupacao" value="outro"> Outro</label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label>Quantos donos de negócio você consegue chamar hoje e ser atendido?</label>
+        <p class="aj">Não é sua lista de contatos — é quem atende sua ligação e conversa com você.</p>
+        <div class="ops">
+          <label class="op"><input type="radio" name="rede" value="ate_10"> Menos de 10</label>
+          <label class="op"><input type="radio" name="rede" value="10_30"> Entre 10 e 30</label>
+          <label class="op"><input type="radio" name="rede" value="30_100"> Entre 30 e 100</label>
+          <label class="op"><input type="radio" name="rede" value="mais_100"> Mais de 100</label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label>Em quais segmentos você tem mais contato?</label>
+        <p class="aj">Escolha quantos quiser — é por onde vamos montar seu kit.</p>
+        <div class="ops duplo" data-multi data-campo="segmentos">
+          <label class="op"><input type="checkbox" value="odontologia"> Odontologia</label>
+          <label class="op"><input type="checkbox" value="salao_barbearia"> Salão e barbearia</label>
+          <label class="op"><input type="checkbox" value="estetica"> Estética</label>
+          <label class="op"><input type="checkbox" value="pet"> Pet shop e veterinária</label>
+          <label class="op"><input type="checkbox" value="medico"> Consultório médico</label>
+          <label class="op"><input type="checkbox" value="fisio_psi"> Fisioterapia e psicologia</label>
+          <label class="op"><input type="checkbox" value="academia"> Academia e nutrição</label>
+          <label class="op"><input type="checkbox" value="oficina"> Oficina e auto center</label>
+          <label class="op"><input type="checkbox" value="mercado"> Mercadinho e hortifruti</label>
+          <label class="op"><input type="checkbox" value="restaurante"> Restaurante e delivery</label>
+          <label class="op"><input type="checkbox" value="contabilidade"> Contabilidade e escritórios</label>
+          <label class="op"><input type="checkbox" value="outros_seg"> Outros</label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label>Quanto tempo por semana você pode dedicar?</label>
+        <div class="ops">
+          <label class="op"><input type="radio" name="tempo" value="ate_5h"> Até 5 horas — quero um complemento</label>
+          <label class="op"><input type="radio" name="tempo" value="5_15h"> Entre 5 e 15 horas</label>
+          <label class="op"><input type="radio" name="tempo" value="mais_15h"> Mais de 15 horas — quero que seja principal</label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label>Como você quer entrar?</label>
+        <div class="ops">
+          <label class="op"><input type="radio" name="trilha" value="parceiro"> Parceiro — quero carteira própria e comissão vitalícia</label>
+          <label class="op"><input type="radio" name="trilha" value="indicador"> Indicador — só quero apresentar e passar o contato</label>
+          <label class="op"><input type="radio" name="trilha" value="nao_sei"> Ainda não sei, quero entender melhor</label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label>Você tem CNPJ?</label>
+        <p class="aj">A comissão é paga contra nota fiscal. Se não tiver, a gente te orienta.</p>
+        <div class="ops">
+          <label class="op"><input type="radio" name="cnpj" value="tenho"> Tenho CNPJ ativo</label>
+          <label class="op"><input type="radio" name="cnpj" value="posso_abrir"> Não tenho, mas posso abrir</label>
+          <label class="op"><input type="radio" name="cnpj" value="nao_pretendo"> Não pretendo abrir</label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="f-recado">Quer contar mais alguma coisa? <span style="font-weight:400;color:var(--mut)">(opcional)</span></label>
+        <textarea id="f-recado" name="recado" placeholder="Se já vendeu software, conhece algum nicho por dentro, ou tem alguma dúvida."></textarea>
+      </div>
+
+      <button class="enviar" type="submit" id="btn">Quero ser parceiro Zaq</button>
+      <p class="selo-fim">Sem taxa de entrada. Respondemos em até 2 dias úteis.</p>
+    </form>
+
+    <div class="ok" id="ok">
+      <h3>Recebemos sua inscrição.</h3>
+      <p>Vamos olhar com calma e chamar você no WhatsApp em até 2 dias úteis para marcar a conversa de 30 minutos. Se quiser adiantar, é só responder a mensagem quando ela chegar.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>O simulador é uma ferramenta de projeção com premissas declaradas em tela e não constitui promessa, garantia ou expectativa de rendimento. Resultados dependem de esforço próprio de prospecção, do mercado local e do perfil dos clientes fechados.</p>
+    <p>Programa de parceria comercial entre empresas. Não é franquia, não há taxa de entrada, exclusividade territorial contratual ou meta obrigatória. Condições completas no contrato de parceria.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var CHURN=0.03, MESES=25;
+  var TRILHAS={
+    par:{ setup:2000, duracao:999, escada:true  },
+    ind:{ setup:400,  duracao:12,  escada:false, pct:0.10 }
+  };
+  var atual='par';
+  var el=function(i){return document.getElementById(i);};
+  function faixa(m){return m>10000?0.40:m>3000?0.30:0.20;}
+  function brl(n){return 'R$ '+Math.round(n).toLocaleString('pt-BR');}
+
+  function simular(tr,v,t){
+    var cfg=TRILHAS[tr], coortes=[], acum=0, r={};
+    for(var m=0;m<MESES;m++){
+      coortes.forEach(function(c){ c.qtd*=(1-CHURN); });
+      var novos = m===0?0:v;
+      if(novos) coortes.push({mes:m,qtd:novos});
+
+      var ativos=0, elegivel=0;
+      coortes.forEach(function(c){
+        ativos+=c.qtd;
+        if(m-c.mes < cfg.duracao) elegivel+=c.qtd;
+      });
+
+      var mrr=ativos*t;
+      var pct=cfg.escada?faixa(mrr):cfg.pct;
+      if(cfg.escada){
+        if(pct>=0.30 && !r.mes30) r.mes30=m;
+        if(pct>=0.40 && !r.mes40) r.mes40=m;
+      }
+      var com=elegivel*t*pct;
+      acum+=com+novos*cfg.setup;
+
+      if(m===12){ r.rec12=com; r.at12=ativos; r.tot12=acum; r.pct12=pct; }
+      if(m===24){ r.rec24=com; r.tot24=acum; }
+    }
+    r.setupAno=v*12*cfg.setup;
+    return r;
+  }
+
+  function calc(){
+    var v=+el('v').value, t=+el('t').value;
+    el('lv').textContent=v;
+    el('lt').textContent='R$ '+t.toLocaleString('pt-BR');
+    el('rotv').textContent = atual==='par'
+      ? 'Empresas que você fecha por mês'
+      : 'Empresas que você indica por mês';
+
+    var r=simular(atual,v,t);
+    var outro=atual==='par'?'ind':'par';
+    var ro=simular(outro,v,t);
+
+    el('o12').textContent=brl(r.rec12);
+    el('oclientes').textContent=Math.round(r.at12)+' empresas ativas na carteira';
+    el('o24').textContent=brl(r.rec24);
+    el('oset').textContent=brl(r.setupAno);
+    el('otot').textContent=brl(r.tot12);
+    el('otot24').textContent=brl(r.tot24);
+
+    if(atual==='par'){
+      var p=r.pct12;
+      var nome=p===0.40?'Parceiro Território':p===0.30?'Parceiro Sênior':'Parceiro';
+      el('ofaixa').innerHTML='No mês 12 você estaria na faixa <b>'+nome+' · '+Math.round(p*100)+'%</b>';
+
+      el('escadinha').hidden=false;
+      var passos=[
+        {id:'fx20',q:'q20',mes:1,      alvo:0.20},
+        {id:'fx30',q:'q30',mes:r.mes30,alvo:0.30},
+        {id:'fx40',q:'q40',mes:r.mes40,alvo:0.40}
+      ];
+      passos.forEach(function(s){
+        var cx=el(s.id), tx=el(s.q);
+        cx.className='fx';
+        if(s.mes){
+          cx.classList.add('batida');
+          tx.textContent = s.mes<=1 ? 'desde o início' : 'no mês '+s.mes;
+          if(s.alvo===p) cx.classList.add('agora');
+        } else {
+          tx.textContent='além de 24 meses';
+        }
+      });
+    } else {
+      el('ofaixa').innerHTML='Como Indicador a comissão é fixa em <b>10%</b> e dura <b>12 meses</b> por cliente';
+      el('escadinha').hidden=true;
+    }
+
+    var reunioes=v*5, porDia=reunioes/22, carga=el('carga');
+    carga.className = porDia>2.5 ? 'carga pesada' : 'carga';
+    carga.innerHTML = '≈ '+reunioes+' diagnósticos por mês · <b>'+porDia.toFixed(1).replace('.',',')+
+      ' reuniões por dia útil</b>'+(porDia>2.5?' — nesse ritmo é equipe, não uma pessoa só.':'');
+
+    var meta=el('meta');
+    if(atual==='par' && r.tot12>=1000000){
+      meta.hidden=false;
+      el('metas').textContent='R$ '+Math.round(r.tot12).toLocaleString('pt-BR')+
+        ' no primeiro ano · exige equipe própria de vendas e '+Math.round(r.at12)+' empresas na carteira';
+    } else { meta.hidden=true; }
+
+    var dif=r.tot24-ro.tot24;    var cdif=el('cdif');
+    if(atual==='par'){
+      el('ctxt').innerHTML='Se você entrasse como <b>Indicador</b>, receberia <b>'+brl(ro.tot24)+'</b> em 24 meses.';
+      cdif.textContent='+'+brl(dif)+' como Parceiro';
+      cdif.className='dif';
+    } else {
+      el('ctxt').innerHTML='Se você entrasse como <b>Parceiro</b>, receberia <b>'+brl(ro.tot24)+'</b> em 24 meses.';
+      cdif.textContent='−'+brl(Math.abs(dif))+' como Indicador';
+      cdif.className='dif menos';
+    }
+  }
+
+  el('v').addEventListener('input',calc);
+  el('t').addEventListener('input',calc);
+  Array.prototype.forEach.call(el('trilha').querySelectorAll('button'),function(b){
+    b.addEventListener('click',function(){
+      Array.prototype.forEach.call(el('trilha').querySelectorAll('button'),function(o){o.classList.remove('on');});
+      b.classList.add('on');
+      atual=b.dataset.tr;
+      calc();
+    });
+  });
+  calc();
+})();
+</script>
+<script>
+(function(){
+  var form=document.getElementById('form');
+
+  form.querySelectorAll('.op input').forEach(function(inp){
+    inp.addEventListener('change',function(){
+      if(inp.type==='radio'){
+        form.querySelectorAll('input[name="'+inp.name+'"]').forEach(function(r){
+          r.closest('.op').classList.toggle('sel',r.checked);
+        });
+      } else {
+        inp.closest('.op').classList.toggle('sel',inp.checked);
+      }
+    });
+  });
+
+  function valido(){
+    var obrig=['nome','whatsapp','cidade'];
+    for(var i=0;i<obrig.length;i++){
+      if(!form.querySelector('[name="'+obrig[i]+'"]').value.trim()) return 'Preencha nome, WhatsApp e cidade.';
+    }
+    var radios=['ocupacao','rede','tempo','trilha','cnpj'];
+    for(var j=0;j<radios.length;j++){
+      if(!form.querySelector('input[name="'+radios[j]+'"]:checked')) return 'Falta responder uma das perguntas de múltipla escolha.';
+    }
+    return null;
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var erro=valido();
+    if(erro){ alert(erro); return; }
+
+    var btn=document.getElementById('btn');
+    btn.disabled=true; btn.textContent='Enviando...';
+
+    var fd=new FormData(form), resp={};
+    fd.forEach(function(v,k){ resp[k]=v; });
+    form.querySelectorAll('[data-multi]').forEach(function(g){
+      var marcados=[];
+      g.querySelectorAll('input:checked').forEach(function(c){ marcados.push(c.value); });
+      resp[g.getAttribute('data-campo')]=marcados;
+    });
+
+    fetch('https://app.zaq-ia.com/api/pesquisa-fornecedor',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({segmento:'programa_parceiros',respostas:resp})
+    }).then(function(r){ return r.json(); }).then(function(){
+      form.style.display='none';
+      document.getElementById('ok').classList.add('show');
+      document.getElementById('comecar').scrollIntoView({behavior:'smooth'});
+    }).catch(function(err){
+      btn.disabled=false; btn.textContent='Tentar de novo';
+      alert('Ops, deu um erro no envio. Tenta de novo ou chama no WhatsApp.');
+      console.error(err);
+    });
+  });
+})();
+</script>
+</body>
+</html>
