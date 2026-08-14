@@ -147,6 +147,30 @@
   }
   .faixa-parc a:hover{background:var(--neon-bright)}
   .faixa-parc a:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+
+  /* ---- app do time de vendas: trilho de celulares ---- */
+  .telas{
+    display:flex;gap:18px;overflow-x:auto;margin:34px -22px 0;padding:6px 22px 20px;
+    scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+  }
+  .telas::-webkit-scrollbar{height:8px}
+  .telas::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+  .telas figure{margin:0;flex:0 0 auto;width:216px;scroll-snap-align:center}
+  .telas .frame{
+    border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--bg-2);
+    box-shadow:0 14px 38px rgba(0,0,0,.5);transition:transform .2s,border-color .2s;
+  }
+  .telas figure:hover .frame{transform:translateY(-4px);border-color:#25D36655}
+  .telas img{display:block;width:100%;height:auto}
+  .telas figcaption{padding:12px 2px 0}
+  .telas figcaption b{display:block;font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .telas figcaption span{display:block;color:var(--text-faint);font-size:13px;line-height:1.45;margin-top:3px}
+  .arrasta{font-family:var(--mono);font-size:12px;color:var(--text-faint);letter-spacing:.04em;margin-top:12px}
+  .quem{display:grid;gap:14px;margin-top:34px}
+  .quem div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+  .quem b{display:block;font-family:var(--display);font-size:15.5px;margin-bottom:5px}
+  .quem p{color:var(--text-dim);font-size:14.5px;line-height:1.55;margin:0;max-width:none}
+  @media(min-width:860px){ .quem{grid-template-columns:repeat(3,1fr)} }
 </style>
 </head>
 <body>
@@ -216,6 +240,53 @@
       <div class="mod live"><div class="mhead"><div class="mic">🎯</div><span class="badge b-live">No ar</span></div><h3>Prospecção</h3><p>Ache clientes novos: o Zaq puxa comércios da sua região pelo Google Maps, enriquece o CNPJ e organiza seu funil — do primeiro contato ao fechamento.</p></div>
       <div class="mod live"><div class="mhead"><div class="mic">🧺</div><span class="badge b-live">No ar</span></div><h3>Fornecedor &amp; Marketplace</h3><p>Pra quem fornece: catálogo e estoque, pedidos da semana e o financeiro (faturamento, comissão e repasse) — mais um marketplace de cestas pro cliente pedir direto.</p></div>
       <div class="mod soon"><div class="mhead"><div class="mic">📅</div><span class="badge b-soon">Em breve</span></div><h3>Agenda</h3><p>Conecte sua agenda do Google e o Zaq cuida dos seus compromissos: marca reuniões, te lembra na hora e avisa o que vem pela frente no dia.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="app">
+  <div class="wrap">
+    <div class="sec-eyebrow">No ar · app do time de vendas</div>
+    <h2>Seu vendedor não vive numa planilha.</h2>
+    <p class="lead">Quem vende passa o dia na rua, com o celular na mão. Por isso o time tem um app próprio: o lead cai, ele conversa, manda a proposta e fecha — sem abrir sistema nenhum. E você acompanha o time inteiro do seu.</p>
+
+    <div class="telas">
+      <figure>
+        <div class="frame"><img src="/app/vendedor-fila.webp" alt="Fila de leads do vendedor no app do Zaq" width="560" height="1212" loading="lazy"></div>
+        <figcaption><b>A fila dele</b><span>Os leads que caíram no rodízio, e quem está atendendo cada um — a IA ou ele.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="/app/vendedor-lead.webp" alt="Conversa com o cliente dentro do app" width="560" height="1212" loading="lazy"></div>
+        <figcaption><b>A conversa</b><span>Responde pelo WhatsApp da empresa, sem passar o número pessoal dele.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="/app/vendedor-resultado.webp" alt="Tela de resultado e comissão do vendedor" width="560" height="1212" loading="lazy"></div>
+        <figcaption><b>Quanto ele ganhou</b><span>O que entrou e a comissão dele, na hora. Sem ninguém perguntar no fim do mês.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="/app/gestor-visao.webp" alt="Visão do time para o gestor" width="560" height="1212" loading="lazy"></div>
+        <figcaption><b>Você, olhando o time</b><span>Quanto fechou, onde o funil trava e o que está parado há dias.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="/app/gestor-placar.webp" alt="Placar do time de vendas" width="560" height="1212" loading="lazy"></div>
+        <figcaption><b>O placar</b><span>Quem está vendendo, quanto e com que velocidade de resposta.</span></figcaption>
+      </figure>
+    </div>
+    <p class="arrasta">arraste para o lado ›</p>
+
+    <div class="quem">
+      <div>
+        <b>Entra sem senha</b>
+        <p>O vendedor recebe um link, toca e está dentro. Nada de criar conta, decorar senha ou pedir acesso pra você.</p>
+      </div>
+      <div>
+        <b>A proposta vai num toque</b>
+        <p>Ele monta o orçamento pelo celular e manda o link pro cliente, que abre com a sua marca e aprova online.</p>
+      </div>
+      <div>
+        <b>Comissão sem discussão</b>
+        <p>A conta é a mesma pros dois lados: ele vê o que recebeu, você vê o que deve. Ninguém precisa conferir planilha.</p>
+      </div>
     </div>
   </div>
 </section>
