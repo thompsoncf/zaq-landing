@@ -39,7 +39,8 @@
   .nav-novo::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon);animation:pulse 2s infinite}
   .nav-novo:hover{color:var(--text);background:var(--surface)}
   .nav-novo .sm{display:none}
-  @media(max-width:420px){.nav-novo{padding:9px 10px}.nav-novo .lg{display:none}.nav-novo .sm{display:inline}}
+  .nav-cta{white-space:nowrap}
+  @media(max-width:420px){.nav-links{gap:2px}.nav-novo{padding:9px 8px;gap:6px;font-size:13px}.nav-novo .lg{display:none}.nav-novo .sm{display:inline}.nav-cta{font-size:13px;padding:8px 12px}}
   header{position:relative;z-index:1;padding:54px 0 30px}
   .hero{display:grid;gap:38px}
   .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--neon);display:inline-flex;align-items:center;gap:9px}
