@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zaq — o sistema da sua empresa, no WhatsApp</title>
-<meta name="description" content="Atendimento, agenda, vendas, equipe e financeiro do seu negócio num lugar só, falando a língua do seu ramo: clínica, eventos, loja, construção e mais. No WhatsApp e no painel.">
+<meta name="description" content="Atendimento, agenda, vendas, equipe e financeiro do seu negócio num lugar só, falando a língua do seu ramo: clínica, hospital, eventos, estandes, iluminação, ótica, suplementos, hortifrúti, construção e mais. No WhatsApp e no painel.">
 <meta property="og:title" content="Zaq — o sistema da sua empresa, no WhatsApp">
-<meta property="og:description" content="Do primeiro oi do cliente ao dinheiro na conta, feito pro seu ramo. Clínica, eventos, loja, construção e mais.">
+<meta property="og:description" content="Do primeiro oi do cliente ao dinheiro na conta, feito pro seu ramo. Clínica, hospital, eventos, estandes, iluminação e LED, ótica, suplementos, hortifrúti, construção e mais.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zaq-ia.com">
 <meta property="og:image" content="https://zaq-ia.com/og.png">
@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zaq","applicationCategory":"BusinessApplication","operatingSystem":"Web, WhatsApp","url":"https://zaq-ia.com","description":"Sistema de gestão por ramo (clínica, eventos, loja, construção) que funciona no WhatsApp e no painel: atendimento, agenda, vendas, equipe e financeiro.","inLanguage":"pt-BR","offers":{"@type":"Offer","priceCurrency":"BRL","description":"Sob orçamento"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zaq","applicationCategory":"BusinessApplication","operatingSystem":"Web, WhatsApp","url":"https://zaq-ia.com","description":"Sistema de gestão por ramo (clínica, hospital, eventos, estandes, iluminação e LED, ótica, suplementos, hortifrúti, construção) que funciona no WhatsApp e no painel: atendimento, agenda, vendas, equipe e financeiro.","inLanguage":"pt-BR","offers":{"@type":"Offer","priceCurrency":"BRL","description":"Sob orçamento"}}
 </script>
 <style>
   :root{
@@ -68,7 +68,7 @@
   .ramo-pick{margin-top:26px}
   .ramo-pick .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chips button{font:inherit;font-size:.92rem;font-weight:600;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text-dim);cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:7px}
+  .chips button{font:inherit;font-size:.9rem;font-weight:600;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text-dim);cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:7px}
   .chips button:hover{border-color:rgba(37,211,102,.5);color:var(--text)}
   .chips button[aria-pressed="true"]{background:var(--neon);border-color:var(--neon);color:#04150C}
   .chips button:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
@@ -115,6 +115,7 @@
   .ramos{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:36px}
   .ramo{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 22px;display:grid;gap:18px;scroll-margin-top:80px;transition:border-color .3s,box-shadow .3s}
   .ramo.destaque{border-color:rgba(37,211,102,.5);box-shadow:0 0 50px rgba(37,211,102,.08)}
+  .ramo .grupo{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:-6px}
   .ramo .rhead{display:flex;align-items:center;gap:12px}
   .ramo .ric{width:46px;height:46px;border-radius:13px;background:rgba(37,211,102,.1);display:grid;place-items:center;font-size:23px;flex-shrink:0}
   .ramo h3{font-family:var(--display);font-weight:800;font-size:1.45rem;letter-spacing:-.02em;line-height:1.1}
@@ -139,7 +140,7 @@
   .funil{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
   .funil .col{min-width:0;background:var(--surface);border-radius:8px;padding:6px;min-height:92px}
   .funil .col i{display:block;font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:5px}
-  .funil .card{background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:5px 6px;font-size:10.5px;color:var(--text);margin-top:4px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .funil .card{background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:5px 6px;font-size:10.5px;color:var(--text);margin-top:4px;line-height:1.25;overflow-wrap:anywhere}
   .funil .card small{display:block;color:var(--text-faint);font-size:9.5px;overflow:hidden;text-overflow:ellipsis}
   .quadra{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
   .quadra span{aspect-ratio:1;border-radius:5px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-size:9px;color:var(--text-faint);font-family:var(--mono)}
@@ -206,6 +207,10 @@
     .hero{grid-template-columns:1.05fr .95fr;align-items:center}
     .cta-row{flex-direction:row;align-items:center;flex-wrap:wrap}
     .ramos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media(min-width:1040px){
+    .ramos{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .ramo{padding:26px 22px}
     .ramo{grid-template-columns:1fr;padding:28px 26px}
     .casa{grid-template-columns:repeat(3,1fr)}
     .steps{grid-template-columns:repeat(3,1fr)}
@@ -240,8 +245,13 @@
         <div class="lbl">Qual é o seu ramo?</div>
         <div class="chips" id="chips" role="group" aria-label="Escolha o seu ramo">
           <button type="button" data-ramo="clinica" aria-pressed="true">🩺 Clínica</button>
-          <button type="button" data-ramo="eventos" aria-pressed="false">🎉 Eventos</button>
-          <button type="button" data-ramo="loja" aria-pressed="false">🏬 Loja</button>
+          <button type="button" data-ramo="hospital" aria-pressed="false">🏥 Hospital</button>
+          <button type="button" data-ramo="eventos" aria-pressed="false">🎉 Eventos e festas</button>
+          <button type="button" data-ramo="estandes" aria-pressed="false">🏟️ Stand de vendas</button>
+          <button type="button" data-ramo="led" aria-pressed="false">💡 Iluminação e LED</button>
+          <button type="button" data-ramo="otica" aria-pressed="false">👓 Ótica</button>
+          <button type="button" data-ramo="suplementos" aria-pressed="false">🥗 Suplementos</button>
+          <button type="button" data-ramo="hortifruti" aria-pressed="false">🥬 Hortifrúti e CEASA</button>
           <button type="button" data-ramo="obras" aria-pressed="false">🏗️ Construção</button>
           <button type="button" data-ramo="outro" aria-pressed="false">Outro ramo</button>
         </div>
@@ -252,7 +262,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.18c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.15-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.04.89 2.19.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.46.2.53.32.07.11.07.66-.17 1.34z"/></svg>
           <span class="js-cta-txt">Pedir orçamento pra minha clínica</span>
         </a>
-        <a class="btn-ghost" href="#ramos">Ver o que o Zaq faz no meu ramo</a>
+        <a class="btn-ghost" id="ver-ramo" href="#ramo-clinica">Ver o que o Zaq faz no meu ramo</a>
       </div>
       <p class="micro">Cada negócio é um orçamento <span class="dot"></span> a gente responde no WhatsApp, gente de verdade</p>
     </div>
@@ -283,15 +293,70 @@
           <div class="msg out" data-step>quero sim!<span class="t">20:18</span></div>
         </div>
 
-        <div class="chat" data-chat="loja">
-          <span class="quem-fala">o cliente fala com a loja</span>
-          <div class="msg out" data-step>Vocês têm o pendente Lumi 30 em preto?<span class="t">11:02</span></div>
-          <div class="msg in" data-step style="max-width:92%">Temos sim 👇
-            <div class="summary"><div class="row"><span>💡 Pendente Lumi 30</span><b>preto</b></div><div class="row"><span>📦 Estoque</span><b>12 · loja Centro</b></div><div class="row"><span>💰 Preço</span><b>R$ 389,00</b></div><div class="ok">✓ O Rafael, vendedor da loja, já está com você</div></div>
-            <span class="t">11:02</span>
+        <div class="chat" data-chat="hospital">
+          <span class="quem-fala">a mãe fala com o hospital</span>
+          <div class="msg out" data-step>Oi, preciso marcar o teste da orelhinha do meu bebê<span class="t">8:05</span></div>
+          <div class="msg in" data-step>Claro! Tenho <b>amanhã às 8h30</b> e <b>quinta às 10h</b> com a fono. Qual fica melhor?<span class="t">8:05</span></div>
+          <div class="msg out" data-step>amanhã 8h30<span class="t">8:06</span></div>
+          <div class="msg in" data-step style="max-width:92%">Marcado 👇
+            <div class="summary"><div class="row"><span>🧪 Exame</span><b>teste da orelhinha</b></div><div class="row"><span>📅 Quando</span><b>amanhã, 8h30</b></div><div class="row"><span>📍 Onde</span><b>Recepção 2 · térreo</b></div><div class="ok">✓ Lembrete de manhã; na chegada, chamada na TV com voz</div><span class="link">Confirmar ou remarcar</span></div>
+            <span class="t">8:06</span>
           </div>
-          <div class="msg out" data-step>quero 2, pode mandar o orçamento<span class="t">11:04</span></div>
-          <div class="msg in" data-step>Enviado! Você aceita pelo link no celular e a expedição já separa 📦<span class="t">11:04</span></div>
+        </div>
+
+        <div class="chat" data-chat="estandes">
+          <span class="quem-fala">o lojista fala com a feira</span>
+          <div class="msg out" data-step>Vi o mapa da 32ª edição. O estande B12 ainda está livre?<span class="t">15:40</span></div>
+          <div class="msg in" data-step style="max-width:92%">Está sim 👇
+            <div class="summary"><div class="row"><span>🏟️ Estande</span><b>B12 · 3×3 m</b></div><div class="row"><span>📍 Onde</span><b>corredor principal</b></div><div class="row"><span>⏳ Pré-reserva</span><b>vence em 48h</b></div><div class="ok">✓ Reservado no mapa; contrato e Pix do sinal no link</div></div>
+            <span class="t">15:40</span>
+          </div>
+          <div class="msg out" data-step>paguei o sinal<span class="t">16:02</span></div>
+          <div class="msg in" data-step>Caiu! O B12 é seu. O card foi pra <b>vendido</b> e a comissão da Carla já está lançada 🎉<span class="t">16:02</span></div>
+        </div>
+
+        <div class="chat" data-chat="led">
+          <span class="quem-fala">a arquiteta fala com a loja</span>
+          <div class="msg out" data-step>Preciso de 40 m de fita LED 2700K com perfil, pra uma sala de estar<span class="t">10:12</span></div>
+          <div class="msg in" data-step style="max-width:92%">Montei assim 👇
+            <div class="summary"><div class="row"><span>💡 Fita 2700K</span><b>40 m · 2 rolos</b></div><div class="row"><span>📏 Perfil + difusor</span><b>14 varas</b></div><div class="row"><span>🔌 Fonte</span><b>2 un · 150 W</b></div><div class="row"><span>💰 Total</span><b>R$ 2.860,00</b></div><div class="ok">✓ Tudo em estoque · orçamento 2207 enviado</div></div>
+            <span class="t">10:13</span>
+          </div>
+          <div class="msg out" data-step>aprovado, pode faturar<span class="t">10:40</span></div>
+          <div class="msg in" data-step>Aceite registrado pelo link. A expedição já separa e o projeto entrou na agenda da loja 📦<span class="t">10:40</span></div>
+        </div>
+
+        <div class="chat" data-chat="otica">
+          <span class="quem-fala">o cliente fala com a ótica</span>
+          <div class="msg out" data-step>Saiu minha receita nova, quero fazer os óculos<span class="t">14:20</span></div>
+          <div class="msg in" data-step>Ótimo! Me manda a foto da receita 📷 e eu já abro a ordem de serviço.<span class="t">14:20</span></div>
+          <div class="msg in" data-step style="max-width:92%">Pronto 👇
+            <div class="summary"><div class="row"><span>👓 OS 0412</span><b>OD −2,00 · OE −1,75</b></div><div class="row"><span>🕶️ Armação</span><b>a sua, com lente nova</b></div><div class="row"><span>🔬 Lente</span><b>antirreflexo · lab. 7 dias</b></div><div class="ok">✓ Sinal via Pix no link; aviso quando ficar pronto</div></div>
+            <span class="t">14:21</span>
+          </div>
+          <div class="msg in" data-step>Seus óculos ficaram prontos! Pode retirar na <b>loja Centro</b> até as 18h 😊<span class="t">sex 11:05</span></div>
+        </div>
+
+        <div class="chat" data-chat="suplementos">
+          <span class="quem-fala">a cliente fala com a loja</span>
+          <div class="msg out" data-step>Tem marmita de frango fit hoje? Quero 5<span class="t">9:50</span></div>
+          <div class="msg in" data-step style="max-width:92%">Tem sim 👇
+            <div class="summary"><div class="row"><span>🍱 Frango fit</span><b>5 × R$ 24,90</b></div><div class="row"><span>🥤 Leva junto?</span><b>whey morango · R$ 149</b></div><div class="row"><span>🛵 Entrega</span><b>hoje até 12h</b></div><div class="ok">✓ Produção do dia baixou os insumos; etiqueta já saiu</div></div>
+            <span class="t">9:50</span>
+          </div>
+          <div class="msg out" data-step>fechado, com o whey<span class="t">9:52</span></div>
+          <div class="msg in" data-step>Pedido 318 saindo. O whey saiu do estoque da loja e o caixa do dia já contou ✓<span class="t">9:52</span></div>
+        </div>
+
+        <div class="chat" data-chat="hortifruti">
+          <span class="quem-fala">a cliente fala com o fornecedor</span>
+          <div class="msg out" data-step>Quero a cesta média dessa semana, com mais banana<span class="t">19:30</span></div>
+          <div class="msg in" data-step style="max-width:92%">Anotado 👇
+            <div class="summary"><div class="row"><span>🧺 Cesta média</span><b>entrega quinta</b></div><div class="row"><span>🍌 Extra</span><b>+ 1 kg banana</b></div><div class="row"><span>💰 Total</span><b>R$ 68,00</b></div><div class="ok">✓ Na rota de quinta; o romaneio do motorista sai sozinho</div></div>
+            <span class="t">19:30</span>
+          </div>
+          <span class="quem-fala" style="margin-top:6px">e o Zaq fala com o dono</span>
+          <div class="msg in" data-step>Sua ida ao CEASA de quarta já soma <b>42 kg de banana</b> e <b>18 maços de alface</b> entre todos os pedidos da semana 🛒<span class="t">19:31</span></div>
         </div>
 
         <div class="chat" data-chat="obras">
@@ -324,12 +389,13 @@
   <div class="wrap">
     <div class="sec-eyebrow">Feito pro seu ramo</div>
     <h2>O Zaq fala a língua de quem usa.</h2>
-    <p class="lead">Clínica não tem "festa", buffet não tem "paciente", loja não tem "lote". <b>Cada ramo tem as suas telas, as suas palavras e os seus números</b>, e nada de um ramo vaza pro outro.</p>
+    <p class="lead">Clínica não tem "festa", buffet não tem "paciente", ótica não tem "lote". <b>Cada ramo tem as suas telas, as suas palavras e os seus números</b>, e nada de um ramo vaza pro outro. Nove ramos já rodam com cliente de verdade.</p>
 
     <div class="ramos">
       <article class="ramo" id="ramo-clinica" data-ramo="clinica">
+        <div class="grupo">Saúde</div>
         <div class="rhead"><div class="ric">🩺</div><div><h3>Clínica</h3><div class="quem">estética, odonto, fisioterapia, dermatologia, consultório</div></div></div>
-        <p class="frase">Da recepção à sala do médico, o dia inteiro ao vivo.</p>
+        <p class="frase">Da recepção à sala do profissional, o dia inteiro ao vivo.</p>
         <div class="tela">
           <div class="tt"><span>Hoje · recepção</span><span>qui, 14 pacientes</span></div>
           <div class="ln"><b>Mariana S.</b><span class="pill v">em atendimento</span></div>
@@ -343,11 +409,30 @@
           <li><b>Orçamento começa na consulta</b>, com pacotes e sessões; a recepção fecha o pagamento com Pix, boleto ou cartão.</li>
           <li><b>Caixa do dia, repasse por profissional</b> e insumos da sala contados, com reposição avisada.</li>
         </ul>
-        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi!%20Tenho%20uma%20cl%C3%ADnica%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra clínica →</a>
+        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi%21%20Tenho%20uma%20cl%C3%ADnica%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra clínica →</a>
       </article>
-
+      <article class="ramo" id="ramo-hospital" data-ramo="hospital">
+        <div class="grupo">Saúde</div>
+        <div class="rhead"><div class="ric">🏥</div><div><h3>Hospital</h3><div class="quem">hospital-dia, centro de diagnóstico, maternidade, pronto atendimento</div></div></div>
+        <p class="frase">As mesmas telas da clínica, com a palavra e o caminho do hospital.</p>
+        <div class="tela">
+          <div class="tt"><span>Fila · exames e cirurgias</span><span>ter, 31 atendimentos</span></div>
+          <div class="ln"><b>Teste da orelhinha · Bebê de Ana</b><span class="pill a">chegou · TV</span></div>
+          <div class="ln"><b>Ergométrico · João P.</b><span class="pill v">em exame</span></div>
+          <div class="ln"><b>Cirurgia · Helena R.</b><span class="pill z">pré-op confirmado</span></div>
+          <div class="ln"><b>Retorno · Marcos L.</b><span class="pill r">faltou · remarcar</span></div>
+        </div>
+        <ul>
+          <li><b>Consultas, exames, testes, cirurgias e procedimentos</b> no catálogo e nos relatórios, cada grupo com o seu número.</li>
+          <li><b>Funil próprio</b>, com o que só existe aqui: "faltou e não remarcou", "desistiu após falha do hospital", e a mensagem de voltar a chamar.</li>
+          <li><b>Chegada e chamada na TV</b> da recepção em tela cheia, com voz; o profissional marca na sala e confirma o dia.</li>
+          <li>Prontuário, caixa, repasse e a Comunicação com a equipe, tudo dizendo "o hospital", nunca "a clínica".</li>
+        </ul>
+        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi%21%20Falo%20por%20um%20hospital%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pro hospital →</a>
+      </article>
       <article class="ramo" id="ramo-eventos" data-ramo="eventos">
-        <div class="rhead"><div class="ric">🎉</div><div><h3>Eventos e festas</h3><div class="quem">buffet, espaço de festas, cerimonial, estandes de feira</div></div></div>
+        <div class="grupo">Eventos e feiras</div>
+        <div class="rhead"><div class="ric">🎉</div><div><h3>Eventos e festas</h3><div class="quem">buffet, espaço de festas, cerimonial, decoração</div></div></div>
         <p class="frase">Do primeiro oi ao pós-festa, sem perder uma data.</p>
         <div class="tela">
           <div class="tt"><span>Funil · fevereiro</span><span>18 festas</span></div>
@@ -362,31 +447,105 @@
           <li>O card <b>lê a data, o tipo e os convidados</b> na própria conversa e avisa quando duas festas caem no mesmo dia.</li>
           <li><b>Visita, proposta por link e contrato</b> que fecha o negócio e abre o financeiro; sinal via Pix com baixa sozinha.</li>
           <li><b>Rodízio de vendedores</b>, comissão por faixa de contratos e o Resgate da IA pra lead que esfriou.</li>
-          <li>Pra feira: funil de estandes, do mapa reservado ao estande quitado.</li>
+          <li>A festa aconteceu? Um toque confirma, e o agradecimento sai pro cliente.</li>
         </ul>
-        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi!%20Trabalho%20com%20eventos%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra eventos →</a>
+        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi%21%20Trabalho%20com%20eventos%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra eventos →</a>
       </article>
-
-      <article class="ramo" id="ramo-loja" data-ramo="loja">
-        <div class="rhead"><div class="ric">🏬</div><div><h3>Loja e varejo</h3><div class="quem">iluminação, ótica, suplementos, hortifrúti, mais de uma loja</div></div></div>
-        <p class="frase">Catálogo, estoque, orçamento, expedição e fiscal, do balcão à entrega.</p>
+      <article class="ramo" id="ramo-estandes" data-ramo="estandes">
+        <div class="grupo">Eventos e feiras</div>
+        <div class="rhead"><div class="ric">🏟️</div><div><h3>Stand de vendas</h3><div class="quem">feira, outlet, bazar, evento com estandes pra lojista</div></div></div>
+        <p class="frase">Do mapa público ao estande quitado, com a vendedora comissionada.</p>
         <div class="tela">
-          <div class="tt"><span>Estoque · pendente Lumi 30</span><span>por endereço</span></div>
-          <div class="ln"><b>Loja Centro · A-03</b><span class="pill v">12 un</span></div>
-          <div class="ln"><b>Loja Norte · B-11</b><span class="pill a">2 un · repor</span></div>
-          <div class="ln"><b>Expedição · pedido 1842</b><span class="pill z">separando</span></div>
-          <div class="ln"><b>Orçamento 2207</b><span class="pill r">aceito no celular ✓</span></div>
+          <div class="tt"><span>Mapa · 32ª edição</span><span>48 estandes</span></div>
+          <div class="quadra"><span class="e2">A1</span><span class="e2">A2</span><span class="e1">A3</span><span>A4</span><span class="e2">A5</span><span class="e3">A6</span><span class="e2">B10</span><span class="e1">B11</span><span>B12</span><span class="e2">B13</span><span class="e1">B14</span><span class="e2">B15</span></div>
+          <div class="legenda"><span><i style="background:rgba(37,211,102,.5)"></i>vendido</span><span><i style="background:rgba(37,211,102,.2)"></i>pré-reserva</span><span><i style="background:rgba(224,163,46,.4)"></i>bloqueado</span><span><i style="background:#1E2A23"></i>livre</span></div>
         </div>
         <ul>
-          <li><b>Catálogo pela planilha</b>, ficha técnica, NCM conferido e preço por lista de cliente.</li>
-          <li><b>Estoque por endereço</b>, inventário, compras pelo que falta e <b>expedição</b> com separação, conferência e entrega.</li>
-          <li><b>Vendedor de loja e supervisor</b>: a central leva o cliente pra loja certa e o boletim mostra cada loja em cinco tarefas.</li>
-          <li>Ótica com <b>ordem de serviço</b> (receita, armação, lente, laboratório); cozinha com ficha técnica e produção do dia.</li>
+          <li><b>Mapa público</b> da edição: o lojista escolhe o estande, faz a pré-reserva com vencimento, e a gestão bloqueia o que não vende.</li>
+          <li><b>Funil do lojista</b>: atendido, recebeu o mapa, reservou, vendido, quitado. Cada card anda sozinho.</li>
+          <li><b>Uma empresa, um contrato</b>, mesmo com vários estandes; sinal via Pix, recebimentos e comprovante na proposta.</li>
+          <li>Quem clica no anúncio e reserva pelo mapa cai no card certo: você vê o <b>custo por estande vendido</b>.</li>
         </ul>
-        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi!%20Tenho%20uma%20loja%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra loja →</a>
+        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi%21%20Vendo%20estandes%20em%20feira%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra venda de estandes →</a>
       </article>
-
+      <article class="ramo" id="ramo-led" data-ramo="led">
+        <div class="grupo">Comércio</div>
+        <div class="rhead"><div class="ric">💡</div><div><h3>Iluminação e LED</h3><div class="quem">loja de iluminação, distribuidor de LED, projetos luminotécnicos</div></div></div>
+        <p class="frase">Catálogo, estoque, orçamento, aprovação, expedição e fiscal, do balcão à obra.</p>
+        <div class="tela">
+          <div class="tt"><span>Orçamentos · loja</span><span>semana</span></div>
+          <div class="ln"><b>2207 · Sala de estar · Arq. Paula</b><span class="pill v">aceito no celular</span></div>
+          <div class="ln"><b>2208 · Fachada · Loja Vila</b><span class="pill a">aguardando aprovação</span></div>
+          <div class="ln"><b>Pedido 1842 · expedição</b><span class="pill z">separando · baia 3</span></div>
+          <div class="ln"><b>Fita 2700K · estoque A-03</b><span class="pill r">8 rolos · repor</span></div>
+        </div>
+        <ul>
+          <li><b>Catálogo pela planilha</b>, com ficha técnica, marcas, NCM conferido e preço por lista de cliente.</li>
+          <li><b>Orçamento com aceite no celular</b>, alçada de aprovação e desconto; toda proposta vira card no funil da loja.</li>
+          <li><b>Estoque por endereço</b>, inventário, compras pelo que falta e <b>expedição</b> com separação, conferência, baia e entrega.</li>
+          <li>Agenda com os tipos da loja e a <b>sala do projeto</b> pra acompanhar a obra do cliente.</li>
+        </ul>
+        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi%21%20Tenho%20uma%20loja%20de%20ilumina%C3%A7%C3%A3o%20e%20LED%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra loja de iluminação →</a>
+      </article>
+      <article class="ramo" id="ramo-otica" data-ramo="otica">
+        <div class="grupo">Comércio</div>
+        <div class="rhead"><div class="ric">👓</div><div><h3>Ótica</h3><div class="quem">ótica de rua, rede com central e várias lojas</div></div></div>
+        <p class="frase">A receita, o laboratório e a entrega num lugar só, em todas as lojas.</p>
+        <div class="tela">
+          <div class="tt"><span>Ordens de serviço</span><span>3 lojas</span></div>
+          <div class="ln"><b>OS 0412 · Rafael · Centro</b><span class="pill z">no laboratório · 4 dias</span></div>
+          <div class="ln"><b>OS 0409 · Dona Célia · Norte</b><span class="pill v">pronto pra retirar</span></div>
+          <div class="ln"><b>OS 0401 · Bruno · Centro</b><span class="pill a">não buscou · lembrar</span></div>
+          <div class="ln"><b>Central → loja Sul</b><span class="pill r">cliente novo · pegar</span></div>
+        </div>
+        <ul>
+          <li><b>Ordem de serviço</b> com o grau da receita, a armação, a lente, o laboratório e o prazo; sinal no financeiro.</li>
+          <li><b>Mensagens que saem sozinhas</b>: óculos prontos, quem não buscou, receita fazendo um ano, lente de contato acabando.</li>
+          <li><b>Central e lojas</b>: a central leva o cliente pra loja certa, o vendedor da loja atende e o supervisor é avisado.</li>
+          <li><b>Boletim das lojas</b>: cada loja em cinco tarefas, em verde, amarelo ou vermelho.</li>
+        </ul>
+        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi%21%20Tenho%20uma%20%C3%B3tica%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra ótica →</a>
+      </article>
+      <article class="ramo" id="ramo-suplementos" data-ramo="suplementos">
+        <div class="grupo">Comércio</div>
+        <div class="rhead"><div class="ric">🥗</div><div><h3>Suplementos e cozinha fit</h3><div class="quem">loja de suplementos, marmitaria fit, confeitaria e padaria</div></div></div>
+        <p class="frase">A prateleira e a cozinha na mesma conta, com o custo de cada prato.</p>
+        <div class="tela">
+          <div class="tt"><span>Cozinha · produção do dia</span><span>qua</span></div>
+          <div class="ln"><b>Frango fit · 40 un</b><span class="pill v">custo R$ 11,20 · pronto</span></div>
+          <div class="ln"><b>Carne com batata-doce · 25 un</b><span class="pill a">produzindo</span></div>
+          <div class="ln"><b>Whey morango · prateleira</b><span class="pill z">curva A · 6 un</span></div>
+          <div class="ln"><b>Peito de frango · insumo</b><span class="pill r">baixou do mínimo</span></div>
+        </div>
+        <ul>
+          <li><b>Ficha técnica</b> diz quanto custa cada marmita; a <b>produção do dia</b> baixa os insumos, sobe o prato pronto e imprime a etiqueta.</li>
+          <li><b>Curva ABC</b>: os poucos produtos que fazem 80% da venda, o A que está faltando e o C parado.</li>
+          <li><b>Venda no balcão e pelo WhatsApp</b>, com entrega, saindo do lugar certo do estoque.</li>
+          <li>Pedido do cliente, caixa do dia e o insumo que baixou do mínimo avisado na hora.</li>
+        </ul>
+        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi%21%20Tenho%20uma%20loja%20de%20suplementos%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra loja de suplementos →</a>
+      </article>
+      <article class="ramo" id="ramo-hortifruti" data-ramo="hortifruti">
+        <div class="grupo">Comércio</div>
+        <div class="rhead"><div class="ric">🥬</div><div><h3>Hortifrúti e CEASA</h3><div class="quem">fornecedor de cestas, sacolão, distribuidor que compra no CEASA</div></div></div>
+        <p class="frase">Do pedido da semana à ida ao CEASA e à rota de entrega.</p>
+        <div class="tela">
+          <div class="tt"><span>Pedidos da semana</span><span>quinta · 37 cestas</span></div>
+          <div class="ln"><b>Compra no CEASA · quarta</b><span class="pill z">42 kg banana · 18 alface</span></div>
+          <div class="ln"><b>Rota 1 · Zona Sul · 19 cestas</b><span class="pill v">romaneio no motorista</span></div>
+          <div class="ln"><b>Rota 2 · Centro · 18 cestas</b><span class="pill a">separando</span></div>
+          <div class="ln"><b>Financeiro · semana</b><span class="pill r">R$ 2.516 a receber</span></div>
+        </div>
+        <ul>
+          <li><b>Cestas da semana</b> por tamanho, com o extra de cada cliente, pedidas pelo WhatsApp ou pela página de pedidos.</li>
+          <li><b>A compra no CEASA sai somada</b> dos pedidos: quanto de cada item comprar na quarta pra entregar na quinta.</li>
+          <li><b>Romaneio da rota</b> pro motorista, conferência da nota do fornecedor e estoque com o que chegou de verdade.</li>
+          <li>Faturamento, comissão e repasse da semana no financeiro, sem planilha.</li>
+        </ul>
+        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi%21%20Trabalho%20com%20hortifr%C3%BAti%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pro hortifrúti →</a>
+      </article>
       <article class="ramo" id="ramo-obras" data-ramo="obras">
+        <div class="grupo">Obras</div>
         <div class="rhead"><div class="ric">🏗️</div><div><h3>Construção e reforma</h3><div class="quem">construtora, loteamento, reforma, engenharia</div></div></div>
         <p class="frase">O canteiro no celular do mestre, o custo na mesa do escritório.</p>
         <div class="tela">
@@ -396,16 +555,16 @@
         </div>
         <ul>
           <li><b>App do mestre</b>, entrando pelo WhatsApp sem senha: foto da etapa, etapa feita, material usado. Sem nenhum valor na tela dele.</li>
-          <li><b>A nota vira material contado</b>: 60 sacos entram, "usei 15 na casa 2" dá baixa, o depósito avisa o mínimo.</li>
+          <li><b>A nota vira material contado</b>: 60 sacos entram, "usei 15 na casa 2" dá baixa, o almoxarifado avisa o mínimo.</li>
           <li><b>Mapa 3D na sua planta</b>: cada casa cresce conforme as etapas, e o sistema aponta a que gasta acima das irmãs.</li>
-          <li>Ferramenta com <b>etiqueta QR e termo assinado com o dedo</b>; caminhão sai com romaneio pro motorista.</li>
+          <li><b>Suprimentos</b>: cotação, pedido de compra, nota conferida contra o pedido, ferramenta com etiqueta QR e termo assinado.</li>
         </ul>
-        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi!%20Trabalho%20com%20constru%C3%A7%C3%A3o%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra construção →</a>
+        <a class="rcta js-cta" href="https://wa.me/13192453800?text=Oi%21%20Trabalho%20com%20constru%C3%A7%C3%A3o%20e%20quero%20um%20or%C3%A7amento%20do%20Zaq" target="_blank" rel="noopener">Pedir orçamento pra construção →</a>
       </article>
     </div>
 
     <div class="outros" id="ramo-outro">
-      <b>Não achou o seu?</b> O Zaq já roda em consultoria, advocacia, contabilidade, agência, corretora de seguros, salão, petshop, oficina, assistência técnica, educação e mais. O ramo define as palavras; a casa é a mesma. <a class="js-cta" href="https://wa.me/13192453800?text=Oi!%20Quero%20um%20or%C3%A7amento%20do%20Zaq%20pra%20minha%20empresa" target="_blank" rel="noopener" style="color:var(--neon);font-weight:600">Me conta o seu ramo →</a>
+      <b>Não achou o seu?</b> O Zaq também roda em consultoria, advocacia, contabilidade, agência de marketing, corretora de seguros, salão, petshop, oficina, assistência técnica, educação, vestuário, farmácia e minimercado. O ramo define as palavras; a casa é a mesma. <a class="js-cta" href="https://wa.me/13192453800?text=Oi!%20Quero%20um%20or%C3%A7amento%20do%20Zaq%20pra%20minha%20empresa" target="_blank" rel="noopener" style="color:var(--neon);font-weight:600">Me conta o seu ramo →</a>
     </div>
   </div>
 </section>
@@ -523,11 +682,16 @@
 (function(){
   var WA = 'https://wa.me/13192453800?text=';
   var RAMOS = {
-    clinica:{cta:'Pedir orçamento pra minha clínica', msg:'Oi! Tenho uma clínica e quero um orçamento do Zaq'},
-    eventos:{cta:'Pedir orçamento pra eventos',       msg:'Oi! Trabalho com eventos e quero um orçamento do Zaq'},
-    loja:   {cta:'Pedir orçamento pra minha loja',    msg:'Oi! Tenho uma loja e quero um orçamento do Zaq'},
-    obras:  {cta:'Pedir orçamento pra construção',    msg:'Oi! Trabalho com construção e quero um orçamento do Zaq'},
-    outro:  {cta:'Pedir orçamento pra minha empresa', msg:'Oi! Quero um orçamento do Zaq pra minha empresa'}
+    clinica:    {cta:'Pedir orçamento pra minha clínica',   msg:'Oi! Tenho uma clínica e quero um orçamento do Zaq'},
+    hospital:   {cta:'Pedir orçamento pro hospital',        msg:'Oi! Falo por um hospital e quero um orçamento do Zaq'},
+    eventos:    {cta:'Pedir orçamento pra eventos',         msg:'Oi! Trabalho com eventos e quero um orçamento do Zaq'},
+    estandes:   {cta:'Pedir orçamento pra venda de estandes', msg:'Oi! Vendo estandes em feira e quero um orçamento do Zaq'},
+    led:        {cta:'Pedir orçamento pra minha loja de LED', msg:'Oi! Tenho uma loja de iluminação e LED e quero um orçamento do Zaq'},
+    otica:      {cta:'Pedir orçamento pra minha ótica',     msg:'Oi! Tenho uma ótica e quero um orçamento do Zaq'},
+    suplementos:{cta:'Pedir orçamento pra minha loja',      msg:'Oi! Tenho uma loja de suplementos e quero um orçamento do Zaq'},
+    hortifruti: {cta:'Pedir orçamento pro meu hortifrúti',  msg:'Oi! Trabalho com hortifrúti e quero um orçamento do Zaq'},
+    obras:      {cta:'Pedir orçamento pra construção',      msg:'Oi! Trabalho com construção e quero um orçamento do Zaq'},
+    outro:      {cta:'Pedir orçamento pra minha empresa',   msg:'Oi! Quero um orçamento do Zaq pra minha empresa'}
   };
   var chips = document.getElementById('chips');
   var chats = document.querySelectorAll('.chat');
@@ -549,6 +713,7 @@
     // o botão principal do topo e o do fim seguem o ramo escolhido; os botões dentro de cada ramo ficam como estão
     document.querySelectorAll('.cta-row .js-cta, .nav-cta').forEach(function(a){ a.href = WA + encodeURIComponent(r.msg); });
     var txt = document.querySelector('header .js-cta-txt'); if(txt) txt.textContent = r.cta;
+    var ver = document.getElementById('ver-ramo'); if(ver) ver.href = '#ramo-' + ramo;
     document.querySelectorAll('.ramo').forEach(function(c){ c.classList.toggle('destaque', c.getAttribute('data-ramo') === ramo); });
     var chat = document.querySelector('.chat[data-chat="' + ramo + '"]') || document.querySelector('.chat[data-chat="outro"]');
     mostra(chat);
