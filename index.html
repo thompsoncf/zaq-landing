@@ -137,10 +137,11 @@
   .pill.a{color:var(--ambar);border-color:rgba(224,163,46,.4)}
   .pill.r{color:var(--roxo);border-color:rgba(201,163,224,.4)}
   .pill.z{color:var(--azul);border-color:rgba(111,183,240,.4)}
-  .funil{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .funil{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  @media(min-width:480px) and (max-width:1039px){.funil{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .funil .col{min-width:0;background:var(--surface);border-radius:8px;padding:6px;min-height:92px}
   .funil .col i{display:block;font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:5px}
-  .funil .card{background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:5px 6px;font-size:10.5px;color:var(--text);margin-top:4px;line-height:1.25;overflow-wrap:anywhere}
+  .funil .card{background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:5px 6px;font-size:10.5px;color:var(--text);margin-top:4px;line-height:1.25}
   .funil .card small{display:block;color:var(--text-faint);font-size:9.5px;overflow:hidden;text-overflow:ellipsis}
   .quadra{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
   .quadra span{aspect-ratio:1;border-radius:5px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-size:9px;color:var(--text-faint);font-family:var(--mono)}
@@ -437,10 +438,10 @@
         <div class="tela">
           <div class="tt"><span>Funil · fevereiro</span><span>18 festas</span></div>
           <div class="funil">
-            <div class="col"><i>Novo</i><div class="card">15 anos · 20/02<small>120 conv.</small></div><div class="card">Casamento · 28/02<small>visita sáb</small></div></div>
-            <div class="col"><i>Visita</i><div class="card">Infantil · 07/02<small>80 conv.</small></div></div>
-            <div class="col"><i>Proposta</i><div class="card">Formatura · 14/02<small>R$ 18.900</small></div></div>
-            <div class="col"><i>Contrato</i><div class="card">Bodas · 21/02<small>sinal pago ✓</small></div></div>
+            <div class="col"><i>Novo</i><div class="card">15 anos<small>20/02 · 120 conv.</small></div><div class="card">Casamento<small>28/02 · visita sáb</small></div></div>
+            <div class="col"><i>Visita</i><div class="card">Infantil<small>07/02 · 80 conv.</small></div></div>
+            <div class="col"><i>Proposta</i><div class="card">Formatura<small>14/02 · R$ 18.900</small></div></div>
+            <div class="col"><i>Contrato</i><div class="card">Bodas<small>21/02 · sinal pago ✓</small></div></div>
           </div>
         </div>
         <ul>
