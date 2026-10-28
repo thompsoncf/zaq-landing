@@ -92,6 +92,7 @@
     <button type="button" data-ramo="eventos" aria-pressed="false">Eventos</button>
     <button type="button" data-ramo="loja" aria-pressed="false">Loja</button>
     <button type="button" data-ramo="construcao" aria-pressed="false">Construção</button>
+    <button type="button" data-ramo="seguros" aria-pressed="false">Seguros</button>
     <button type="button" data-ramo="servico" aria-pressed="false">Serviços</button>
   </div>
   <p class="estado" id="estado"></p>
@@ -132,7 +133,7 @@
   var RAMO = {
     todos:'todos', eventos:'eventos', servico:'serviços', produto:'loja', recorrente:'serviços', perfil_produto:'loja',
     clinica:'clínica', construcao:'construção', led:'iluminação', otica:'ótica', suplementos:'suplementos', seguros:'seguros',
-    estandes:'estandes', app_estandes:'estandes', orcamento_evento_app:'eventos', resgate_eventos:'eventos',
+    estandes:'stands', app_estandes:'stands', orcamento_evento_app:'eventos', resgate_eventos:'eventos',
     canal_proprio:'WhatsApp próprio', empresa:'empresa', meta_conectada:'anúncios', aba_anuncios:'anúncios',
     mais_de_um_chip:'mais de um chip', visita_da_ia:'IA no atendimento', resgate_ligado:'resgate da IA', resgate_ativo:'resgate da IA',
     esteira_ligada:'esteira', funil_atendimento:'funil', comissao_faixas:'comissão', inter_pix:'Banco Inter', assistente_atendente:'comunicação'
@@ -143,6 +144,7 @@
     eventos:['eventos','estandes','app_estandes','orcamento_evento_app','resgate_eventos'],
     loja:['produto','perfil_produto','led','otica','suplementos'],
     construcao:['construcao'],
+    seguros:['seguros'],
     servico:['servico','recorrente','seguros','eventos','clinica']
   };
   var DE_RAMO = {}; Object.keys(FILTRO).forEach(function(f){ FILTRO[f].forEach(function(p){ DE_RAMO[p] = true; }); });
