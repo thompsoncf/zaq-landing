@@ -9,6 +9,8 @@
 <meta property="og:description" content="Tudo que subiu no Zaq, mês a mês, por ramo.">
 <meta property="og:url" content="https://zaq-ia.com/atualizacoes.html">
 <link rel="canonical" href="https://zaq-ia.com/atualizacoes.html">
+<meta property="og:image" content="https://zaq-ia.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -58,6 +60,9 @@
   .tg span.ap{border-color:var(--ambar-borda);color:#F0DCA6}
   .tg span.mud{border-color:#6e5a22;color:#f0dca6;background:#332a12}
   .vazio{padding:30px 0;color:var(--text-dim);font-size:.95rem}
+  .mais{font:inherit;font-size:.92rem;font-weight:600;margin-top:22px;padding:11px 22px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;width:100%;transition:.15s}
+  .mais:hover{border-color:var(--neon);color:var(--neon)}
+  .mais:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
   .entrar{margin-top:34px;border:1px solid var(--neon-borda);background:var(--neon-fundo);border-radius:16px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
   .entrar b{color:var(--neon-bright)}
   .entrar p{color:var(--text-dim);font-size:.94rem;max-width:44ch}
@@ -83,13 +88,15 @@
 <main><div class="wrap">
   <div class="ramos" id="ramos" role="group" aria-label="Filtrar por ramo">
     <button type="button" data-ramo="" aria-pressed="true">Todos</button>
+    <button type="button" data-ramo="clinica" aria-pressed="false">Clínica</button>
     <button type="button" data-ramo="eventos" aria-pressed="false">Eventos</button>
+    <button type="button" data-ramo="loja" aria-pressed="false">Loja</button>
+    <button type="button" data-ramo="construcao" aria-pressed="false">Construção</button>
     <button type="button" data-ramo="servico" aria-pressed="false">Serviços</button>
-    <button type="button" data-ramo="produto" aria-pressed="false">Produto</button>
-    <button type="button" data-ramo="recorrente" aria-pressed="false">Recorrente</button>
   </div>
   <p class="estado" id="estado"></p>
   <div id="lista"></div>
+  <button type="button" class="mais" id="mais" hidden>Ver mais</button>
 
   <div class="entrar">
     <p><b>Já usa o Zaq?</b> Entrando, você vê só o que mudou pro seu negócio, e o que a sua equipe já leu.</p>
@@ -97,7 +104,7 @@
   </div>
 </div></main>
 
-<footer><div class="wrap"><div class="foot-logo">Zaq</div><p>Seu financeiro, no WhatsApp e no Telegram · feito no Brasil 🇧🇷 · 2026 · <a href="/">início</a></p></div></footer>
+<footer><div class="wrap"><div class="foot-logo">Zaq</div><p>O sistema da sua empresa, no WhatsApp · feito no Brasil 🇧🇷 · 2026 · <a href="/">início</a> · <a href="/seja-parceiro.html">seja parceiro</a></p></div></footer>
 
 <script>
 // A página lê os avisos do próprio Zaq (GET /novidades.json, público, sem nada
@@ -120,27 +127,47 @@
   ]};
   var MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   var MES3 = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-  var RAMO = {todos:'todos', eventos:'eventos', servico:'serviços', produto:'produto', recorrente:'recorrente', canal_proprio:'WhatsApp próprio'};
-  // "Serviços" também mostra o que é de eventos e recorrente (são serviço); "Todos" mostra tudo.
-  var ABRANGE = {servico:['servico','eventos','recorrente'], eventos:['eventos'], produto:['produto'], recorrente:['recorrente']};
-  var itens = [], ramo = '';
-  var lista = document.getElementById('lista'), estado = document.getElementById('estado');
+  // O `ramo` de cada aviso é o público que o Zaq usou pra mirar (finance.novidades.PUBLICOS).
+  // Aqui ele vira (1) uma etiqueta legível e (2) um dos botões de filtro acima.
+  var RAMO = {
+    todos:'todos', eventos:'eventos', servico:'serviços', produto:'loja', recorrente:'serviços', perfil_produto:'loja',
+    clinica:'clínica', construcao:'construção', led:'iluminação', otica:'ótica', suplementos:'suplementos', seguros:'seguros',
+    estandes:'estandes', app_estandes:'estandes', orcamento_evento_app:'eventos', resgate_eventos:'eventos',
+    canal_proprio:'WhatsApp próprio', empresa:'empresa', meta_conectada:'anúncios', aba_anuncios:'anúncios',
+    mais_de_um_chip:'mais de um chip', visita_da_ia:'IA no atendimento', resgate_ligado:'resgate da IA', resgate_ativo:'resgate da IA',
+    esteira_ligada:'esteira', funil_atendimento:'funil', comissao_faixas:'comissão', inter_pix:'Banco Inter', assistente_atendente:'comunicação'
+  };
+  // Qual botão mostra cada público. O que não está aqui é geral: aparece em todo filtro.
+  var FILTRO = {
+    clinica:['clinica'],
+    eventos:['eventos','estandes','app_estandes','orcamento_evento_app','resgate_eventos'],
+    loja:['produto','perfil_produto','led','otica','suplementos'],
+    construcao:['construcao'],
+    servico:['servico','recorrente','seguros','eventos','clinica']
+  };
+  var DE_RAMO = {}; Object.keys(FILTRO).forEach(function(f){ FILTRO[f].forEach(function(p){ DE_RAMO[p] = true; }); });
+  // A conta pessoal saiu do site: o aviso que só é dela não aparece aqui.
+  var ESCONDE = {pessoal:true};
+  var POR_VEZ = 40;
+  var itens = [], ramo = '', limite = POR_VEZ;
+  var lista = document.getElementById('lista'), estado = document.getElementById('estado'), mais = document.getElementById('mais');
 
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function visivel(n){
+    if(ESCONDE[n.ramo]) return false;
     if(!ramo) return true;
-    if(n.ramo === 'todos' || n.ramo === 'canal_proprio') return true;
-    return (ABRANGE[ramo] || [ramo]).indexOf(n.ramo) >= 0;
+    if(!DE_RAMO[n.ramo]) return true; // geral: vale pra todo ramo
+    return (FILTRO[ramo] || [ramo]).indexOf(n.ramo) >= 0;
   }
   function tags(n){
     var t = [];
     if(n.tipo === 'mudanca') t.push('<span class="mud">mudança</span>');
-    t.push('<span class="' + (n.ramo === 'eventos' ? 'ev' : n.ramo === 'todos' ? 'td' : '') + '">' + esc(RAMO[n.ramo] || n.ramo) + '</span>');
+    t.push('<span class="' + (n.ramo === 'eventos' ? 'ev' : n.ramo === 'todos' ? 'td' : '') + '">' + esc(RAMO[n.ramo] || 'geral') + '</span>');
     if((n.pra_quem || []).indexOf('vendedor') >= 0) t.push('<span class="ap">app do vendedor</span>');
     return '<div class="tg">' + t.join('') + '</div>';
   }
   function render(){
-    var vis = itens.filter(visivel), html = '', mesAtual = '';
+    var todos = itens.filter(visivel), vis = todos.slice(0, limite), html = '', mesAtual = '';
     vis.forEach(function(n){
       var d = n.dia.split('-'), ano = d[0], m = parseInt(d[1], 10) - 1, dia = parseInt(d[2], 10);
       var chave = ano + '-' + m;
@@ -149,7 +176,11 @@
             + '<h3>' + esc(n.titulo) + '</h3>' + (n.resumo ? '<p>' + esc(n.resumo) + '</p>' : '') + tags(n) + '</div></article>';
     });
     lista.innerHTML = html || '<div class="vazio">Nada por aqui ainda pra esse ramo.</div>';
+    var faltam = todos.length - vis.length;
+    mais.hidden = faltam <= 0;
+    mais.textContent = 'Ver mais (' + faltam + ')';
   }
+  mais.addEventListener('click', function(){ limite += POR_VEZ; render(); });
   function usar(dados, origem){
     itens = (dados && dados.itens) || [];
     render();
@@ -158,6 +189,7 @@
   document.getElementById('ramos').addEventListener('click', function(e){
     var b = e.target.closest('button'); if(!b) return;
     ramo = b.getAttribute('data-ramo') || '';
+    limite = POR_VEZ;
     Array.prototype.forEach.call(this.querySelectorAll('button'), function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
     render();
   });
