@@ -111,6 +111,16 @@
   .lead{color:var(--text-dim);max-width:52ch;margin-top:14px;font-size:1.05rem}
   .lead b{color:var(--text);font-weight:600}
 
+  /* números */
+  .numeros{position:relative;z-index:1;padding:10px 0 20px}
+  .num-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .num{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px;min-width:0}
+  .num .v{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,6vw,2.3rem);letter-spacing:-.03em;line-height:1;color:var(--neon);font-variant-numeric:tabular-nums}
+  .num .v small{font-size:.55em;font-weight:700;color:var(--neon);margin-left:3px}
+  .num .l{color:var(--text-dim);font-size:.9rem;margin-top:7px;line-height:1.35}
+  .num-nota{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);letter-spacing:.04em;margin-top:12px}
+  @media(min-width:860px){.num-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.num{padding:22px 20px}}
+
   /* ramos */
   .ramos{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:36px}
   .ramo{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 22px;display:grid;gap:18px;scroll-margin-top:80px;transition:border-color .3s,box-shadow .3s}
@@ -129,34 +139,21 @@
   .ramo .abrir{display:none;font:inherit;font-size:.92rem;font-weight:600;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;justify-self:start}
   .ramo .abrir:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
   @media(max-width:859px){
-    .ramo:not(.aberto) .tela,.ramo:not(.aberto) ul,.ramo:not(.aberto) .rcta{display:none}
+    .ramo:not(.aberto) .shot,.ramo:not(.aberto) ul,.ramo:not(.aberto) .rcta{display:none}
     .ramo:not(.aberto) .abrir{display:inline-flex}
     .ramo .rhead{cursor:pointer}
   }
   .ramo .rcta:hover{color:var(--neon-bright)}
-  /* telinhas desenhadas */
-  .tela{min-width:0;overflow:hidden;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px;font-size:12px;color:var(--text-dim);font-family:var(--body)}
-  .tela .tt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:9px;display:flex;justify-content:space-between}
-  .tela .ln{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;background:var(--surface);margin-top:5px}
-  .tela .ln b{color:var(--text);font-weight:600;font-size:12.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .pill{font-size:10px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
-  .pill.v{color:var(--neon);border-color:rgba(37,211,102,.4)}
-  .pill.a{color:var(--ambar);border-color:rgba(224,163,46,.4)}
-  .pill.r{color:var(--roxo);border-color:rgba(201,163,224,.4)}
-  .pill.z{color:var(--azul);border-color:rgba(111,183,240,.4)}
-  .funil{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-  @media(min-width:480px) and (max-width:1039px){.funil{grid-template-columns:repeat(4,minmax(0,1fr))}}
-  .funil .col{min-width:0;background:var(--surface);border-radius:8px;padding:6px;min-height:92px}
-  .funil .col i{display:block;font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:5px}
-  .funil .card{background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:5px 6px;font-size:10.5px;color:var(--text);margin-top:4px;line-height:1.25}
-  .funil .card small{display:block;color:var(--text-faint);font-size:9.5px;overflow:hidden;text-overflow:ellipsis}
-  .quadra{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
-  .quadra span{aspect-ratio:1;border-radius:5px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-size:9px;color:var(--text-faint);font-family:var(--mono)}
-  .quadra span.e1{background:rgba(37,211,102,.12);border-color:rgba(37,211,102,.35);color:var(--neon)}
-  .quadra span.e2{background:rgba(37,211,102,.3);border-color:rgba(37,211,102,.5);color:#dffbe9}
-  .quadra span.e3{background:rgba(224,163,46,.16);border-color:rgba(224,163,46,.4);color:var(--ambar)}
-  .legenda{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:10px;color:var(--text-faint)}
-  .legenda i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:middle}
+  /* capturas reais do painel */
+  .shot{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.35);transition:border-color .2s,transform .2s}
+  .shot:hover{border-color:rgba(37,211,102,.5);transform:translateY(-2px)}
+  .shot:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+  .shot img{display:block;width:100%;height:auto}
+  .galeria{display:grid;gap:16px;margin-top:32px}
+  .galeria figure{margin:0;min-width:0}
+  .galeria figcaption{padding:10px 2px 0;color:var(--text-dim);font-size:.9rem;line-height:1.4}
+  .galeria figcaption b{color:var(--text);font-weight:600;font-family:var(--display)}
+  @media(min-width:860px){.galeria{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .outros{margin-top:22px;padding:18px 20px;border:1px dashed var(--line);border-radius:16px;color:var(--text-dim);font-size:.95rem}
   .outros b{color:var(--text);font-weight:600;font-family:var(--display)}
 
@@ -417,6 +414,19 @@
   </div>
 </header>
 
+<section class="numeros" id="numeros" aria-label="O Zaq em números">
+  <div class="wrap">
+    <div class="num-grid">
+      <div class="num"><div class="v">33</div><div class="l">empresas usando, em <b>11 ramos</b> diferentes</div></div>
+      <div class="num"><div class="v">125<small>mil</small></div><div class="l">mensagens trocadas com clientes pelo Zaq desde julho</div></div>
+      <div class="num"><div class="v">3,6<small>mil</small></div><div class="l">leads atendidos, cada um com dono e etapa no funil</div></div>
+      <div class="num"><div class="v">9<small>mil</small></div><div class="l">compromissos na agenda, com lembrete que sai sozinho</div></div>
+      <div class="num"><div class="v">69</div><div class="l">contratos assinados pelo celular, sem papel</div></div>
+    </div>
+    <p class="num-nota">números do próprio sistema em 29/10/2026</p>
+  </div>
+</section>
+
 <section id="ramos">
   <div class="wrap">
     <div class="sec-eyebrow">Feito pro seu ramo</div>
@@ -429,13 +439,7 @@
         <div class="rhead"><div class="ric">🩺</div><div><h3>Clínica</h3><div class="quem">estética, odonto, fisioterapia, dermatologia, consultório</div></div></div>
         <p class="frase">Da recepção à sala do profissional, o dia inteiro ao vivo.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Hoje · recepção</span><span>qui, 14 pacientes</span></div>
-          <div class="ln"><b>Mariana S.</b><span class="pill v">em atendimento</span></div>
-          <div class="ln"><b>Pedro A.</b><span class="pill a">chegou · chamar na TV</span></div>
-          <div class="ln"><b>Luciana F.</b><span class="pill z">confirmou pelo link</span></div>
-          <div class="ln"><b>Carlos M.</b><span class="pill r">orçamento a entregar</span></div>
-        </div>
+        <a class="shot" href="/app/tela-clinica.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-clinica.webp" alt="Tela Hoje da recepção da clínica no Zaq: chegando, na espera, em atendimento e saindo" width="960" height="597" loading="lazy"></a>
         <ul>
           <li><b>Link de agendamento</b> com os horários livres; o paciente confirma, remarca ou cancela sozinho, e o lembrete sai no WhatsApp.</li>
           <li><b>Fila de atendimento</b> do profissional, chamada na TV da sala de espera e o <b>prontuário</b> com evolução assinada, fotos e documentos.</li>
@@ -449,13 +453,7 @@
         <div class="rhead"><div class="ric">🏥</div><div><h3>Hospital</h3><div class="quem">hospital-dia, centro de diagnóstico, maternidade, pronto atendimento</div></div></div>
         <p class="frase">As mesmas telas da clínica, com a palavra e o caminho do hospital.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Fila · exames e cirurgias</span><span>ter, 31 atendimentos</span></div>
-          <div class="ln"><b>Teste da orelhinha · Bebê de Ana</b><span class="pill a">chegou · TV</span></div>
-          <div class="ln"><b>Ergométrico · João P.</b><span class="pill v">em exame</span></div>
-          <div class="ln"><b>Cirurgia · Helena R.</b><span class="pill z">pré-op confirmado</span></div>
-          <div class="ln"><b>Retorno · Marcos L.</b><span class="pill r">faltou · remarcar</span></div>
-        </div>
+        <a class="shot" href="/app/tela-hospital.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-hospital.webp" alt="Agenda do hospital no Zaq, uma coluna por profissional" width="960" height="597" loading="lazy"></a>
         <ul>
           <li><b>Consultas, exames, testes, cirurgias e procedimentos</b> no catálogo e nos relatórios, cada grupo com o seu número.</li>
           <li><b>Funil próprio</b>, com o que só existe aqui: "faltou e não remarcou", "desistiu após falha do hospital", e a mensagem de voltar a chamar.</li>
@@ -469,15 +467,7 @@
         <div class="rhead"><div class="ric">🎉</div><div><h3>Eventos e festas</h3><div class="quem">buffet, espaço de festas, cerimonial, decoração</div></div></div>
         <p class="frase">Do primeiro oi ao pós-festa, sem perder uma data.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Funil · fevereiro</span><span>18 festas</span></div>
-          <div class="funil">
-            <div class="col"><i>Novo</i><div class="card">15 anos<small>20/02 · 120 conv.</small></div><div class="card">Casamento<small>28/02 · visita sáb</small></div></div>
-            <div class="col"><i>Visita</i><div class="card">Infantil<small>07/02 · 80 conv.</small></div></div>
-            <div class="col"><i>Proposta</i><div class="card">Formatura<small>14/02 · R$ 18.900</small></div></div>
-            <div class="col"><i>Contrato</i><div class="card">Bodas<small>21/02 · sinal pago ✓</small></div></div>
-          </div>
-        </div>
+        <a class="shot" href="/app/tela-eventos.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-eventos.webp" alt="Funil de festas no Zaq, com a data, o tipo e os convidados em cada card" width="960" height="597" loading="lazy"></a>
         <ul>
           <li>O card <b>lê a data, o tipo e os convidados</b> na própria conversa e avisa quando duas festas caem no mesmo dia.</li>
           <li><b>Visita, proposta por link e contrato</b> que fecha o negócio e abre o financeiro; sinal via Pix com baixa sozinha.</li>
@@ -491,11 +481,7 @@
         <div class="rhead"><div class="ric">🏟️</div><div><h3>Stand de vendas</h3><div class="quem">feira, outlet, bazar, evento com stands pra lojista</div></div></div>
         <p class="frase">Do mapa público ao stand quitado, com a vendedora comissionada.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Mapa · 32ª edição</span><span>48 stands</span></div>
-          <div class="quadra"><span class="e2">A1</span><span class="e2">A2</span><span class="e1">A3</span><span>A4</span><span class="e2">A5</span><span class="e3">A6</span><span class="e2">B10</span><span class="e1">B11</span><span>B12</span><span class="e2">B13</span><span class="e1">B14</span><span class="e2">B15</span></div>
-          <div class="legenda"><span><i style="background:rgba(37,211,102,.5)"></i>vendido</span><span><i style="background:rgba(37,211,102,.2)"></i>pré-reserva</span><span><i style="background:rgba(224,163,46,.4)"></i>bloqueado</span><span><i style="background:#1E2A23"></i>livre</span></div>
-        </div>
+        <a class="shot" href="/app/tela-estandes.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-estandes.webp" alt="Mapa de stands da feira no Zaq: livres, reservados, vendidos e bloqueados" width="960" height="597" loading="lazy"></a>
         <ul>
           <li><b>Mapa público</b> da edição: o lojista escolhe o stand, faz a pré-reserva com vencimento, e a gestão bloqueia o que não vende.</li>
           <li><b>Funil do lojista</b>: atendido, recebeu o mapa, reservou, vendido, quitado. Cada card anda sozinho.</li>
@@ -509,13 +495,7 @@
         <div class="rhead"><div class="ric">💡</div><div><h3>Iluminação e LED</h3><div class="quem">loja de iluminação, distribuidor de LED, projetos luminotécnicos</div></div></div>
         <p class="frase">Catálogo, estoque, orçamento, aprovação, expedição e fiscal, do balcão à obra.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Orçamentos · loja</span><span>semana</span></div>
-          <div class="ln"><b>2207 · Sala de estar · Arq. Paula</b><span class="pill v">aceito no celular</span></div>
-          <div class="ln"><b>2208 · Fachada · Loja Vila</b><span class="pill a">aguardando aprovação</span></div>
-          <div class="ln"><b>Pedido 1842 · expedição</b><span class="pill z">separando · baia 3</span></div>
-          <div class="ln"><b>Fita 2700K · estoque A-03</b><span class="pill r">8 rolos · repor</span></div>
-        </div>
+        <a class="shot" href="/app/tela-led.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-led.webp" alt="Estoque por endereço da loja de iluminação no Zaq" width="960" height="690" loading="lazy"></a>
         <ul>
           <li><b>Catálogo pela planilha</b>, com ficha técnica, marcas, NCM conferido e preço por lista de cliente.</li>
           <li><b>Orçamento com aceite no celular</b>, alçada de aprovação e desconto; toda proposta vira card no funil da loja.</li>
@@ -529,13 +509,7 @@
         <div class="rhead"><div class="ric">👓</div><div><h3>Ótica</h3><div class="quem">ótica de rua, rede com central e várias lojas</div></div></div>
         <p class="frase">A receita, o laboratório e a entrega num lugar só, em todas as lojas.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Ordens de serviço</span><span>3 lojas</span></div>
-          <div class="ln"><b>OS 0412 · Rafael · Centro</b><span class="pill z">no laboratório · 4 dias</span></div>
-          <div class="ln"><b>OS 0409 · Dona Célia · Norte</b><span class="pill v">pronto pra retirar</span></div>
-          <div class="ln"><b>OS 0401 · Bruno · Centro</b><span class="pill a">não buscou · lembrar</span></div>
-          <div class="ln"><b>Central → loja Sul</b><span class="pill r">cliente novo · pegar</span></div>
-        </div>
+        <a class="shot" href="/app/tela-otica.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-otica.webp" alt="Ordens de serviço da ótica no Zaq: no laboratório, prontas para retirar e entregues" width="960" height="597" loading="lazy"></a>
         <ul>
           <li><b>Ordem de serviço</b> com o grau da receita, a armação, a lente, o laboratório e o prazo; sinal no financeiro.</li>
           <li><b>Mensagens que saem sozinhas</b>: óculos prontos, quem não buscou, receita fazendo um ano, lente de contato acabando.</li>
@@ -549,13 +523,7 @@
         <div class="rhead"><div class="ric">🥗</div><div><h3>Suplementos e cozinha fit</h3><div class="quem">loja de suplementos, marmitaria fit, confeitaria e padaria</div></div></div>
         <p class="frase">A prateleira e a cozinha na mesma conta, com o custo de cada prato.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Cozinha · produção do dia</span><span>qua</span></div>
-          <div class="ln"><b>Frango fit · 40 un</b><span class="pill v">custo R$ 11,20 · pronto</span></div>
-          <div class="ln"><b>Carne com batata-doce · 25 un</b><span class="pill a">produzindo</span></div>
-          <div class="ln"><b>Whey morango · prateleira</b><span class="pill z">curva A · 6 un</span></div>
-          <div class="ln"><b>Peito de frango · insumo</b><span class="pill r">baixou do mínimo</span></div>
-        </div>
+        <a class="shot" href="/app/tela-suplementos.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-suplementos.webp" alt="Cozinha da loja de suplementos no Zaq: produção do dia, ficha técnica e insumos" width="960" height="597" loading="lazy"></a>
         <ul>
           <li><b>Ficha técnica</b> diz quanto custa cada marmita; a <b>produção do dia</b> baixa os insumos, sobe o prato pronto e imprime a etiqueta.</li>
           <li><b>Curva ABC</b>: os poucos produtos que fazem 80% da venda, o A que está faltando e o C parado.</li>
@@ -569,13 +537,7 @@
         <div class="rhead"><div class="ric">🥬</div><div><h3>Hortifrúti e CEASA</h3><div class="quem">fornecedor de cestas, sacolão, distribuidor que compra no CEASA</div></div></div>
         <p class="frase">Do pedido da semana à ida ao CEASA e à rota de entrega.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Pedidos da semana</span><span>quinta · 37 cestas</span></div>
-          <div class="ln"><b>Compra no CEASA · quarta</b><span class="pill z">42 kg banana · 18 alface</span></div>
-          <div class="ln"><b>Rota 1 · Zona Sul · 19 cestas</b><span class="pill v">romaneio no motorista</span></div>
-          <div class="ln"><b>Rota 2 · Centro · 18 cestas</b><span class="pill a">separando</span></div>
-          <div class="ln"><b>Financeiro · semana</b><span class="pill r">R$ 2.516 a receber</span></div>
-        </div>
+        <a class="shot" href="/app/tela-hortifruti.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-hortifruti.webp" alt="Pedidos da semana do hortifrúti no Zaq, cesta por cliente para separar" width="960" height="597" loading="lazy"></a>
         <ul>
           <li><b>Cestas da semana</b> por tamanho, com o extra de cada cliente, pedidas pelo WhatsApp ou pela página de pedidos.</li>
           <li><b>A compra no CEASA sai somada</b> dos pedidos: quanto de cada item comprar na quarta pra entregar na quinta.</li>
@@ -589,11 +551,7 @@
         <div class="rhead"><div class="ric">🏗️</div><div><h3>Construção e reforma</h3><div class="quem">construtora, loteamento, reforma, engenharia</div></div></div>
         <p class="frase">O canteiro no celular do mestre, o custo na mesa do escritório.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Mapa das obras · quadra B</span><span>12 casas</span></div>
-          <div class="quadra"><span class="e2">1</span><span class="e2">2</span><span class="e1">3</span><span class="e1">4</span><span class="e3">5</span><span>6</span><span class="e2">7</span><span class="e1">8</span><span class="e1">9</span><span>10</span><span>11</span><span class="e3">12</span></div>
-          <div class="legenda"><span><i style="background:rgba(37,211,102,.5)"></i>acabamento</span><span><i style="background:rgba(37,211,102,.2)"></i>alvenaria</span><span><i style="background:rgba(224,163,46,.4)"></i>gastando acima</span></div>
-        </div>
+        <a class="shot" href="/app/tela-obras.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-obras.webp" alt="Quadro de obras no Zaq: casas da quadra, etapas e atenção" width="960" height="597" loading="lazy"></a>
         <ul>
           <li><b>App do mestre</b>, entrando pelo WhatsApp sem senha: foto da etapa, etapa feita, material usado. Sem nenhum valor na tela dele.</li>
           <li><b>A nota vira material contado</b>: 60 sacos entram, "usei 15 na casa 2" dá baixa, o almoxarifado avisa o mínimo.</li>
@@ -607,13 +565,7 @@
         <div class="rhead"><div class="ric">🛡️</div><div><h3>Corretora de seguros</h3><div class="quem">auto, frota, vida, residencial, empresarial, saúde</div></div></div>
         <p class="frase">A carteira avisa a renovação; o funil fala de cotação, ramo e comissão.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Carteira · renovações</span><span>próximos 60 dias</span></div>
-          <div class="ln"><b>Auto · Marcos L. · Porto</b><span class="pill a">vence em 30 d · R$ 486</span></div>
-          <div class="ln"><b>Frota · Transp. Lima · 8 veículos</b><span class="pill z">cotação enviada</span></div>
-          <div class="ln"><b>Vida · Dona Rute</b><span class="pill v">renovada ✓</span></div>
-          <div class="ln"><b>Residencial · Fábio</b><span class="pill r">perdido · ficou na outra</span></div>
-        </div>
+        <a class="shot" href="/app/tela-seguros.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-seguros.webp" alt="Renovações da corretora no Zaq: apólices vencendo com prêmio e comissão" width="960" height="597" loading="lazy"></a>
         <ul>
           <li><b>Carteira de apólices</b> por ramo e seguradora; o corretor é avisado no celular <b>60, 30 e 15 dias</b> antes do fim da vigência, com prêmio, comissão estimada e classe de bônus.</li>
           <li><b>Funil de cotação</b>, com os motivos de perda que só existem em seguro, e o Raio-X medindo comissão no lugar de mensalidade.</li>
@@ -627,13 +579,7 @@
         <div class="rhead"><div class="ric">🤝</div><div><h3>Serviços e consultoria</h3><div class="quem">consultoria, agência, contabilidade, advocacia, software, educação</div></div></div>
         <p class="frase">Setup e mensalidade, reunião, proposta e contrato assinado pelo celular.</p>
         <button type="button" class="abrir" aria-expanded="false">Ver tudo ›</button>
-        <div class="tela">
-          <div class="tt"><span>Propostas de serviço</span><span>outubro</span></div>
-          <div class="ln"><b>Clínica Vida · setup + mensal</b><span class="pill z">reunião qui 15h</span></div>
-          <div class="ln"><b>Loja Horizonte · mensalidade</b><span class="pill a">proposta enviada</span></div>
-          <div class="ln"><b>Agro Norte · projeto</b><span class="pill v">contrato assinado ✓</span></div>
-          <div class="ln"><b>Raio-X · de quem é a bola</b><span class="pill r">3 contratos esperando o cliente</span></div>
-        </div>
+        <a class="shot" href="/app/tela-servicos.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-servicos.webp" alt="Propostas de serviço no Zaq: setup e mensalidade, do rascunho ao contrato" width="960" height="597" loading="lazy"></a>
         <ul>
           <li><b>Lead PJ</b> com segmento e porte, reunião na agenda e o funil com as etapas de quem vende por mensalidade.</li>
           <li><b>Proposta com cara de documento</b>: cada serviço com o que inclui, desconto à vista, número e observações; o cliente aprova pelo link.</li>
@@ -655,6 +601,11 @@
     <div class="sec-eyebrow">Do anúncio ao contrato</div>
     <h2>A máquina de vendas, inteira, em todo ramo.</h2>
     <p class="lead">Tráfego pago, SDR com IA, CRM, funil e automação não são módulos que você compra separado. <b>É um caminho só</b>: o clique no anúncio vira conversa, a conversa vira lead com dono, o lead vira contrato, e cada passo fica medido.</p>
+    <div class="galeria">
+      <figure><a class="shot" href="/app/tela-comunicacao.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-comunicacao.webp" alt="Comunicação do Zaq com a conversa aberta e o assistente de IA ao lado" width="960" height="597" loading="lazy"></a><figcaption><b>A conversa, com o assistente ao lado.</b> Resposta sugerida, próximo passo, nota interna e etiqueta, sem sair do WhatsApp da empresa.</figcaption></figure>
+      <figure><a class="shot" href="/app/tela-eventos.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-eventos.webp" alt="Funil do Zaq com os cards por etapa" width="960" height="597" loading="lazy"></a><figcaption><b>O funil que lê a conversa.</b> O card já nasce com o que o cliente disse e anda de coluna quando ele responde.</figcaption></figure>
+      <figure><a class="shot" href="/app/tela-raiox.webp" target="_blank" rel="noopener" title="Abrir a tela em tamanho maior"><img src="/app/tela-raiox.webp" alt="Raio-X do Zaq: leads, primeira resposta, propostas e contratos por vendedor" width="960" height="597" loading="lazy"></a><figcaption><b>O Raio-X.</b> Leads, tempo de primeira resposta, propostas e contratos, vendedor por vendedor, no vocabulário do ramo.</figcaption></figure>
+    </div>
     <div class="casa">
       <div class="mod"><div class="mic">📣</div><h3>Tráfego pago</h3><p>Conecta a Meta e <b>cada lead chega ligado ao anúncio que o trouxe</b>, sem código na mensagem. Gasto, alcance, frequência e contatos dia a dia; campanha, conjunto e anúncio como no Gerenciador; <b>nota por anúncio</b> (escalar, manter, revisar, pausar) pelo que aconteceu depois do clique. E o Zaq devolve pra Meta quem comprou de verdade. O gestor de tráfego da agência entra com login próprio.</p></div>
       <div class="mod"><div class="mic">🤖</div><h3>SDR com IA</h3><p>A IA <b>atende o primeiro contato</b> no seu WhatsApp, entende o que a pessoa quer, qualifica, <b>marca a visita ou a reunião</b> conferindo a agenda e passa pro vendedor certo. Fora do horário ela responde; o lead que esfriou volta pelo <b>Resgate da IA</b>, com três toques e um supervisor acompanhando. Ao lado de cada conversa, resposta sugerida, resumo e próximo passo.</p></div>
