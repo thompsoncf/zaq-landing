@@ -1,0 +1,34 @@
+# Zaq
+
+> Sistema com IA no WhatsApp para empresas, feito em Teresina, Piauí, Brasil. Junta atendimento, funil de vendas (CRM), agenda, equipe e financeiro, com as telas e as palavras de cada ramo. A IA atende o primeiro contato no WhatsApp, qualifica, marca na agenda e passa para o vendedor.
+
+Preço sob orçamento (setup mais mensalidade), sem plano de prateleira. Contato pelo WhatsApp: https://wa.me/5586981885930
+
+## Páginas principais
+
+- [Início](https://zaq-ia.com/)
+- [IA no WhatsApp para empresas](https://zaq-ia.com/ia-no-whatsapp-para-empresas.html)
+- [IA para empresas em Teresina](https://zaq-ia.com/ia-para-empresas-em-teresina.html)
+- [O que mudou no Zaq](https://zaq-ia.com/atualizacoes.html)
+
+## Ramos
+
+- [Clínica](https://zaq-ia.com/sistema-para-clinica.html): Agendamento por link, lembrete no WhatsApp, fila e chamada na TV, prontuário, orçamento de pacotes, caixa e repasse por profissional. Para estética, odonto, fisioterapia e consultório.
+- [Hospital](https://zaq-ia.com/sistema-para-hospital.html): Para hospital-dia, centro de diagnóstico, maternidade e pronto atendimento: consultas, exames, cirurgias e procedimentos separados, funil próprio, chamada na TV com voz, prontuário e caixa.
+- [Eventos e festas](https://zaq-ia.com/sistema-para-buffet-e-eventos.html): Para buffet, espaço de festas, cerimonial e decoração: a data e os convidados lidos na conversa do WhatsApp, aviso de data ocupada, proposta por link, contrato e sinal via Pix.
+- [Stand de vendas](https://zaq-ia.com/sistema-para-venda-de-stands.html): Para feira, outlet, bazar e evento com stands: mapa público com pré-reserva, funil do lojista que anda sozinho, contrato por empresa, sinal via Pix e custo por stand vendido.
+- [Iluminação e LED](https://zaq-ia.com/sistema-para-loja-de-iluminacao.html): Para loja de iluminação, distribuidor de LED e projetos luminotécnicos: catálogo com ficha técnica, orçamento com aceite no celular, estoque por endereço, expedição e acompanhamento da obra.
+- [Ótica](https://zaq-ia.com/sistema-para-otica.html): Para ótica de rua e rede com várias lojas: ordem de serviço com a receita, aviso de óculos prontos no WhatsApp, central que distribui o cliente e boletim de cada loja.
+- [Suplementos e cozinha fit](https://zaq-ia.com/sistema-para-loja-de-suplementos.html): Para loja de suplementos, marmitaria fit, confeitaria e padaria: custo de cada prato pela ficha técnica, curva ABC, venda no balcão e pelo WhatsApp com entrega, caixa e estoque.
+- [Hortifrúti e CEASA](https://zaq-ia.com/sistema-para-hortifruti.html): Para fornecedor de cestas, sacolão e distribuidor que compra no CEASA: pedidos pelo WhatsApp, compra somada dos pedidos, romaneio da rota e financeiro da semana sem planilha.
+- [Construção e reforma](https://zaq-ia.com/sistema-para-construtora.html): Para construtora, loteamento, reforma e engenharia: app do mestre pelo WhatsApp sem senha, nota que vira material contado, mapa 3D das casas e suprimentos com cotação e pedido.
+- [Corretora de seguros](https://zaq-ia.com/sistema-para-corretora-de-seguros.html): Para corretora de auto, frota, vida, residencial, empresarial e saúde: aviso de renovação 60, 30 e 15 dias antes, funil de cotação, comissão a receber da seguradora e IA no primeiro contato.
+- [Serviços e consultoria](https://zaq-ia.com/sistema-para-empresa-de-servicos.html): Para consultoria, agência, contabilidade, advocacia, software e educação: lead PJ com segmento e porte, reunião na agenda, proposta aprovada por link e contrato assinado pelo celular.
+
+## Números (números do próprio sistema em 29/10/2026)
+
+- 33: empresas usando, em 11 ramos diferentes
+- 125 mil: mensagens trocadas com clientes pelo Zaq desde julho
+- 3,6 mil: leads atendidos, cada um com dono e etapa no funil
+- 9 mil: compromissos na agenda, com lembrete que sai sozinho
+- 69: contratos assinados pelo celular, sem papel
